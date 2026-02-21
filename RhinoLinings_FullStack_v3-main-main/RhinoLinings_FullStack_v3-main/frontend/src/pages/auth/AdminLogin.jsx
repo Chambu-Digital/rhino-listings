@@ -62,7 +62,7 @@ export default function AdminLogin() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Admin Portal</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Portal</h1>
           <p className="text-blue-200">Rhino Linings Management System</p>
         </div>
 
@@ -76,7 +76,7 @@ export default function AdminLogin() {
               </div>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-              <p className="text-gray-600">Sign in to access the admin dashboard</p>
+              <p className="text-gray-400">Sign in to access the admin dashboard</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -116,7 +116,7 @@ export default function AdminLogin() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-400"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -127,7 +127,7 @@ export default function AdminLogin() {
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
                   <input type="checkbox" className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
-                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                  <span className="ml-2 text-sm text-gray-400">Remember me</span>
                 </label>
                 <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
                   Forgot password?
@@ -138,7 +138,7 @@ export default function AdminLogin() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-gray-900 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -183,7 +183,7 @@ export default function AdminLogin() {
 
             {/* Setup Link */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Don't have admin access?{" "}
                 <Link to="/admin-setup" className="text-blue-600 hover:text-blue-700 font-medium">
                   Request Access

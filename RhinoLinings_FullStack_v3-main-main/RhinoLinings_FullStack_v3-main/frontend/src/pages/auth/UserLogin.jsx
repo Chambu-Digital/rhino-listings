@@ -64,7 +64,7 @@ export default function UserLogin() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl mb-4 shadow-lg">
             <User className="w-8 h-8 text-yellow-600" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Customer Portal</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Customer Portal</h1>
           <p className="text-yellow-100">Rhino Linings Services</p>
         </div>
 
@@ -77,7 +77,7 @@ export default function UserLogin() {
                 <span className="text-xs font-semibold text-yellow-600 uppercase tracking-wide">Customer Portal</span>
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-              <p className="text-gray-600">Sign in to manage your services</p>
+              <p className="text-gray-400">Sign in to manage your services</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -117,7 +117,7 @@ export default function UserLogin() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-400"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -128,7 +128,7 @@ export default function UserLogin() {
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
                   <input type="checkbox" className="w-4 h-4 text-yellow-600 border-gray-300 rounded focus:ring-yellow-500" />
-                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                  <span className="ml-2 text-sm text-gray-400">Remember me</span>
                 </label>
                 <Link to="/forgot-password" className="text-sm text-yellow-600 hover:text-yellow-700 font-medium">
                   Forgot password?
@@ -139,7 +139,7 @@ export default function UserLogin() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-gray-900 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -167,7 +167,7 @@ export default function UserLogin() {
 
             {/* Register Link */}
             <div className="text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Don't have an account?{" "}
                 <Link to="/register" className="text-yellow-600 hover:text-yellow-700 font-medium">
                   Create Account

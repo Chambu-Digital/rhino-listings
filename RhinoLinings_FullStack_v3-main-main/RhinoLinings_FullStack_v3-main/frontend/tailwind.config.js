@@ -6,9 +6,11 @@ export default {
   	extend: {
   		colors: {
   			rhinoYellow: '#FFD700',
-  			rhinoGrey: '#2E2E2E',
-  			rhinoBlack: '#0D0D0D',
-  			rhinoWhite: '#F5F5F5',
+  			rhinoOrange: '#F97316',
+  			rhinoGrey: '#6B7280',
+  			rhinoBlack: '#1F2937',
+  			rhinoWhite: '#FFFFFF',
+  			rhinoLight: '#F5F5F5',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

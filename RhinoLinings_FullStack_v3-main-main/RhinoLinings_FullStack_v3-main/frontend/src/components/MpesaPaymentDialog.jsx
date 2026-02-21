@@ -83,7 +83,7 @@ const MpesaPaymentDialog = ({ ticketId, amount, onPaid }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-700 text-white">Pay with M-PESA</Button>
+        <Button className="bg-green-600 hover:bg-green-700 text-gray-900">Pay with M-PESA</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md">
@@ -92,10 +92,10 @@ const MpesaPaymentDialog = ({ ticketId, amount, onPaid }) => {
         </DialogHeader>
 
         <div className="space-y-4">
-          <p className="text-sm text-gray-600">Enter the Safaricom phone number to receive the STK Push.</p>
+          <p className="text-sm text-gray-400">Enter the Safaricom phone number to receive the STK Push.</p>
           <Input placeholder="e.g. 0712345678 or 254712345678" value={phone} onChange={(e) => setPhone(e.target.value)} />
           <div className="flex gap-2">
-            <Button onClick={handlePay} disabled={loading} className="flex-1 bg-green-600 hover:bg-green-700 text-white">
+            <Button onClick={handlePay} disabled={loading} className="flex-1 bg-green-600 hover:bg-green-700 text-gray-900">
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : `Send STK Push (KES ${amount})`}
             </Button>
             <Button variant="ghost" onClick={handleClose}>Close</Button>

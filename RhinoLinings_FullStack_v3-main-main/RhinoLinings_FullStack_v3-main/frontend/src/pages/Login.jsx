@@ -62,7 +62,7 @@ export default function Login() {
             <img src={logo} alt="Rhino Linings" className="h-16 w-auto" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">RHINO LININGS KENYA</h2>
-          <p className="text-gray-600">Sign in to your account</p>
+          <p className="text-gray-400">Sign in to your account</p>
         </div>
 
         {/* Login Card */}
@@ -121,9 +121,9 @@ export default function Login() {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-400" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-400" />
                   )}
                 </button>
               </div>
@@ -133,7 +133,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -173,7 +173,7 @@ export default function Login() {
 
           {/* Back to Store */}
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
               <Link to="/" className="hover:text-yellow-600 transition-colors">
                 ← Back to store
               </Link>

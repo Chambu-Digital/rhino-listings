@@ -22,7 +22,7 @@ const PageBreadcrumb = () => {
         <div className="flex items-center justify-center gap-2 text-sm">
           <Link 
             to="/" 
-            className="flex items-center gap-1 text-gray-600 hover:text-yellow-600 transition-colors"
+            className="flex items-center gap-1 text-gray-400 hover:text-yellow-600 transition-colors"
           >
             <Home className="w-4 h-4" />
             <span>Home</span>

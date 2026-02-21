@@ -358,7 +358,7 @@ const UserDashboard = () => {
             <Button 
               onClick={() => setActiveTab("quotation")}
               size="sm"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white"
+              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900"
             >
               <span className="hidden sm:inline">Get Quote</span>
             </Button>
@@ -476,12 +476,12 @@ const UserDashboard = () => {
               <CardContent>
                 {bookings.length === 0 ? (
                   <div className="text-center py-8">
-                    <Package className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                    <Package className="w-10 h-10 sm:w-12 sm:h-12 text-gray-700 mx-auto mb-3" />
                     <p className="text-xs sm:text-sm text-gray-500 mb-3">No bookings yet</p>
                     <Button
                       onClick={() => setActiveTab("quotation")}
                       size="sm"
-                      className="bg-yellow-500 hover:bg-yellow-600 text-white"
+                      className="bg-yellow-500 hover:bg-yellow-600 text-gray-900"
                     >
                       Get Started
                     </Button>
@@ -525,7 +525,7 @@ const UserDashboard = () => {
         {activeTab === "services" && (
           <div className="space-y-4 sm:space-y-6">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl p-6 sm:p-8 text-white">
+            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl p-6 sm:p-8 text-gray-900">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Our Services</h2>
               <p className="text-blue-50 text-sm sm:text-base">Browse our premium protective coating services</p>
             </div>
@@ -598,7 +598,7 @@ const UserDashboard = () => {
                         </div>
 
                         {/* Description */}
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-2">{service.description}</p>
+                        <p className="text-sm text-gray-400 mb-4 line-clamp-2">{service.description}</p>
 
                         {/* Features */}
                         {service.features && service.features.length > 0 && (
@@ -647,7 +647,7 @@ const UserDashboard = () => {
                               setActiveTab("book");
                               toast.info(`Selected: ${service.name}`);
                             }}
-                            className="flex-1 bg-green-500 hover:bg-green-600 text-white text-sm"
+                            className="flex-1 bg-green-500 hover:bg-green-600 text-gray-900 text-sm"
                           >
                             Book Now
                           </Button>
@@ -673,10 +673,10 @@ const UserDashboard = () => {
             <Card className="border-0 shadow-sm bg-gradient-to-r from-yellow-50 to-orange-50">
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Can't find what you're looking for?</h3>
-                <p className="text-sm text-gray-600 mb-4">Contact us for custom solutions tailored to your needs</p>
+                <p className="text-sm text-gray-400 mb-4">Contact us for custom solutions tailored to your needs</p>
                 <Button
                   onClick={() => setActiveTab("messages")}
-                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  className="bg-blue-500 hover:bg-blue-600 text-gray-900"
                 >
                   <MessageSquare className="w-4 h-4 mr-2" />
                   Contact Support
@@ -690,7 +690,7 @@ const UserDashboard = () => {
         {activeTab === "quotation" && (
           <div className="max-w-5xl mx-auto space-y-4 sm:space-y-6">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 sm:p-8 text-white">
+            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 sm:p-8 text-gray-900">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold mb-2">Get Your Free Quote</h2>
@@ -714,7 +714,7 @@ const UserDashboard = () => {
                 <div className="flex items-baseline gap-2 relative z-10">
                   <p className="text-xl sm:text-2xl font-bold text-gray-900">From KES 25K</p>
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-gray-600 relative z-10">
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-400 relative z-10">
                   <span>Lifetime warranty</span>
                 </div>
               </button>
@@ -732,7 +732,7 @@ const UserDashboard = () => {
                 <div className="flex items-baseline gap-2 relative z-10">
                   <p className="text-xl sm:text-2xl font-bold text-gray-900">Custom Quote</p>
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-gray-600 relative z-10">
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-400 relative z-10">
                   <span>Fast turnaround</span>
                 </div>
               </button>
@@ -750,7 +750,7 @@ const UserDashboard = () => {
                 <div className="flex items-baseline gap-2 relative z-10">
                   <p className="text-xl sm:text-2xl font-bold text-gray-900">Bulk Discount</p>
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-gray-600 relative z-10">
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-400 relative z-10">
                   <span>Save up to 20%</span>
                 </div>
               </button>
@@ -995,7 +995,7 @@ const UserDashboard = () => {
                       </div>
                     </div>
 
-                    <p className="text-xs text-gray-600 text-center">
+                    <p className="text-xs text-gray-400 text-center">
                       Final quote will be generated after confirmation
                     </p>
                   </div>
@@ -1004,7 +1004,7 @@ const UserDashboard = () => {
                 <Button
                   onClick={handleQuotation}
                   disabled={!selectedVehicle.year}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white disabled:bg-gray-300 text-sm sm:text-base py-6 font-semibold"
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 disabled:bg-gray-300 text-sm sm:text-base py-6 font-semibold"
                 >
                   {estimatedPrice ? 'Confirm & Generate Quote' : 'Calculate Quote'}
                 </Button>
@@ -1036,7 +1036,7 @@ const UserDashboard = () => {
                             <Button
                               onClick={() => handleBookFromQuotation(q)}
                               size="sm"
-                              className="bg-green-500 hover:bg-green-600 text-white text-xs"
+                              className="bg-green-500 hover:bg-green-600 text-gray-900 text-xs"
                             >
                               Book
                             </Button>
@@ -1061,7 +1061,7 @@ const UserDashboard = () => {
                   <div className="flex-1">
                     <p className="text-xs text-blue-600 mb-1">Selected Service</p>
                     <h3 className="text-lg font-bold text-gray-900">{selectedServiceForBooking.name}</h3>
-                    <p className="text-sm text-gray-600 mt-1">{selectedServiceForBooking.description}</p>
+                    <p className="text-sm text-gray-400 mt-1">{selectedServiceForBooking.description}</p>
                     <div className="flex items-center gap-4 mt-3">
                       <div>
                         <p className="text-xs text-gray-500">Price</p>
@@ -1080,7 +1080,7 @@ const UserDashboard = () => {
                   </div>
                   <button
                     onClick={() => setSelectedServiceForBooking(null)}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-400"
                   >
                     <XCircle className="w-5 h-5" />
                   </button>
@@ -1121,7 +1121,7 @@ const UserDashboard = () => {
                   <p className="text-sm text-gray-700 mb-3">Browse our services to select what you need</p>
                   <Button
                     onClick={() => setActiveTab("services")}
-                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                    className="bg-blue-500 hover:bg-blue-600 text-gray-900"
                   >
                     Browse Services
                   </Button>
@@ -1142,7 +1142,7 @@ const UserDashboard = () => {
                   </div>
                   <button
                     onClick={() => setSelectedQuoteForBooking(null)}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-400"
                   >
                     <XCircle className="w-5 h-5" />
                   </button>
@@ -1216,7 +1216,7 @@ const UserDashboard = () => {
                 <Button
                   onClick={handleDirectBooking}
                   disabled={!bookingDate}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white disabled:bg-gray-300 text-sm sm:text-base"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-gray-900 disabled:bg-gray-300 text-sm sm:text-base"
                 >
                   Confirm Booking
                 </Button>
@@ -1276,14 +1276,14 @@ const UserDashboard = () => {
             {filteredBookings.length === 0 ? (
               <Card className="border-0 shadow-sm">
                 <CardContent className="text-center py-12">
-                  <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                  <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-gray-700 mx-auto mb-3" />
                   <p className="text-xs sm:text-sm text-gray-500 mb-4">
                     {bookings.length === 0 ? "No bookings yet" : "No bookings match your filters"}
                   </p>
                   <Button
                     onClick={() => setActiveTab("book")}
                     size="sm"
-                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                    className="bg-blue-500 hover:bg-blue-600 text-gray-900"
                   >
                     Book a Service
                   </Button>
@@ -1304,7 +1304,7 @@ const UserDashboard = () => {
                               {booking.status}
                             </span>
                           </div>
-                          <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600">
+                          <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm text-gray-400">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                               {dayjs(booking.date).format("MMM DD, YYYY")}
@@ -1323,7 +1323,7 @@ const UserDashboard = () => {
                             <Button
                               onClick={() => handlePayment(booking._id)}
                               size="sm"
-                              className="bg-green-500 hover:bg-green-600 text-white text-xs"
+                              className="bg-green-500 hover:bg-green-600 text-gray-900 text-xs"
                             >
                               Pay Now
                             </Button>
@@ -1364,7 +1364,7 @@ const UserDashboard = () => {
                               <div key={step} className="flex items-center flex-1">
                                 <div
                                   className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs font-medium ${
-                                    isPassed ? "bg-yellow-500 text-white" : "bg-gray-200 text-gray-500"
+                                    isPassed ? "bg-yellow-500 text-gray-900" : "bg-gray-200 text-gray-500"
                                   }`}
                                 >
                                   {isPassed ? "✓" : idx + 1}
@@ -1400,7 +1400,7 @@ const UserDashboard = () => {
                   <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2 sm:space-y-3 bg-gray-50">
                     {messages.length === 0 ? (
                       <div className="text-center py-12">
-                        <MessageSquare className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                        <MessageSquare className="w-10 h-10 sm:w-12 sm:h-12 text-gray-700 mx-auto mb-3" />
                         <p className="text-xs sm:text-sm text-gray-500">Start a conversation</p>
                       </div>
                     ) : (
@@ -1411,7 +1411,7 @@ const UserDashboard = () => {
                             <div
                               className={`max-w-xs lg:max-w-md px-2.5 sm:px-3 py-2 rounded-lg ${
                                 isUser
-                                  ? "bg-yellow-500 text-white"
+                                  ? "bg-yellow-500 text-gray-900"
                                   : "bg-white text-gray-900 border border-gray-200"
                               }`}
                             >
@@ -1439,7 +1439,7 @@ const UserDashboard = () => {
                       <Button
                         onClick={handleSendMessage}
                         size="sm"
-                        className="bg-green-500 hover:bg-green-600 text-white"
+                        className="bg-green-500 hover:bg-green-600 text-gray-900"
                       >
                         Send
                       </Button>
@@ -1461,14 +1461,14 @@ const UserDashboard = () => {
                 <CardTitle className="text-lg sm:text-xl">Quote Generated</CardTitle>
                 <Sparkles className="w-6 h-6 text-yellow-600" />
               </div>
-              <p className="text-xs text-gray-600 mt-1">Valid for 30 days</p>
+              <p className="text-xs text-gray-400 mt-1">Valid for 30 days</p>
             </CardHeader>
             <CardContent className="space-y-4 pt-4">
               {/* Vehicle Info */}
               <div className="bg-gray-50 rounded-lg p-3">
                 <p className="text-xs text-gray-500 mb-1">Vehicle</p>
                 <p className="text-base font-bold text-gray-900">{quotation.vehicleInfo}</p>
-                <p className="text-xs text-gray-600 mt-1">{quotation.formula}</p>
+                <p className="text-xs text-gray-400 mt-1">{quotation.formula}</p>
               </div>
 
               {/* Cost Breakdown */}
@@ -1477,22 +1477,22 @@ const UserDashboard = () => {
                   <h4 className="text-sm font-semibold text-gray-900">Cost Breakdown</h4>
                   <div className="bg-white border border-gray-200 rounded-lg p-3 space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Base Cost</span>
+                      <span className="text-gray-400">Base Cost</span>
                       <span className="font-medium">KES {priceBreakdown.baseCost.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Labour</span>
+                      <span className="text-gray-400">Labour</span>
                       <span className="font-medium">KES {priceBreakdown.labourCost.toLocaleString()}</span>
                     </div>
                     {priceBreakdown.surfaceCost > 0 && (
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Surface Coating</span>
+                        <span className="text-gray-400">Surface Coating</span>
                         <span className="font-medium">KES {priceBreakdown.surfaceCost.toLocaleString()}</span>
                       </div>
                     )}
                     {priceBreakdown.servicesCost > 0 && (
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Additional Services</span>
+                        <span className="text-gray-400">Additional Services</span>
                         <span className="font-medium">KES {priceBreakdown.servicesCost.toLocaleString()}</span>
                       </div>
                     )}
@@ -1521,7 +1521,7 @@ const UserDashboard = () => {
               )}
 
               {/* Total */}
-              <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl p-4 text-white">
+              <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl p-4 text-gray-900">
                 <p className="text-sm opacity-90 mb-1">Total Estimated Cost</p>
                 <p className="text-3xl font-bold">
                   KES {(quotation.estimatedCost || quotation.totalAmount || 0).toLocaleString()}
@@ -1534,7 +1534,7 @@ const UserDashboard = () => {
                 <div className="flex gap-2">
                   <Button
                     onClick={() => handleBookFromQuotation(quotation)}
-                    className="flex-1 bg-green-500 hover:bg-green-600 text-white text-sm py-6 font-semibold"
+                    className="flex-1 bg-green-500 hover:bg-green-600 text-gray-900 text-sm py-6 font-semibold"
                   >
                     Book Now
                   </Button>
@@ -1545,7 +1545,7 @@ const UserDashboard = () => {
                       setQuotation(null);
                       setPriceBreakdown(null);
                     }}
-                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-sm py-6 font-semibold"
+                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-gray-900 text-sm py-6 font-semibold"
                   >
                     <Send className="w-4 h-4 mr-2" />
                     Send to Admin
@@ -1567,7 +1567,7 @@ const UserDashboard = () => {
               {/* Info */}
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-gray-700">
                 <p className="font-medium mb-1">What happens next?</p>
-                <ul className="space-y-1 text-gray-600">
+                <ul className="space-y-1 text-gray-400">
                   <li>• Quote saved to your account</li>
                   <li>• Book service at your convenience</li>
                   <li>• Our team will confirm your appointment</li>
