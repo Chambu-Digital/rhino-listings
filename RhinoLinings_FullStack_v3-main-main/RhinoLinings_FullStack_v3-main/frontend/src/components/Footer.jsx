@@ -6,108 +6,256 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
-          
-          {/* Company Info - Spans 4 columns */}
-          <div className="lg:col-span-4 space-y-3">
-            <div className="flex items-center space-x-2">
-              <img src={rhinoLogo} alt="Rhino Linings Kenya" className="h-10 w-auto" />
-              <h3 className="text-lg font-bold text-yellow-500">Rhino Linings</h3>
+    <footer
+      style={{
+        background: "#030712",
+        fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
+        borderTop: "3px solid #F97316",
+      }}
+    >
+      {/* ── TOP STRIP ── */}
+      <div style={{ background: "#F97316" }} className="py-3">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs font-black uppercase tracking-widest text-black">
+            Trusted Since 1983 · ISO 9001:2015 Certified · OEM Approved
+          </p>
+          <a
+            href="https://wa.me/254727877651?text=Hi%2C%20I%27m%20interested%20in%20Rhino%20Linings%20services"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-black uppercase tracking-widest text-black hover:opacity-80 transition-opacity"
+          >
+            💬 Chat on WhatsApp →
+          </a>
+        </div>
+      </div>
+
+      {/* ── MAIN FOOTER ── */}
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+
+          {/* Brand — 4 cols */}
+          <div className="lg:col-span-4 space-y-5">
+            <div className="flex items-center gap-3">
+              <img
+                src={rhinoLogo}
+                alt="Rhino Linings Kenya"
+                className="h-10 w-auto"
+              />
+              <div>
+                <div
+                  className="text-lg font-black uppercase leading-none"
+                  style={{ color: "#F97316" }}
+                >
+                  Rhino Linings
+                </div>
+                <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  Kenya
+                </div>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Kenya's premier protective coating specialists delivering quality spray-on solutions.
+
+            <p
+              className="text-gray-400 text-sm leading-relaxed"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
+              Kenya's premier protective coating specialists — delivering world-class
+              polyurethane and polyurea solutions for automotive, industrial, mining,
+              marine, waterproofing and containment applications.
             </p>
-            <div className="flex space-x-3 pt-2">
-              <a href="#" className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition">
-                <Instagram className="w-4 h-4" />
-              </a>
+
+            {/* Social icons */}
+            <div className="flex gap-2 pt-1">
+              {[
+                { icon: <Facebook className="w-4 h-4" />, href: "#" },
+                { icon: <Twitter className="w-4 h-4" />, href: "#" },
+                { icon: <Instagram className="w-4 h-4" />, href: "#" },
+              ].map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  className="w-9 h-9 flex items-center justify-center text-gray-500 transition-all hover:scale-110"
+                  style={{ background: "#111827", border: "1px solid #1f2937" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#F97316";
+                    e.currentTarget.style.color = "#000";
+                    e.currentTarget.style.borderColor = "#F97316";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "#111827";
+                    e.currentTarget.style.color = "";
+                    e.currentTarget.style.borderColor = "#1f2937";
+                  }}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links - Spans 2 columns */}
+          {/* Quick Links — 2 cols */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold mb-3 text-white">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-sm text-gray-400 hover:text-yellow-500 transition">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-sm text-gray-400 hover:text-yellow-500 transition">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm text-gray-400 hover:text-yellow-500 transition">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-sm text-gray-400 hover:text-yellow-500 transition">
-                  Contact
-                </Link>
-              </li>
+            <h4
+              className="text-xs font-black uppercase tracking-widest mb-5"
+              style={{ color: "#F97316" }}
+            >
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Home", to: "/" },
+                { label: "Services", to: "/services" },
+                { label: "About Us", to: "/about" },
+                { label: "Contact", to: "/contact" },
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link
+                    to={link.to}
+                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400 flex items-center gap-2 group"
+                  >
+                    <span
+                      className="w-3 h-px inline-block transition-all group-hover:w-5"
+                      style={{ background: "#F97316" }}
+                    />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services - Spans 3 columns */}
+          {/* Services — 3 cols */}
           <div className="lg:col-span-3">
-            <h4 className="text-sm font-semibold mb-3 text-white">Our Services</h4>
-            <ul className="space-y-2">
-              <li className="text-sm text-gray-400">Truck Linings</li>
-              <li className="text-sm text-gray-400">Industrial Coatings</li>
-              <li className="text-sm text-gray-400">Custom Spray-Ons</li>
-              <li className="text-sm text-gray-400">Fleet Services</li>
+            <h4
+              className="text-xs font-black uppercase tracking-widest mb-5"
+              style={{ color: "#F97316" }}
+            >
+              Our Services
+            </h4>
+            <ul className="space-y-3">
+              {[
+                "Automotive Bed Liners",
+                "Industrial Coatings",
+                "Mining Applications",
+                "Marine Protection",
+                "Waterproofing",
+                "Containment Solutions",
+              ].map((s, i) => (
+                <li key={i}>
+                  <Link
+                    to="/services"
+                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400 flex items-center gap-2 group"
+                  >
+                    <span
+                      className="w-3 h-px inline-block transition-all group-hover:w-5"
+                      style={{ background: "#F97316" }}
+                    />
+                    {s}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info - Spans 3 columns */}
+          {/* Contact — 3 cols */}
           <div className="lg:col-span-3">
-            <h4 className="text-sm font-semibold mb-3 text-white">Get In Touch</h4>
-            <ul className="space-y-2.5">
-              <li className="flex items-center space-x-2 text-sm text-gray-400">
-                <Phone className="w-4 h-4 text-yellow-500 flex-shrink-0" />
-                <a href="tel:+254727877651" className="hover:text-yellow-500 transition">
-                  +254 727 877 651
+            <h4
+              className="text-xs font-black uppercase tracking-widest mb-5"
+              style={{ color: "#F97316" }}
+            >
+              Get In Touch
+            </h4>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="tel:+254727877651"
+                  className="flex items-start gap-3 group"
+                >
+                  <div
+                    className="w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: "#F97316" }}
+                  >
+                    <Phone className="w-3.5 h-3.5 text-black" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
+                      Phone
+                    </p>
+                    <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors font-bold">
+                      +254 727 877 651
+                    </span>
+                  </div>
                 </a>
               </li>
-              <li className="flex items-center space-x-2 text-sm text-gray-400">
-                <Mail className="w-4 h-4 text-yellow-500 flex-shrink-0" />
-                <a href="mailto:info@rhinoliningskenya.com" className="hover:text-yellow-500 transition">
-                  info@rhinoliningskenya.com
+
+              <li>
+                <a
+                  href="mailto:info@rhinoliningskenya.com"
+                  className="flex items-start gap-3 group"
+                >
+                  <div
+                    className="w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: "#F97316" }}
+                  >
+                    <Mail className="w-3.5 h-3.5 text-black" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
+                      Email
+                    </p>
+                    <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors font-bold break-all">
+                      info@rhinoliningskenya.com
+                    </span>
+                  </div>
                 </a>
               </li>
-              <li className="flex items-start space-x-2 text-sm text-gray-400">
-                <MapPin className="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" />
-                <span>Karen, Nairobi</span>
+
+              <li className="flex items-start gap-3">
+                <div
+                  className="w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: "#F97316" }}
+                >
+                  <MapPin className="w-3.5 h-3.5 text-black" />
+                </div>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
+                    Location
+                  </p>
+                  <span
+                    className="text-sm text-gray-300"
+                    style={{ fontFamily: "Georgia, serif" }}
+                  >
+                    Next to Insignia Motors,<br />
+                    Off Karen Road, Nairobi
+                  </span>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-            <p>© {currentYear} Rhino Linings Kenya. All rights reserved.</p>
-            <div className="flex gap-4">
-              <Link to="/login" className="hover:text-yellow-500 transition">Sign In</Link>
-              <span>•</span>
-              <a href="#" className="hover:text-yellow-500 transition">Privacy</a>
-              <span>•</span>
-              <a href="#" className="hover:text-yellow-500 transition">Terms</a>
-            </div>
+      {/* ── BOTTOM BAR ── */}
+      <div style={{ borderTop: "1px solid #111827" }}>
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-gray-600 font-bold uppercase tracking-wider">
+            © {currentYear} Rhino Linings Kenya. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5 text-xs text-gray-600 font-bold uppercase tracking-wider">
+            <Link
+              to="/login"
+              className="hover:text-orange-400 transition-colors"
+            >
+              Sign In
+            </Link>
+            <span style={{ color: "#1f2937" }}>|</span>
+            <a href="#" className="hover:text-orange-400 transition-colors">
+              Privacy
+            </a>
+            <span style={{ color: "#1f2937" }}>|</span>
+            <a href="#" className="hover:text-orange-400 transition-colors">
+              Terms
+            </a>
           </div>
         </div>
       </div>

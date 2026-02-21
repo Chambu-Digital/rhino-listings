@@ -1,162 +1,269 @@
-import { Award, Shield, Target, Users, CheckCircle, TrendingUp } from "lucide-react";
+import { Award, Shield, Target, Users, TrendingUp, Zap, Globe, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageBreadcrumb from "../components/PageBreadcrumb";
 
 export default function About() {
-  const values = [
+  const coreValues = [
     {
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Shield className="w-5 h-5" />,
       title: "Quality First",
-      description: "Premium Rhino Linings products with no compromises"
+      description: "Authentic Rhino Linings products with zero compromise on performance or application standards.",
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="w-5 h-5" />,
       title: "Precision",
-      description: "Meticulous attention to detail in every application"
+      description: "Meticulous attention to surface preparation and application in every project we undertake.",
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-5 h-5" />,
       title: "Customer Focus",
-      description: "Your satisfaction is our top priority"
+      description: "Your investment is our responsibility — from first enquiry through to warranty support.",
     },
     {
-      icon: <Award className="w-6 h-6" />,
+      icon: <Zap className="w-5 h-5" />,
       title: "Innovation",
-      description: "Latest coating technologies and methods"
-    }
+      description: "Continuous R&D keeps our applicators equipped with the latest formulations and techniques.",
+    },
   ];
 
   const stats = [
-    { number: "30+", label: "Years Experience" },
-    { number: "5000+", label: "Projects Done" },
-    { number: "98%", label: "Satisfaction" },
-    { number: "100%", label: "Quality" }
+    { number: "1983", label: "Trusted Since" },
+    { number: "40+", label: "Years of R&D" },
+    { number: "ISO", label: "9001:2015 Certified" },
+    { number: "OEM", label: "Approved Globally" },
   ];
 
   const whyChoose = [
     {
       title: "Certified Professionals",
-      description: "Certified Rhino Linings technicians with extensive training and experience."
+      description: "Professionally trained Rhino Linings applicators following global best-practice standards on every job.",
     },
     {
-      title: "Premium Products",
-      description: "Authentic Rhino Linings products, trusted worldwide for superior quality."
+      title: "Authentic Products",
+      description: "Genuine Rhino Linings polyurethane and polyurea — the same formulations trusted by mining, military and navy operations worldwide.",
     },
     {
       title: "Proven Track Record",
-      description: "Thousands of satisfied customers across Kenya trust us."
+      description: "Thousands of satisfied customers across Kenya and a nationally represented dealer network backing your warranty.",
     },
     {
       title: "Comprehensive Solutions",
-      description: "Complete protective coating solutions for any application."
+      description: "From truck beds to industrial floors, marine vessels to containment tanks — one brand, endless applications.",
     },
     {
-      title: "Warranty Protection",
-      description: "All work backed by comprehensive warranties for peace of mind."
+      title: "Transferable Warranty",
+      description: "Our 3-year warranty is registered against your vehicle and transfers to new owners — not a 'limited lifetime' that expires on sale.",
     },
     {
       title: "Fast Turnaround",
-      description: "Efficient service without compromising quality."
-    }
+      description: "Sets in seconds, ready for light traffic in minutes. Automotive applications completed in as little as 2–4 hours.",
+    },
   ];
 
-  const difference = [
+  const rhinoDifference = [
     {
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: <Globe className="w-6 h-6" />,
       title: "Built for Kenya's Conditions",
-      description: "Solutions tested globally but tailored for Kenya's unique terrain, climate, and demanding work environments."
+      description:
+        "Tested globally from arctic Canada to the Atacama Desert — our coatings are proven for Kenya's dust, heat, heavy loads and demanding terrain.",
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Superior Technology",
-      description: "Advanced polyurethane chemistry providing unmatched protection against Kenya's dust, heat, and heavy-duty use."
+      description:
+        "Advanced polyurethane and polyurea chemistry delivering unmatched resistance to abrasion, corrosion, chemical attack and impact damage.",
     },
     {
       icon: <Award className="w-6 h-6" />,
       title: "Local Expertise, Global Standards",
-      description: "Kenyan team trained to international Rhino Linings standards, understanding both local needs and global quality."
-    }
+      description:
+        "Our Kenyan team is trained to international Rhino Linings standards — understanding both local application needs and ISO 9001:2015 quality requirements.",
+    },
+  ];
+
+  const featureBenefits = [
+    { feature: "Fast Application Process", benefit: "Reduced Downtime" },
+    { feature: "Hardwearing & Long-Lasting Products", benefit: "Lower Maintenance Costs" },
+    { feature: "Acts as Sacrificial Layer", benefit: "Saving in Total Cost of Ownership" },
+    { feature: "NVH Reduction & Impact Protection", benefit: "Improved Health & Safety" },
+    { feature: "Guards Assets from Abrasion & Impact", benefit: "Extends Asset Lifespan" },
+    { feature: "Air- & Watertight Bond", benefit: "Protects Assets from Corrosion" },
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
-      
+    <div
+      className="pt-20 min-h-screen bg-gray-950 text-white"
+      style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}
+    >
       <PageBreadcrumb />
-      
-      {/* Hero Section */}
-      <section className="px-6 py-16 text-center bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto">
-          <span className="inline-block px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold mb-4">
-            About Us
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Rhino Linings Kenya
+
+      {/* ── HERO ── */}
+      <section className="relative px-6 py-24 text-center overflow-hidden">
+        {/* Background decorative text */}
+        <div
+          className="absolute inset-0 flex items-center justify-center text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
+          style={{ color: "#F97316", letterSpacing: "-0.05em" }}
+        >
+          RHINO
+        </div>
+        {/* Orange top accent */}
+        <div
+          className="absolute top-0 left-0 right-0 h-1"
+          style={{ background: "linear-gradient(90deg, #F97316, #C2410C)" }}
+        />
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="w-8 h-px" style={{ background: "#F97316" }} />
+            <span
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: "#F97316" }}
+            >
+              Trusted Since 1983 · ISO 9001:2015 Certified
+            </span>
+            <span className="w-8 h-px" style={{ background: "#F97316" }} />
+          </div>
+
+          <h1
+            className="text-6xl md:text-8xl font-black uppercase leading-none mb-4"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            About
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Kenya's premier provider of world-class protective coating solutions
+          <h1
+            className="text-6xl md:text-8xl font-black uppercase leading-none mb-8"
+            style={{
+              letterSpacing: "-0.02em",
+              WebkitTextStroke: "2px #F97316",
+              color: "transparent",
+            }}
+          >
+            Rhino Linings
+          </h1>
+          <p
+            className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Kenya's premier provider of world-class protective coating solutions —
+            part of a globally trusted brand that pioneered spray-on polyurethane protection.
           </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="px-6 py-12 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-sm text-gray-400">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* ── STATS STRIP ── */}
+      <div style={{ background: "#F97316" }} className="py-5">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((s, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl font-black text-black">{s.number}</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-black/70">{s.label}</div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Our Story */}
-      <section className="px-6 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
-          <div className="space-y-4 text-gray-700 leading-relaxed">
-            <p>
-              <span className="font-semibold text-gray-900">Rhino Linings Kenya</span> is your trusted partner for premium protective coatings across East Africa. Operating from our facility in Karen, Nairobi, we bring over three decades of global Rhino Linings expertise to serve Kenya's unique needs—from the dusty roads of the Rift Valley to the humid coastal climate of Mombasa.
+      {/* ── OUR STORY ── */}
+      <section className="px-6 py-24 bg-gray-900">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#F97316" }}>
+              Our Story
             </p>
-            <p>
-              As an authorized dealer of Rhino Linings products, we represent a brand that has been the global industry leader in spray-on polyurethane and polyurea coatings since 1988. What started as a revolutionary truck bed liner solution has evolved into comprehensive protective coating applications used worldwide.
-            </p>
-            <p>
-              We understand the challenges Kenyan vehicle owners and businesses face—harsh terrain, extreme weather, heavy loads, and demanding work conditions. That's why we're committed to providing solutions specifically designed to withstand Kenya's toughest environments while delivering exceptional value and performance.
-            </p>
-            <p>
-              From matatus and pickups to construction equipment and industrial facilities, we protect the vehicles and machinery that keep Kenya moving forward.
-            </p>
+            <h2 className="text-5xl font-black uppercase leading-none mb-8">
+              Pioneers &<br />
+              <span style={{ color: "#F97316" }}>Leaders</span>
+            </h2>
+            <div
+              className="space-y-5 text-gray-300 leading-relaxed"
+              style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
+            >
+              <p>
+                <strong className="text-white">Rhino Linings Kenya</strong> is your trusted
+                partner for premium protective coatings across East Africa. Operating from
+                Nairobi, we bring the expertise of a brand that pioneered spray-on bed
+                liners in 1983 — and has led the industry for over 40 years since.
+              </p>
+              <p>
+                As an authorised Rhino Linings dealer, we represent a globally trusted name
+                with master distributors and dealerships across North America, Europe, the
+                Middle East, Africa and Australasia. What began as a revolutionary truck bed
+                liner concept has grown into comprehensive protective coating solutions for
+                industrial, mining, marine, military and construction applications.
+              </p>
+              <p>
+                We understand the challenges Kenyan vehicle owners and businesses face —
+                harsh terrain, extreme weather, heavy loads and demanding work conditions.
+                Our coatings are designed to make your assets survive conditions tougher
+                than what they were originally built for.
+              </p>
+              <p>
+                From matatus and pickups to cement trucks, mining equipment and industrial
+                facilities — we protect the vehicles and machinery that keep Kenya moving.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Core Values */}
-      <section className="px-6 py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900">Our Core Values</h2>
-            <p className="text-gray-600">The principles that guide everything we do</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
+          {/* Feature–Benefit table */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#F97316" }}>
+              Features & Benefits
+            </p>
+            <h2 className="text-3xl font-black uppercase mb-6">
+              Why Our Coatings <span style={{ color: "#F97316" }}>Work</span>
+            </h2>
+            <div style={{ border: "1px solid #1f2937", overflow: "hidden" }}>
               <div
-                key={index}
-                className="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200"
+                className="grid grid-cols-2 py-3 px-5 text-xs font-bold uppercase tracking-wider"
+                style={{ background: "#F97316", color: "#000" }}
               >
-                
-                <h3 className="text-lg font-bold mb-2 text-gray-900">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {value.description}
+                <span>Feature</span>
+                <span>Benefit</span>
+              </div>
+              {featureBenefits.map((row, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-2 py-3 px-5 text-sm items-center"
+                  style={{
+                    background: i % 2 === 0 ? "#0f172a" : "#111827",
+                    borderBottom: "1px solid #1f2937",
+                  }}
+                >
+                  <span className="text-gray-300 pr-4" style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem" }}>
+                    {row.feature}
+                  </span>
+                  <span className="font-bold text-xs uppercase tracking-wide" style={{ color: "#F97316" }}>
+                    {row.benefit}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CORE VALUES ── */}
+      <section className="px-6 py-20 bg-gray-950">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
+              What Drives Us
+            </p>
+            <h2 className="text-5xl font-black uppercase">
+              Core <span style={{ color: "#F97316" }}>Values</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {coreValues.map((v, i) => (
+              <div
+                key={i}
+                className="p-8 transition-all hover:translate-y-[-4px]"
+                style={{ background: "#111827", borderTop: "3px solid #F97316" }}
+              >
+                <div className="mb-4 text-orange-500">{v.icon}</div>
+                <h3 className="font-black uppercase tracking-wider text-sm mb-3">{v.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
+                  {v.description}
                 </p>
               </div>
             ))}
@@ -164,44 +271,76 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="px-6 py-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-8 border border-yellow-200">
-           
-            <h2 className="text-2xl font-bold mb-3 text-gray-900">Our Mission</h2>
-            <p className="text-gray-700 leading-relaxed">
-              To provide Kenya and East Africa with the highest quality protective coating solutions through expert application, superior products, and exceptional customer service. We're committed to protecting what matters most—the vehicles, equipment, and investments that drive Kenya's economy and development.
+      {/* ── MISSION & VISION ── */}
+      <section className="px-6 py-20 bg-gray-900">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-4">
+          <div
+            className="p-10"
+            style={{ background: "#111827", borderLeft: "4px solid #F97316" }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#F97316" }}>
+              Mission
+            </p>
+            <h2 className="text-3xl font-black uppercase mb-5">Our Mission</h2>
+            <p
+              className="text-gray-300 leading-relaxed"
+              style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
+            >
+              To provide Kenya and East Africa with the highest-quality protective coating
+              solutions through expert application, superior products, and exceptional customer
+              service — protecting the vehicles, equipment, and investments that drive Kenya's
+              economy and development.
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8 border border-gray-200">
-           
-            <h2 className="text-2xl font-bold mb-3 text-gray-900">Our Vision</h2>
-            <p className="text-gray-700 leading-relaxed">
-              To be East Africa's most trusted name in protective coatings, recognized across Kenya and beyond for our expertise, quality, and innovation. We envision every Kenyan vehicle and piece of equipment protected by world-class Rhino Linings technology—from Nairobi's construction sites to the agricultural heartlands.
+          <div
+            className="p-10"
+            style={{ background: "#111827", borderLeft: "4px solid #6b7280" }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest mb-3 text-gray-500">
+              Vision
+            </p>
+            <h2 className="text-3xl font-black uppercase mb-5">Our Vision</h2>
+            <p
+              className="text-gray-300 leading-relaxed"
+              style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
+            >
+              To be East Africa's most trusted name in protective coatings — recognised across
+              Kenya and beyond for expertise, quality, and innovation. We envision every Kenyan
+              vehicle and piece of equipment protected by world-class Rhino Linings technology,
+              from Nairobi's construction sites to the agricultural heartlands.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="px-6 py-16 bg-white">
+      {/* ── WHY CHOOSE US ── */}
+      <section className="px-6 py-20 bg-gray-950">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900">Why Choose Us?</h2>
-            <p className="text-gray-600">What sets us apart from the competition</p>
+          <div className="mb-12">
+            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
+              The Rhino Advantage
+            </p>
+            <h2 className="text-5xl font-black uppercase">
+              Why Choose <span style={{ color: "#F97316" }}>Us?</span>
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyChoose.map((item, index) => (
-              <div key={index} className="flex gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                <div className="text-yellow-500 flex-shrink-0 mt-0.5">
-                  {item.icon}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {whyChoose.map((item, i) => (
+              <div
+                key={i}
+                className="flex gap-4 p-6 transition-all hover:translate-y-[-2px]"
+                style={{ background: "#111827", border: "1px solid #1f2937" }}
+              >
+                <div className="flex-shrink-0 mt-1" style={{ color: "#F97316" }}>
+                  <CheckCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 text-gray-900">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  <h3 className="font-black uppercase text-sm tracking-wider mb-2">{item.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -209,23 +348,35 @@ export default function About() {
         </div>
       </section>
 
-      {/* The Rhino Linings Difference */}
-      <section className="px-6 py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900">The Rhino Linings Difference</h2>
-            <p className="text-gray-600">What makes our solutions stand out</p>
+      {/* ── THE RHINO DIFFERENCE ── */}
+      <section className="px-6 py-20 bg-gray-900 relative overflow-hidden">
+        <div
+          className="absolute right-0 top-1/2 -translate-y-1/2 text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
+          style={{ color: "#F97316" }}
+        >
+          1983
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="mb-12">
+            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
+              What Sets Us Apart
+            </p>
+            <h2 className="text-5xl font-black uppercase">
+              The Rhino <span style={{ color: "#F97316" }}>Difference</span>
+            </h2>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {difference.map((item, index) => (
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {rhinoDifference.map((item, i) => (
               <div
-                key={index}
-                className="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200"
+                key={i}
+                className="p-8 transition-all hover:translate-y-[-4px]"
+                style={{ background: "#0f172a", borderTop: "3px solid #F97316" }}
               >
-                
-                <h3 className="text-lg font-bold mb-2 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <div className="mb-4 text-orange-500">{item.icon}</div>
+                <h3 className="font-black uppercase tracking-wider text-sm mb-3">{item.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
                   {item.description}
                 </p>
               </div>
@@ -234,25 +385,64 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="px-6 py-16 bg-gradient-to-r from-gray-400 to-black text-white">
+      {/* ── FRANCHISE QUALITY BADGES ── */}
+      <section className="px-6 py-12 bg-gray-950">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { top: "TRUSTED", bottom: "SINCE 1983" },
+              { top: "3 YEAR", bottom: "WARRANTY" },
+              { top: "OEM", bottom: "APPROVED" },
+              { top: "ISO 9001", bottom: "CERTIFIED" },
+            ].map((badge, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center py-6 px-4 text-center"
+                style={{ border: "2px solid #1f2937" }}
+              >
+                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">
+                  {badge.top}
+                </div>
+                <div
+                  className="text-sm font-black uppercase tracking-wider"
+                  style={{ color: "#F97316" }}
+                >
+                  {badge.bottom}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="px-6 py-20" style={{ background: "#0f172a" }}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Protect Your Investment?
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#F97316" }}>
+            Ready to Get Started?
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase mb-4">
+            Protect Your <span style={{ color: "#F97316" }}>Investment</span>
           </h2>
-          <p className="text-gray-400 mb-8 text-lg">
-            Join thousands of Kenyan businesses and vehicle owners who trust Rhino Linings for superior protection
+          <p
+            className="text-gray-400 mb-10 text-lg max-w-xl mx-auto"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Join thousands of Kenyan businesses and vehicle owners who trust Rhino Linings
+            for superior, long-lasting protection.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-400 transition-colors inline-flex items-center justify-center gap-2"
+              className="px-10 py-4 font-black uppercase tracking-widest text-sm transition-all hover:scale-105"
+              style={{ background: "#F97316", color: "#000" }}
             >
               Get Free Quote
             </Link>
             <Link
               to="/services"
-              className="px-8 py-3 bg-white/10 border-2 border-white/20 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors inline-flex items-center justify-center gap-2"
+              className="px-10 py-4 font-black uppercase tracking-widest text-sm border-2 transition-all hover:scale-105"
+              style={{ borderColor: "#F97316", color: "#F97316" }}
             >
               View Our Services
             </Link>
