@@ -14,7 +14,7 @@ dotenv.config();
 const testDatabase = async () => {
   try {
     console.log('🔄 Connecting to MongoDB...');
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('✅ Connected to MongoDB successfully!\n');
 
     // Test 1: Count all collections
@@ -122,7 +122,7 @@ const testDatabase = async () => {
     console.error('Error:', error.message);
     console.error('\n🔧 Troubleshooting:');
     console.error('1. Check if MongoDB is running');
-    console.error('2. Verify MONGO_URI in backend/.env');
+    console.error('2. Verify MONGODB_URI in backend/.env');
     console.error('3. Ensure MongoDB is accessible at the specified host/port\n');
     process.exit(1);
   }
