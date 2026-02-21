@@ -43,8 +43,8 @@ export default function Contact() {
   const inputBase = {
     width: "100%",
     padding: "12px 16px",
-    background: "#ffffff",
-    border: "1px solid #e5e7eb",
+    background: "#0f172a",
+    border: "1px solid #1f2937",
     color: "#e5e7eb",
     fontSize: "0.9rem",
     outline: "none",
@@ -66,7 +66,7 @@ export default function Contact() {
     <div
       className="min-h-screen pt-20 pb-16"
       style={{
-        background: "#f5f5f5",
+        background: "#030712",
         fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
       }}
     >
@@ -125,7 +125,7 @@ export default function Contact() {
           <a
             href="tel:+254727877651"
             className="flex flex-col items-center text-center p-8 transition-all hover:translate-y-[-4px] group"
-            style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+            style={{ background: "#111827", borderTop: "3px solid #F97316" }}
           >
             <div
               className="w-12 h-12 flex items-center justify-center mb-4"
@@ -137,7 +137,7 @@ export default function Contact() {
             <p className="text-xs text-gray-500 mb-3" style={{ fontFamily: "Georgia, serif" }}>
               Speak with our experts
             </p>
-            <span className="font-bold text-gray-900 text-sm group-hover:text-orange-400 transition-colors">
+            <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors">
               +254 727 877 651
             </span>
           </a>
@@ -146,7 +146,7 @@ export default function Contact() {
           <a
             href="mailto:info@rhinoliningskenya.com"
             className="flex flex-col items-center text-center p-8 transition-all hover:translate-y-[-4px] group"
-            style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+            style={{ background: "#111827", borderTop: "3px solid #F97316" }}
           >
             <div
               className="w-12 h-12 flex items-center justify-center mb-4"
@@ -158,7 +158,7 @@ export default function Contact() {
             <p className="text-xs text-gray-500 mb-3" style={{ fontFamily: "Georgia, serif" }}>
               Response within 24 hours
             </p>
-            <span className="font-bold text-gray-900 text-sm group-hover:text-orange-400 transition-colors break-all">
+            <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors break-all">
               info@rhinoliningskenya.com
             </span>
           </a>
@@ -173,9 +173,9 @@ export default function Contact() {
               className="w-12 h-12 flex items-center justify-center mb-4"
               style={{ background: "#16a34a" }}
             >
-              <MessageCircle className="w-5 h-5 text-gray-900" />
+              <MessageCircle className="w-5 h-5 text-white" />
             </div>
-            <h3 className="font-black uppercase tracking-wider text-sm mb-1 text-gray-900">WhatsApp</h3>
+            <h3 className="font-black uppercase tracking-wider text-sm mb-1 text-white">WhatsApp</h3>
             <p
               className="text-xs mb-3"
               style={{ color: "#166534", fontFamily: "Georgia, serif" }}
@@ -191,10 +191,10 @@ export default function Contact() {
         {/* ── FORM + SIDEBAR ── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Contact Form */}
-          <div className="lg:col-span-2" style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}>
+          <div className="lg:col-span-2" style={{ background: "#111827", border: "1px solid #1f2937" }}>
             <div
               className="px-8 py-5 flex items-center gap-3"
-              style={{ borderBottom: "1px solid #e5e7eb" }}
+              style={{ borderBottom: "1px solid #1f2937" }}
             >
               <div className="w-1 h-6" style={{ background: "#F97316" }} />
               <h2 className="font-black uppercase tracking-wider text-sm">Send Us a Message</h2>
@@ -213,7 +213,7 @@ export default function Contact() {
                     placeholder="Your full name"
                     style={inputBase}
                     onFocus={(e) => (e.target.style.borderColor = "#F97316")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                    onBlur={(e) => (e.target.style.borderColor = "#1f2937")}
                   />
                 </div>
                 <div>
@@ -227,7 +227,7 @@ export default function Contact() {
                     placeholder="your@email.com"
                     style={inputBase}
                     onFocus={(e) => (e.target.style.borderColor = "#F97316")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                    onBlur={(e) => (e.target.style.borderColor = "#1f2937")}
                   />
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function Contact() {
                   placeholder="How can we help?"
                   style={inputBase}
                   onFocus={(e) => (e.target.style.borderColor = "#F97316")}
-                  onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                  onBlur={(e) => (e.target.style.borderColor = "#1f2937")}
                 />
               </div>
 
@@ -258,7 +258,7 @@ export default function Contact() {
                   placeholder="Tell us about your project or enquiry..."
                   style={{ ...inputBase, resize: "none" }}
                   onFocus={(e) => (e.target.style.borderColor = "#F97316")}
-                  onBlur={(e) => (e.target.style.borderColor = "#e5e7eb")}
+                  onBlur={(e) => (e.target.style.borderColor = "#1f2937")}
                 />
               </div>
 
@@ -291,7 +291,7 @@ export default function Contact() {
             {/* Location */}
             <div
               className="p-6"
-              style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+              style={{ background: "#111827", border: "1px solid #1f2937" }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div
@@ -315,7 +315,7 @@ export default function Contact() {
             {/* Business Hours */}
             <div
               className="p-6"
-              style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+              style={{ background: "#111827", border: "1px solid #1f2937" }}
             >
               <div className="flex items-center gap-3 mb-5">
                 <div
@@ -336,7 +336,7 @@ export default function Contact() {
                   <div
                     key={i}
                     className="flex justify-between items-center text-sm py-2"
-                    style={{ borderBottom: "1px solid #e5e7eb" }}
+                    style={{ borderBottom: "1px solid #1f2937" }}
                   >
                     <span className="text-gray-400 uppercase tracking-wider text-xs font-bold">
                       {row.day}
@@ -355,13 +355,13 @@ export default function Contact() {
             {/* Response time note */}
             <div
               className="p-6"
-              style={{ background: "#ffffff", borderLeft: "3px solid #F97316" }}
+              style={{ background: "#0f172a", borderLeft: "3px solid #F97316" }}
             >
               <p
                 className="text-xs text-gray-400 leading-relaxed"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                We typically respond within <strong className="text-gray-900">24 hours</strong>.
+                We typically respond within <strong className="text-white">24 hours</strong>.
                 For urgent matters, please call or WhatsApp us directly — our team is ready
                 to assist with quotes, bookings and technical enquiries.
               </p>
@@ -378,9 +378,9 @@ export default function Contact() {
                 <div
                   key={i}
                   className="flex flex-col items-center justify-center py-4 text-center"
-                  style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                  style={{ background: "#111827", border: "1px solid #1f2937" }}
                 >
-                  <div className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                  <div className="text-xs font-bold uppercase tracking-wider text-gray-600">
                     {b.top}
                   </div>
                   <div

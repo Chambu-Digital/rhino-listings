@@ -10,8 +10,8 @@ export const Toast = ({ message, type = "info", duration = 3000, onClose }) => {
   }, [duration, onClose]);
 
   const colors = {
-    success: "bg-green-500 text-gray-900",
-    error: "bg-red-500 text-gray-900",
+    success: "bg-green-500 text-white",
+    error: "bg-red-500 text-white",
     info: "bg-rhinoYellow text-rhinoBlack",
   };
 

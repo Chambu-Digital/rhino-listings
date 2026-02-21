@@ -62,7 +62,7 @@ export default function EmployeeLogin() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Employee Portal</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">Employee Portal</h1>
           <p className="text-emerald-200">Rhino Linings Team Access</p>
         </div>
 
@@ -76,7 +76,7 @@ export default function EmployeeLogin() {
               </div>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Team Login</h2>
-              <p className="text-gray-400">Access your tasks and assignments</p>
+              <p className="text-gray-600">Access your tasks and assignments</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -116,7 +116,7 @@ export default function EmployeeLogin() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-400"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -127,7 +127,7 @@ export default function EmployeeLogin() {
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
                   <input type="checkbox" className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500" />
-                  <span className="ml-2 text-sm text-gray-400">Remember me</span>
+                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
                 <Link to="/forgot-password" className="text-sm text-emerald-600 hover:text-emerald-700 font-medium">
                   Forgot password?
@@ -138,7 +138,7 @@ export default function EmployeeLogin() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-gray-900 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -183,7 +183,7 @@ export default function EmployeeLogin() {
 
             {/* Help Text */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-600">
                 Need help?{" "}
                 <Link to="/contact" className="text-emerald-600 hover:text-emerald-700 font-medium">
                   Contact Admin

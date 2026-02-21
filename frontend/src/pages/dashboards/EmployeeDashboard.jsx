@@ -399,7 +399,7 @@ export default function EmployeeDashboard() {
               onClick={() => setActiveView(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 activeView === item.id
-                  ? "bg-purple-600 text-gray-900 shadow-lg"
+                  ? "bg-purple-600 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -408,14 +408,14 @@ export default function EmployeeDashboard() {
                 <>
                   <span className="font-medium flex-1 text-left">{item.label}</span>
                   {item.badge > 0 && (
-                    <Badge className="bg-red-500 text-gray-900 text-xs px-2 py-0.5">
+                    <Badge className="bg-red-500 text-white text-xs px-2 py-0.5">
                       {item.badge}
                     </Badge>
                   )}
                 </>
               )}
               {!isSidebarOpen && item.badge > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-gray-900 text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {item.badge}
                 </span>
               )}
@@ -434,7 +434,7 @@ export default function EmployeeDashboard() {
               className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
                 activeView === item.id
                   ? "text-purple-600"
-                  : "text-gray-400"
+                  : "text-gray-600"
               }`}
             >
               {item.icon}
@@ -452,7 +452,7 @@ export default function EmployeeDashboard() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">My Dashboard</h1>
-                <p className="text-sm text-gray-400 mt-1">Welcome back, {employeeInfo?.name || 'Employee'}!</p>
+                <p className="text-sm text-gray-600 mt-1">Welcome back, {employeeInfo?.name || 'Employee'}!</p>
               </div>
               <div className="flex items-center gap-2">
                 <Button 
@@ -478,7 +478,7 @@ export default function EmployeeDashboard() {
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-400">Total Bookings</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Total Bookings</p>
                       <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.totalAssigned || 0}</p>
                     </div>
                   </div>
@@ -489,7 +489,7 @@ export default function EmployeeDashboard() {
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-400">In Progress</p>
+                      <p className="text-xs sm:text-sm text-gray-600">In Progress</p>
                       <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.inProgress || 0}</p>
                     </div>
                   </div>
@@ -500,7 +500,7 @@ export default function EmployeeDashboard() {
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-400">Completed</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Completed</p>
                       <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.completed || 0}</p>
                     </div>
                   </div>
@@ -511,7 +511,7 @@ export default function EmployeeDashboard() {
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-400">Pending Tasks</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Pending Tasks</p>
                       <p className="text-2xl sm:text-3xl font-bold text-gray-900">{taskStats.pendingTasks || 0}</p>
                     </div>
                   </div>
@@ -583,7 +583,7 @@ export default function EmployeeDashboard() {
                   ))}
                   {bookings.length === 0 && (
                     <div className="text-center py-8 text-gray-500">
-                      <Package className="w-12 h-12 text-gray-700 mx-auto mb-2" />
+                      <Package className="w-12 h-12 text-gray-300 mx-auto mb-2" />
                       <p className="text-sm">No bookings assigned yet</p>
                     </div>
                   )}
@@ -632,7 +632,7 @@ export default function EmployeeDashboard() {
                   ))}
                   {tasks.length === 0 && (
                     <div className="text-center py-8 text-gray-500">
-                      <CheckCircle className="w-12 h-12 text-gray-700 mx-auto mb-2" />
+                      <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-2" />
                       <p className="text-sm">No tasks assigned yet</p>
                     </div>
                   )}
@@ -675,21 +675,21 @@ export default function EmployeeDashboard() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
                               <div>
-                                <p className="text-gray-400">Scheduled Date</p>
+                                <p className="text-gray-600">Scheduled Date</p>
                                 <p className="font-medium">{formatShortDate(booking.date)}</p>
                               </div>
                               <div>
-                                <p className="text-gray-400">Customer Email</p>
+                                <p className="text-gray-600">Customer Email</p>
                                 <p className="font-medium truncate">{booking.customerId?.email || "N/A"}</p>
                               </div>
                               <div>
-                                <p className="text-gray-400">Current Cost</p>
+                                <p className="text-gray-600">Current Cost</p>
                                 <p className="font-medium text-green-600">
                                   KES {(booking.costBreakdown?.total || 0).toLocaleString()}
                                 </p>
                               </div>
                               <div>
-                                <p className="text-gray-400">Assigned</p>
+                                <p className="text-gray-600">Assigned</p>
                                 <p className="font-medium">{formatShortDate(booking.createdAt)}</p>
                               </div>
                             </div>
@@ -730,7 +730,7 @@ export default function EmployeeDashboard() {
               {bookings.length === 0 && (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <Package className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500 mb-2">No tasks assigned yet</p>
                     <p className="text-sm text-gray-400">Tasks will appear here when assigned by admin</p>
                   </CardContent>
@@ -746,7 +746,7 @@ export default function EmployeeDashboard() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">My Tasks</h1>
-                <p className="text-sm text-gray-400 mt-1">Tasks assigned by admin</p>
+                <p className="text-sm text-gray-600 mt-1">Tasks assigned by admin</p>
               </div>
               <Button onClick={fetchTasks} variant="outline" size="sm">
                 Refresh
@@ -757,25 +757,25 @@ export default function EmployeeDashboard() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               <Card className="border-l-4 border-yellow-500">
                 <CardContent className="pt-4">
-                  <p className="text-xs text-gray-400">Pending</p>
+                  <p className="text-xs text-gray-600">Pending</p>
                   <p className="text-2xl font-bold text-gray-900">{taskStats.pendingTasks || 0}</p>
                 </CardContent>
               </Card>
               <Card className="border-l-4 border-blue-500">
                 <CardContent className="pt-4">
-                  <p className="text-xs text-gray-400">In Progress</p>
+                  <p className="text-xs text-gray-600">In Progress</p>
                   <p className="text-2xl font-bold text-gray-900">{taskStats.inProgressTasks || 0}</p>
                 </CardContent>
               </Card>
               <Card className="border-l-4 border-green-500">
                 <CardContent className="pt-4">
-                  <p className="text-xs text-gray-400">Completed</p>
+                  <p className="text-xs text-gray-600">Completed</p>
                   <p className="text-2xl font-bold text-gray-900">{taskStats.completedTasks || 0}</p>
                 </CardContent>
               </Card>
               <Card className="border-l-4 border-purple-500">
                 <CardContent className="pt-4">
-                  <p className="text-xs text-gray-400">Total</p>
+                  <p className="text-xs text-gray-600">Total</p>
                   <p className="text-2xl font-bold text-gray-900">{taskStats.totalTasks || 0}</p>
                 </CardContent>
               </Card>
@@ -805,23 +805,23 @@ export default function EmployeeDashboard() {
                               {task.priority} Priority
                             </Badge>
                           </div>
-                          <p className="text-sm text-gray-400 mb-3">{task.description}</p>
+                          <p className="text-sm text-gray-600 mb-3">{task.description}</p>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                             <div>
-                              <p className="text-gray-400">Created By</p>
+                              <p className="text-gray-600">Created By</p>
                               <p className="font-medium">{task.createdBy?.name || "Admin"}</p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Due Date</p>
+                              <p className="text-gray-600">Due Date</p>
                               <p className="font-medium">{task.dueDate ? formatShortDate(task.dueDate) : "No deadline"}</p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Created</p>
+                              <p className="text-gray-600">Created</p>
                               <p className="font-medium">{formatShortDate(task.createdAt)}</p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Last Updated</p>
+                              <p className="text-gray-600">Last Updated</p>
                               <p className="font-medium">{formatShortDate(task.updatedAt)}</p>
                             </div>
                           </div>
@@ -877,7 +877,7 @@ export default function EmployeeDashboard() {
               {tasks.length === 0 && (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <CheckCircle className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <CheckCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500 mb-2">No tasks assigned yet</p>
                     <p className="text-sm text-gray-400">Tasks assigned by admin will appear here</p>
                   </CardContent>
@@ -968,7 +968,7 @@ export default function EmployeeDashboard() {
               <CardContent>
                 {timeEntries.length === 0 ? (
                   <div className="text-center py-8 text-gray-500">
-                    <Clock className="w-12 h-12 text-gray-700 mx-auto mb-2" />
+                    <Clock className="w-12 h-12 text-gray-300 mx-auto mb-2" />
                     <p className="text-sm">No time entries yet</p>
                   </div>
                 ) : (
@@ -1119,7 +1119,7 @@ export default function EmployeeDashboard() {
                 <CardContent>
                   {photos.length === 0 ? (
                     <div className="text-center py-8 text-gray-500">
-                      <Camera className="w-12 h-12 text-gray-700 mx-auto mb-2" />
+                      <Camera className="w-12 h-12 text-gray-300 mx-auto mb-2" />
                       <p className="text-sm">No photos uploaded yet</p>
                     </div>
                   ) : (
@@ -1146,7 +1146,7 @@ export default function EmployeeDashboard() {
                               {photo.type}
                             </Badge>
                             {photo.description && (
-                              <p className="text-xs text-gray-400 mt-1 line-clamp-2">
+                              <p className="text-xs text-gray-600 mt-1 line-clamp-2">
                                 {photo.description}
                               </p>
                             )}
@@ -1167,12 +1167,12 @@ export default function EmployeeDashboard() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
           <div className="my-8 w-full max-w-md">
             <Card>
-              <CardHeader className="bg-gradient-to-r from-purple-500 to-purple-600 text-gray-900">
+              <CardHeader className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
                 <div className="flex items-center justify-between">
                   <CardTitle>Update Cost Breakdown</CardTitle>
                   <button
                     onClick={() => setShowCostModal(false)}
-                    className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                    className="text-white hover:bg-white/20 p-1 rounded"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -1257,12 +1257,12 @@ export default function EmployeeDashboard() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
           <div className="my-8 w-full max-w-lg">
             <Card>
-              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-gray-900">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                 <div className="flex items-center justify-between">
                   <CardTitle>Booking Details</CardTitle>
                   <button
                     onClick={() => setShowDetailsModal(false)}
-                    className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                    className="text-white hover:bg-white/20 p-1 rounded"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -1272,7 +1272,7 @@ export default function EmployeeDashboard() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-gray-400">Customer</p>
+                      <p className="text-sm text-gray-600">Customer</p>
                       <p className="font-medium text-lg truncate">
                         {selectedBooking.customerId?.name || selectedBooking.customerId?.email}
                       </p>
@@ -1284,13 +1284,13 @@ export default function EmployeeDashboard() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-3 bg-gray-50 rounded-lg">
-                      <p className="text-sm text-gray-400 mb-1">Service Type</p>
+                      <p className="text-sm text-gray-600 mb-1">Service Type</p>
                       <p className="font-medium">
                         {selectedBooking.serviceType === "vehicle" ? "Vehicle Service" : "Custom Service"}
                       </p>
                     </div>
                     <div className="p-3 bg-gray-50 rounded-lg">
-                      <p className="text-sm text-gray-400 mb-1">Status</p>
+                      <p className="text-sm text-gray-600 mb-1">Status</p>
                       <Badge variant={STATUS_COLORS[selectedBooking.status] || "default"}>
                         {selectedBooking.status}
                       </Badge>
@@ -1300,7 +1300,7 @@ export default function EmployeeDashboard() {
                   <div className="p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
                       <Calendar className="w-4 h-4 text-gray-400" />
-                      <p className="text-sm text-gray-400">Scheduled Date</p>
+                      <p className="text-sm text-gray-600">Scheduled Date</p>
                     </div>
                     <p className="font-medium">{formatDate(selectedBooking.date)}</p>
                   </div>
@@ -1311,19 +1311,19 @@ export default function EmployeeDashboard() {
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between p-2 bg-gray-50 rounded">
-                        <span className="text-sm text-gray-400">Materials</span>
+                        <span className="text-sm text-gray-600">Materials</span>
                         <span className="font-medium">
                           KES {(selectedBooking.costBreakdown?.materials || 0).toLocaleString()}
                         </span>
                       </div>
                       <div className="flex justify-between p-2 bg-gray-50 rounded">
-                        <span className="text-sm text-gray-400">Labor</span>
+                        <span className="text-sm text-gray-600">Labor</span>
                         <span className="font-medium">
                           KES {(selectedBooking.costBreakdown?.labor || 0).toLocaleString()}
                         </span>
                       </div>
                       <div className="flex justify-between p-2 bg-gray-50 rounded">
-                        <span className="text-sm text-gray-400">Additional</span>
+                        <span className="text-sm text-gray-600">Additional</span>
                         <span className="font-medium">
                           KES {(selectedBooking.costBreakdown?.additional || 0).toLocaleString()}
                         </span>
@@ -1340,11 +1340,11 @@ export default function EmployeeDashboard() {
                   <div className="pt-4 border-t border-gray-200">
                     <div className="flex items-center gap-2 mb-2">
                       <FileText className="w-4 h-4 text-gray-400" />
-                      <p className="text-sm text-gray-400">Additional Information</p>
+                      <p className="text-sm text-gray-600">Additional Information</p>
                     </div>
                     <div className="text-sm space-y-1">
-                      <p><span className="text-gray-400">Created:</span> <span className="font-medium">{formatDate(selectedBooking.createdAt)}</span></p>
-                      <p><span className="text-gray-400">Last Updated:</span> <span className="font-medium">{formatDate(selectedBooking.updatedAt)}</span></p>
+                      <p><span className="text-gray-600">Created:</span> <span className="font-medium">{formatDate(selectedBooking.createdAt)}</span></p>
+                      <p><span className="text-gray-600">Last Updated:</span> <span className="font-medium">{formatDate(selectedBooking.updatedAt)}</span></p>
                     </div>
                   </div>
 

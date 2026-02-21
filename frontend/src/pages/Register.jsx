@@ -78,7 +78,7 @@ export default function Register() {
       <div className="w-full max-w-md">
         {/* Logo/Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
+          <h2 className="text-3xl font-bold text-white mb-2">Create Account</h2>
           <p className="text-gray-400">Join Rhino Linings today</p>
         </div>
 
@@ -150,9 +150,9 @@ export default function Register() {
                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-400" />
+                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                     ) : (
-                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-400" />
+                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                     )}
                   </button>
                 </div>
@@ -181,9 +181,9 @@ export default function Register() {
                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   >
                     {showConfirmPassword ? (
-                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-400" />
+                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                     ) : (
-                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-400" />
+                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
                     )}
                   </button>
                 </div>
@@ -221,11 +221,11 @@ export default function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
               {loading ? (
                 <span className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>

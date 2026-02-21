@@ -92,7 +92,7 @@ export default function About() {
 
   return (
     <div
-      className="pt-20 min-h-screen bg-gray-50 text-gray-900"
+      className="pt-20 min-h-screen bg-gray-950 text-white"
       style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}
     >
       <PageBreadcrumb />
@@ -163,7 +163,7 @@ export default function About() {
       </div>
 
       {/* ── OUR STORY ── */}
-      <section className="px-6 py-24 bg-white">
+      <section className="px-6 py-24 bg-gray-900">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#F97316" }}>
@@ -174,11 +174,11 @@ export default function About() {
               <span style={{ color: "#F97316" }}>Leaders</span>
             </h2>
             <div
-              className="space-y-5 text-gray-700 leading-relaxed"
+              className="space-y-5 text-gray-300 leading-relaxed"
               style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
             >
               <p>
-                <strong className="text-gray-900">Rhino Linings Kenya</strong> is your trusted
+                <strong className="text-white">Rhino Linings Kenya</strong> is your trusted
                 partner for premium protective coatings across East Africa. Operating from
                 Nairobi, we bring the expertise of a brand that pioneered spray-on bed
                 liners in 1983 — and has led the industry for over 40 years since.
@@ -211,7 +211,7 @@ export default function About() {
             <h2 className="text-3xl font-black uppercase mb-6">
               Why Our Coatings <span style={{ color: "#F97316" }}>Work</span>
             </h2>
-            <div style={{ border: "1px solid #e5e7eb", overflow: "hidden" }}>
+            <div style={{ border: "1px solid #1f2937", overflow: "hidden" }}>
               <div
                 className="grid grid-cols-2 py-3 px-5 text-xs font-bold uppercase tracking-wider"
                 style={{ background: "#F97316", color: "#000" }}
@@ -224,11 +224,11 @@ export default function About() {
                   key={i}
                   className="grid grid-cols-2 py-3 px-5 text-sm items-center"
                   style={{
-                    background: i % 2 === 0 ? "#ffffff" : "#ffffff",
-                    borderBottom: "1px solid #e5e7eb",
+                    background: i % 2 === 0 ? "#0f172a" : "#111827",
+                    borderBottom: "1px solid #1f2937",
                   }}
                 >
-                  <span className="text-gray-700 pr-4" style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem" }}>
+                  <span className="text-gray-300 pr-4" style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem" }}>
                     {row.feature}
                   </span>
                   <span className="font-bold text-xs uppercase tracking-wide" style={{ color: "#F97316" }}>
@@ -242,7 +242,7 @@ export default function About() {
       </section>
 
       {/* ── CORE VALUES ── */}
-      <section className="px-6 py-20 bg-gray-50">
+      <section className="px-6 py-20 bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -258,7 +258,7 @@ export default function About() {
               <div
                 key={i}
                 className="p-8 transition-all hover:translate-y-[-4px]"
-                style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+                style={{ background: "#111827", borderTop: "3px solid #F97316" }}
               >
                 <div className="mb-4 text-orange-500">{v.icon}</div>
                 <h3 className="font-black uppercase tracking-wider text-sm mb-3">{v.title}</h3>
@@ -272,18 +272,18 @@ export default function About() {
       </section>
 
       {/* ── MISSION & VISION ── */}
-      <section className="px-6 py-20 bg-white">
+      <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-4">
           <div
             className="p-10"
-            style={{ background: "#ffffff", borderLeft: "4px solid #F97316" }}
+            style={{ background: "#111827", borderLeft: "4px solid #F97316" }}
           >
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#F97316" }}>
               Mission
             </p>
             <h2 className="text-3xl font-black uppercase mb-5">Our Mission</h2>
             <p
-              className="text-gray-700 leading-relaxed"
+              className="text-gray-300 leading-relaxed"
               style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
             >
               To provide Kenya and East Africa with the highest-quality protective coating
@@ -295,14 +295,14 @@ export default function About() {
 
           <div
             className="p-10"
-            style={{ background: "#ffffff", borderLeft: "4px solid #6b7280" }}
+            style={{ background: "#111827", borderLeft: "4px solid #6b7280" }}
           >
             <p className="text-xs font-bold uppercase tracking-widest mb-3 text-gray-500">
               Vision
             </p>
             <h2 className="text-3xl font-black uppercase mb-5">Our Vision</h2>
             <p
-              className="text-gray-700 leading-relaxed"
+              className="text-gray-300 leading-relaxed"
               style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
             >
               To be East Africa's most trusted name in protective coatings — recognised across
@@ -315,7 +315,7 @@ export default function About() {
       </section>
 
       {/* ── WHY CHOOSE US ── */}
-      <section className="px-6 py-20 bg-gray-50">
+      <section className="px-6 py-20 bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -331,7 +331,7 @@ export default function About() {
               <div
                 key={i}
                 className="flex gap-4 p-6 transition-all hover:translate-y-[-2px]"
-                style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                style={{ background: "#111827", border: "1px solid #1f2937" }}
               >
                 <div className="flex-shrink-0 mt-1" style={{ color: "#F97316" }}>
                   <CheckCircle className="w-5 h-5" />
@@ -349,7 +349,7 @@ export default function About() {
       </section>
 
       {/* ── THE RHINO DIFFERENCE ── */}
-      <section className="px-6 py-20 bg-white relative overflow-hidden">
+      <section className="px-6 py-20 bg-gray-900 relative overflow-hidden">
         <div
           className="absolute right-0 top-1/2 -translate-y-1/2 text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
           style={{ color: "#F97316" }}
@@ -372,7 +372,7 @@ export default function About() {
               <div
                 key={i}
                 className="p-8 transition-all hover:translate-y-[-4px]"
-                style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+                style={{ background: "#0f172a", borderTop: "3px solid #F97316" }}
               >
                 <div className="mb-4 text-orange-500">{item.icon}</div>
                 <h3 className="font-black uppercase tracking-wider text-sm mb-3">{item.title}</h3>
@@ -386,7 +386,7 @@ export default function About() {
       </section>
 
       {/* ── FRANCHISE QUALITY BADGES ── */}
-      <section className="px-6 py-12 bg-gray-50">
+      <section className="px-6 py-12 bg-gray-950">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -398,7 +398,7 @@ export default function About() {
               <div
                 key={i}
                 className="flex flex-col items-center justify-center py-6 px-4 text-center"
-                style={{ border: "2px solid #e5e7eb" }}
+                style={{ border: "2px solid #1f2937" }}
               >
                 <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-1">
                   {badge.top}
@@ -416,7 +416,7 @@ export default function About() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="px-6 py-20" style={{ background: "#ffffff" }}>
+      <section className="px-6 py-20" style={{ background: "#0f172a" }}>
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#F97316" }}>
             Ready to Get Started?

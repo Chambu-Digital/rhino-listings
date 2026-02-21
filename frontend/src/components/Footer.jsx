@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: "#f5f5f5",
+        background: "#030712",
         fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
         borderTop: "3px solid #F97316",
       }}
@@ -75,16 +75,16 @@ const Footer = () => {
                   key={i}
                   href={s.href}
                   className="w-9 h-9 flex items-center justify-center text-gray-500 transition-all hover:scale-110"
-                  style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                  style={{ background: "#111827", border: "1px solid #1f2937" }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#F97316";
                     e.currentTarget.style.color = "#000";
                     e.currentTarget.style.borderColor = "#F97316";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#ffffff";
+                    e.currentTarget.style.background = "#111827";
                     e.currentTarget.style.color = "";
-                    e.currentTarget.style.borderColor = "#e5e7eb";
+                    e.currentTarget.style.borderColor = "#1f2937";
                   }}
                 >
                   {s.icon}
@@ -178,10 +178,10 @@ const Footer = () => {
                     <Phone className="w-3.5 h-3.5 text-black" />
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-wider text-gray-400 mb-0.5">
+                    <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
                       Phone
                     </p>
-                    <span className="text-sm text-gray-700 group-hover:text-orange-400 transition-colors font-bold">
+                    <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors font-bold">
                       +254 727 877 651
                     </span>
                   </div>
@@ -200,10 +200,10 @@ const Footer = () => {
                     <Mail className="w-3.5 h-3.5 text-black" />
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-wider text-gray-400 mb-0.5">
+                    <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
                       Email
                     </p>
-                    <span className="text-sm text-gray-700 group-hover:text-orange-400 transition-colors font-bold break-all">
+                    <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors font-bold break-all">
                       info@rhinoliningskenya.com
                     </span>
                   </div>
@@ -218,11 +218,11 @@ const Footer = () => {
                   <MapPin className="w-3.5 h-3.5 text-black" />
                 </div>
                 <div>
-                  <p className="text-xs font-black uppercase tracking-wider text-gray-400 mb-0.5">
+                  <p className="text-xs font-black uppercase tracking-wider text-gray-600 mb-0.5">
                     Location
                   </p>
                   <span
-                    className="text-sm text-gray-700"
+                    className="text-sm text-gray-300"
                     style={{ fontFamily: "Georgia, serif" }}
                   >
                     Next to Insignia Motors,<br />
@@ -236,23 +236,23 @@ const Footer = () => {
       </div>
 
       {/* ── BOTTOM BAR ── */}
-      <div style={{ borderTop: "1px solid #ffffff" }}>
+      <div style={{ borderTop: "1px solid #111827" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">
+          <p className="text-xs text-gray-600 font-bold uppercase tracking-wider">
             © {currentYear} Rhino Linings Kenya. All rights reserved.
           </p>
-          <div className="flex items-center gap-5 text-xs text-gray-400 font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-5 text-xs text-gray-600 font-bold uppercase tracking-wider">
             <Link
               to="/login"
               className="hover:text-orange-400 transition-colors"
             >
               Sign In
             </Link>
-            <span style={{ color: "#e5e7eb" }}>|</span>
+            <span style={{ color: "#1f2937" }}>|</span>
             <a href="#" className="hover:text-orange-400 transition-colors">
               Privacy
             </a>
-            <span style={{ color: "#e5e7eb" }}>|</span>
+            <span style={{ color: "#1f2937" }}>|</span>
             <a href="#" className="hover:text-orange-400 transition-colors">
               Terms
             </a>

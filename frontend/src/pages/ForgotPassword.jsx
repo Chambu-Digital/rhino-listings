@@ -53,7 +53,7 @@ export default function ForgotPassword() {
             
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Check Your Email</h3>
             
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-600 mb-6">
               We've sent password reset instructions to <span className="font-semibold text-gray-900">{email}</span>
             </p>
 
@@ -85,13 +85,13 @@ export default function ForgotPassword() {
             <img src={logo} alt="Rhino Linings" className="h-16 w-auto" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">RHINO LININGS KENYA</h2>
-          <p className="text-gray-400">Reset your password</p>
+          <p className="text-gray-600">Reset your password</p>
         </div>
 
         {/* Forgot Password Card */}
         <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
           <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">Forgot Password?</h3>
-          <p className="text-gray-400 text-center mb-6 text-sm">
+          <p className="text-gray-600 text-center mb-6 text-sm">
             Enter your email address and we'll send you instructions to reset your password.
           </p>
           
@@ -120,7 +120,7 @@ export default function ForgotPassword() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+              className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -140,7 +140,7 @@ export default function ForgotPassword() {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-900 transition-colors"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to Login</span>
@@ -150,7 +150,7 @@ export default function ForgotPassword() {
 
         {/* Help Text */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600">
             Need help?{' '}
             <Link to="/contact" className="text-yellow-600 hover:text-yellow-700 font-semibold">
               Contact Support

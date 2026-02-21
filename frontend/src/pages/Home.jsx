@@ -175,7 +175,7 @@ const Home = () => {
 
   return (
     <div
-      className="text-gray-900 bg-gray-50"
+      className="text-white bg-gray-950"
       style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}
     >
       {/* ── HERO ── */}
@@ -236,7 +236,7 @@ const Home = () => {
           >
             Bed Liners
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto font-light" style={{ fontFamily: "Georgia, serif", letterSpacing: "0.01em" }}>
+          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light" style={{ fontFamily: "Georgia, serif", letterSpacing: "0.01em" }}>
             World-class spray-on polyurethane and polyurea coatings for automotive, industrial,
             mining, marine, waterproofing and containment — engineered to outlast the conditions
             your assets were built for.
@@ -263,7 +263,7 @@ const Home = () => {
         {/* Mute button */}
         <button
           onClick={toggleMute}
-          className="absolute bottom-8 right-8 bg-black/60 hover:bg-black/80 text-gray-900 p-3 rounded-full transition-colors"
+          className="absolute bottom-8 right-8 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-colors"
         >
           {muted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
         </button>
@@ -291,7 +291,7 @@ const Home = () => {
       </div>
 
       {/* ── SERVICES TABS ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -313,7 +313,7 @@ const Home = () => {
                 style={
                   activeService === i
                     ? { background: "#F97316", color: "#000" }
-                    : { background: "#e5e7eb", color: "#9ca3af", border: "1px solid #d1d5db" }
+                    : { background: "#1f2937", color: "#9ca3af", border: "1px solid #374151" }
                 }
               >
                 {s.icon} {s.label}
@@ -322,9 +322,9 @@ const Home = () => {
           </div>
 
           {/* Active service panel */}
-          <div className="grid md:grid-cols-2 gap-0 overflow-hidden" style={{ border: "1px solid #d1d5db" }}>
+          <div className="grid md:grid-cols-2 gap-0 overflow-hidden" style={{ border: "1px solid #374151" }}>
             {/* Image side */}
-            <div className="relative h-72 md:h-auto min-h-64 bg-gray-50 overflow-hidden">
+            <div className="relative h-72 md:h-auto min-h-64 bg-gray-800 overflow-hidden">
               <img
                 src={services[activeService].image}
                 alt={services[activeService].label}
@@ -336,7 +336,7 @@ const Home = () => {
               {/* Fallback gradient */}
               <div
                 className="absolute inset-0 flex items-center justify-center text-8xl"
-                style={{ background: "linear-gradient(135deg, #ffffff, #e5e7eb)" }}
+                style={{ background: "linear-gradient(135deg, #111827, #1f2937)" }}
               >
                 <span className="text-7xl opacity-30">{services[activeService].icon}</span>
               </div>
@@ -350,7 +350,7 @@ const Home = () => {
             </div>
 
             {/* Content side */}
-            <div className="p-8 md:p-10 bg-white">
+            <div className="p-8 md:p-10 bg-gray-900">
               <h3 className="text-3xl font-black uppercase mb-4 leading-tight">
                 {services[activeService].headline}
               </h3>
@@ -359,7 +359,7 @@ const Home = () => {
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {services[activeService].features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                     <span style={{ color: "#F97316", marginTop: "2px", flexShrink: 0 }}>▸</span>
                     {f}
                   </li>
@@ -378,7 +378,7 @@ const Home = () => {
       </section>
 
       {/* ── COMPARISON TABLE ── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-950">
         <div className="max-w-5xl mx-auto px-6">
           <div className="mb-12 text-center">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -392,7 +392,7 @@ const Home = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-sm" style={{ borderCollapse: "collapse" }}>
               <thead>
-                <tr style={{ background: "#ffffff" }}>
+                <tr style={{ background: "#111827" }}>
                   <th className="text-left py-4 px-6 font-bold uppercase tracking-wider text-gray-400">
                     Feature
                   </th>
@@ -412,11 +412,11 @@ const Home = () => {
                   <tr
                     key={i}
                     style={{
-                      background: i % 2 === 0 ? "#ffffff" : "#d1d5db",
-                      borderBottom: "1px solid #e5e7eb",
+                      background: i % 2 === 0 ? "#0f172a" : "#111827",
+                      borderBottom: "1px solid #1f2937",
                     }}
                   >
-                    <td className="py-3 px-6 text-gray-700">{row.feature}</td>
+                    <td className="py-3 px-6 text-gray-300">{row.feature}</td>
                     <td className="py-3 px-4 text-center font-bold" style={{ color: "#F97316" }}>✓</td>
                     <td className="py-3 px-4 text-center text-gray-500">
                       {row.plastic === true ? "✓" : row.plastic === "partial" ? "~" : "✗"}
@@ -433,7 +433,7 @@ const Home = () => {
       </section>
 
       {/* ── ABOUT ── */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-gray-900 relative overflow-hidden">
         {/* Decorative background text */}
         <div
           className="absolute right-0 top-1/2 -translate-y-1/2 text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
@@ -451,7 +451,7 @@ const Home = () => {
               Pioneers &<br />
               <span style={{ color: "#F97316" }}>Leaders</span>
             </h2>
-            <p className="text-gray-700 mb-5 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
+            <p className="text-gray-300 mb-5 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
               Rhino Linings pioneered spray-on bed liners in 1983 and has been leading the
               industry for over 40 years. We launched a worldwide industry with spray-on
               polyurethane protection — and today operate across North America, Europe, the
@@ -483,7 +483,7 @@ const Home = () => {
               <div
                 key={i}
                 className="p-6 transition-all hover:translate-y-[-4px]"
-                style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+                style={{ background: "#111827", borderTop: "3px solid #F97316" }}
               >
                 <div className="text-2xl mb-3">{item.icon}</div>
                 <h3 className="font-black uppercase text-sm tracking-wider mb-2">{item.title}</h3>
@@ -495,7 +495,7 @@ const Home = () => {
       </section>
 
       {/* ── BUSINESS OPPORTUNITIES ── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-950">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -515,7 +515,7 @@ const Home = () => {
               <div
                 key={i}
                 className="p-8 transition-all hover:translate-y-[-4px] cursor-pointer group"
-                style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                style={{ background: "#111827", border: "1px solid #1f2937" }}
               >
                 <div className="text-4xl mb-4">{opt.icon}</div>
                 <h3
@@ -551,7 +551,7 @@ const Home = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
@@ -564,7 +564,7 @@ const Home = () => {
             {/* Email */}
             <div
               className="p-8 text-center transition-all hover:translate-y-[-4px]"
-              style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+              style={{ background: "#111827", borderTop: "3px solid #F97316" }}
             >
               <div className="text-3xl mb-4">✉️</div>
               <h3 className="font-black uppercase tracking-wider text-sm mb-1">Email Us</h3>
@@ -581,7 +581,7 @@ const Home = () => {
             {/* Phone */}
             <div
               className="p-8 text-center transition-all hover:translate-y-[-4px]"
-              style={{ background: "#ffffff", borderTop: "3px solid #F97316" }}
+              style={{ background: "#111827", borderTop: "3px solid #F97316" }}
             >
               <div className="text-3xl mb-4">📞</div>
               <h3 className="font-black uppercase tracking-wider text-sm mb-1">Call Us</h3>

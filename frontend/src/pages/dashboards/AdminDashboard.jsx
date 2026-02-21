@@ -580,7 +580,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveView(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 activeView === item.id
-                  ? "bg-blue-600 text-gray-900 shadow-lg"
+                  ? "bg-blue-600 text-white shadow-lg"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -588,7 +588,7 @@ export default function AdminDashboard() {
               {isSidebarOpen && <span className="font-medium">{item.label}</span>}
               {/* Task count badge */}
               {item.id === 'tasks' && tasks.filter(t => t.status === "Pending").length > 0 && (
-                <span className="absolute top-2 right-2 bg-red-500 text-gray-900 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {tasks.filter(t => t.status === "Pending").length}
                 </span>
               )}
@@ -628,7 +628,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Bookings</p>
+                      <p className="text-sm text-gray-600">Total Bookings</p>
                       <p className="text-3xl font-bold text-gray-900">{stats.totalBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">All time bookings</p>
                     </div>
@@ -641,7 +641,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Pending</p>
+                      <p className="text-sm text-gray-600">Pending</p>
                       <p className="text-3xl font-bold text-gray-900">{stats.pendingBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">Awaiting action</p>
                     </div>
@@ -654,7 +654,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Completed</p>
+                      <p className="text-sm text-gray-600">Completed</p>
                       <p className="text-3xl font-bold text-gray-900">{stats.completedBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">Successfully done</p>
                     </div>
@@ -667,7 +667,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Revenue</p>
+                      <p className="text-sm text-gray-600">Revenue</p>
                       <p className="text-2xl font-bold text-gray-900">
                         KES {(stats.totalRevenue || 0).toLocaleString()}
                       </p>
@@ -690,11 +690,11 @@ export default function AdminDashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Total Employees</span>
+                      <span className="text-gray-600">Total Employees</span>
                       <span className="font-bold text-lg">{employees.length || 0}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Total Customers</span>
+                      <span className="text-gray-600">Total Customers</span>
                       <span className="font-bold text-lg">{customers.length || 0}</span>
                     </div>
                     <div className="pt-2 border-t">
@@ -718,11 +718,11 @@ export default function AdminDashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Total Services</span>
+                      <span className="text-gray-600">Total Services</span>
                       <span className="font-bold text-lg">{services.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Active Services</span>
+                      <span className="text-gray-600">Active Services</span>
                       <span className="font-bold text-lg text-green-600">
                         {services.filter(s => s.isActive).length}
                       </span>
@@ -748,11 +748,11 @@ export default function AdminDashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">In Progress</span>
+                      <span className="text-gray-600">In Progress</span>
                       <span className="font-bold text-lg text-blue-600">{stats.inProgressBookings || 0}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Paid</span>
+                      <span className="text-gray-600">Paid</span>
                       <span className="font-bold text-lg text-green-600">{stats.paidBookings || 0}</span>
                     </div>
                     <div className="pt-2 border-t">
@@ -829,7 +829,7 @@ export default function AdminDashboard() {
                 <CardContent>
                   {services.length === 0 ? (
                     <div className="text-center py-8">
-                      <Package className="w-12 h-12 text-gray-700 mx-auto mb-2" />
+                      <Package className="w-12 h-12 text-gray-300 mx-auto mb-2" />
                       <p className="text-gray-500 text-sm">No services created yet</p>
                       <Button
                         onClick={() => {
@@ -936,23 +936,23 @@ export default function AdminDashboard() {
 
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <p className="text-gray-400">Date</p>
+                            <p className="text-gray-600">Date</p>
                             <p className="font-medium">{formatDate(booking.date)}</p>
                           </div>
                           <div>
-                            <p className="text-gray-400">Assigned To</p>
+                            <p className="text-gray-600">Assigned To</p>
                             <p className="font-medium">
                               {booking.assignedTo?.name || booking.assignedTo?.email || "Unassigned"}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-400">Total Cost</p>
+                            <p className="text-gray-600">Total Cost</p>
                             <p className="font-medium text-green-600">
                               KES {(booking.costBreakdown?.total || 0).toLocaleString()}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-400">Created</p>
+                            <p className="text-gray-600">Created</p>
                             <p className="font-medium">{formatDate(booking.createdAt)}</p>
                           </div>
                         </div>
@@ -1028,7 +1028,7 @@ export default function AdminDashboard() {
               {bookings.length === 0 && (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <Package className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500">No bookings found</p>
                   </CardContent>
                 </Card>
@@ -1054,7 +1054,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Customers</p>
+                      <p className="text-sm text-gray-600">Total Customers</p>
                       <p className="text-2xl font-bold text-gray-900">{customers.length}</p>
                     </div>
                   </div>
@@ -1065,7 +1065,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Active</p>
+                      <p className="text-sm text-gray-600">Active</p>
                       <p className="text-2xl font-bold text-green-600">
                         {customers.filter(c => c.status === "active").length}
                       </p>
@@ -1078,7 +1078,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Bookings</p>
+                      <p className="text-sm text-gray-600">Total Bookings</p>
                       <p className="text-2xl font-bold text-purple-600">
                         {customers.reduce((sum, c) => sum + (c.totalBookings || 0), 0)}
                       </p>
@@ -1091,7 +1091,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Revenue</p>
+                      <p className="text-sm text-gray-600">Total Revenue</p>
                       <p className="text-2xl font-bold text-green-600">
                         KES {customers.reduce((sum, c) => sum + (c.totalSpent || 0), 0).toLocaleString()}
                       </p>
@@ -1106,7 +1106,7 @@ export default function AdminDashboard() {
               {customers.length === 0 ? (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <User className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <User className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500">No customers found</p>
                   </CardContent>
                 </Card>
@@ -1131,21 +1131,21 @@ export default function AdminDashboard() {
 
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                             <div>
-                              <p className="text-gray-400">Phone</p>
+                              <p className="text-gray-600">Phone</p>
                               <p className="font-medium">{customer.phone || "N/A"}</p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Total Bookings</p>
+                              <p className="text-gray-600">Total Bookings</p>
                               <p className="font-medium text-purple-600">{customer.totalBookings || 0}</p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Total Spent</p>
+                              <p className="text-gray-600">Total Spent</p>
                               <p className="font-medium text-green-600">
                                 KES {(customer.totalSpent || 0).toLocaleString()}
                               </p>
                             </div>
                             <div>
-                              <p className="text-gray-400">Last Booking</p>
+                              <p className="text-gray-600">Last Booking</p>
                               <p className="font-medium">
                                 {customer.lastBooking ? formatDate(customer.lastBooking) : "Never"}
                               </p>
@@ -1154,7 +1154,7 @@ export default function AdminDashboard() {
 
                           {customer.address && (
                             <div className="mt-3 text-sm">
-                              <p className="text-gray-400">Address</p>
+                              <p className="text-gray-600">Address</p>
                               <p className="font-medium">{customer.address}</p>
                             </div>
                           )}
@@ -1216,19 +1216,19 @@ export default function AdminDashboard() {
 
                     <div className="space-y-2 text-sm mb-4">
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Role</span>
+                        <span className="text-gray-600">Role</span>
                         <span className="font-medium">
                           {emp.employeeId?.roleTitle || "Service Technician"}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Contact</span>
+                        <span className="text-gray-600">Contact</span>
                         <span className="font-medium">
                           {emp.employeeId?.contact || "N/A"}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Joined</span>
+                        <span className="text-gray-600">Joined</span>
                         <span className="font-medium">
                           {dayjs(emp.createdAt).format("MMM DD, YYYY")}
                         </span>
@@ -1252,7 +1252,7 @@ export default function AdminDashboard() {
               {employees.length === 0 && (
                 <Card className="col-span-full">
                   <CardContent className="py-12 text-center">
-                    <Users className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <Users className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500 mb-4">No employees found</p>
                     <Button
                       onClick={() => setShowEmployeeModal(true)}
@@ -1285,7 +1285,7 @@ export default function AdminDashboard() {
               <Card>
                 <CardContent className="pt-6">
                   <div>
-                    <p className="text-sm text-gray-400">Total Quotes</p>
+                    <p className="text-sm text-gray-600">Total Quotes</p>
                     <p className="text-2xl font-bold text-gray-900">{quotations.length}</p>
                   </div>
                 </CardContent>
@@ -1294,7 +1294,7 @@ export default function AdminDashboard() {
               <Card>
                 <CardContent className="pt-6">
                   <div>
-                    <p className="text-sm text-gray-400">Pending</p>
+                    <p className="text-sm text-gray-600">Pending</p>
                     <p className="text-2xl font-bold text-yellow-600">
                       {quotations.filter(q => q.status === "Pending").length}
                     </p>
@@ -1305,7 +1305,7 @@ export default function AdminDashboard() {
               <Card>
                 <CardContent className="pt-6">
                   <div>
-                    <p className="text-sm text-gray-400">Approved</p>
+                    <p className="text-sm text-gray-600">Approved</p>
                     <p className="text-2xl font-bold text-green-600">
                       {quotations.filter(q => q.status === "Approved").length}
                     </p>
@@ -1316,7 +1316,7 @@ export default function AdminDashboard() {
               <Card>
                 <CardContent className="pt-6">
                   <div>
-                    <p className="text-sm text-gray-400">Total Value</p>
+                    <p className="text-sm text-gray-600">Total Value</p>
                     <p className="text-2xl font-bold text-blue-600">
                       KES {quotations.reduce((sum, q) => sum + (q.estimatedCost || q.totalAmount || 0), 0).toLocaleString()}
                     </p>
@@ -1330,7 +1330,7 @@ export default function AdminDashboard() {
               {quotations.length === 0 ? (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <DollarSign className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <DollarSign className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500">No quotations found</p>
                   </CardContent>
                 </Card>
@@ -1432,7 +1432,7 @@ export default function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Task Management</h1>
-                <p className="text-gray-400 mt-1">Create and assign tasks to employees</p>
+                <p className="text-gray-600 mt-1">Create and assign tasks to employees</p>
               </div>
               <div className="flex gap-2">
                 <Button
@@ -1446,7 +1446,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button
                   onClick={() => setShowTaskModal(true)}
-                  className="bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-gray-900 shadow-lg"
+                  className="bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white shadow-lg"
                 >
                   Create Task
                 </Button>
@@ -1459,7 +1459,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Tasks</p>
+                      <p className="text-sm text-gray-600">Total Tasks</p>
                       <p className="text-2xl font-bold text-gray-900">{tasks.length}</p>
                     </div>
                   </div>
@@ -1470,7 +1470,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Pending</p>
+                      <p className="text-sm text-gray-600">Pending</p>
                       <p className="text-2xl font-bold text-yellow-600">
                         {tasks.filter(t => t.status === "Pending").length}
                       </p>
@@ -1483,7 +1483,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">In Progress</p>
+                      <p className="text-sm text-gray-600">In Progress</p>
                       <p className="text-2xl font-bold text-blue-600">
                         {tasks.filter(t => t.status === "In Progress").length}
                       </p>
@@ -1496,7 +1496,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Completed</p>
+                      <p className="text-sm text-gray-600">Completed</p>
                       <p className="text-2xl font-bold text-green-600">
                         {tasks.filter(t => t.status === "Completed").length}
                       </p>
@@ -1514,7 +1514,7 @@ export default function AdminDashboard() {
               <CardContent>
                 {tasks.length === 0 ? (
                   <div className="text-center py-12">
-                    <ClipboardList className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <ClipboardList className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500 text-lg">No tasks created yet</p>
                     <p className="text-gray-400 text-sm mt-2">Create your first task to get started</p>
                     <Button
@@ -1559,7 +1559,7 @@ export default function AdminDashboard() {
                                 {task.status}
                               </Badge>
                             </div>
-                            <p className="text-gray-400 mb-3">{task.description}</p>
+                            <p className="text-gray-600 mb-3">{task.description}</p>
                             <div className="flex items-center gap-4 text-sm text-gray-500">
                               <div className="flex items-center gap-1">
                                 <User className="w-4 h-4" />
@@ -1609,7 +1609,7 @@ export default function AdminDashboard() {
               <br></br>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Service Management</h1>
-                <p className="text-gray-400 mt-1">Manage available services and pricing</p>
+                <p className="text-gray-600 mt-1">Manage available services and pricing</p>
               </div>
               <Button
                 onClick={() => {
@@ -1626,7 +1626,7 @@ export default function AdminDashboard() {
                   });
                   setShowServiceModal(true);
                 }}
-                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-gray-900 shadow-lg"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg"
               >
                 Add Service
               </Button>
@@ -1638,7 +1638,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Services</p>
+                      <p className="text-sm text-gray-600">Total Services</p>
                       <p className="text-2xl font-bold text-gray-900">{services.length}</p>
                     </div>
                   </div>
@@ -1649,7 +1649,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Active</p>
+                      <p className="text-sm text-gray-600">Active</p>
                       <p className="text-2xl font-bold text-green-600">
                         {services.filter(s => s.isActive).length}
                       </p>
@@ -1662,8 +1662,8 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Inactive</p>
-                      <p className="text-2xl font-bold text-gray-400">
+                      <p className="text-sm text-gray-600">Inactive</p>
+                      <p className="text-2xl font-bold text-gray-600">
                         {services.filter(s => !s.isActive).length}
                       </p>
                     </div>
@@ -1675,7 +1675,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Categories</p>
+                      <p className="text-sm text-gray-600">Categories</p>
                       <p className="text-2xl font-bold text-blue-600">
                         {new Set(services.map(s => s.category)).size}
                       </p>
@@ -1690,7 +1690,7 @@ export default function AdminDashboard() {
               {services.length === 0 ? (
                 <Card className="col-span-full">
                   <CardContent className="py-12 text-center">
-                    <Package className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                    <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500 text-lg">No services created yet</p>
                     <p className="text-gray-400 text-sm mt-2">Create your first service to get started</p>
                     <Button
@@ -1721,12 +1721,12 @@ export default function AdminDashboard() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-gray-400 line-clamp-3 min-h-[3.75rem]">{service.description}</p>
+                      <p className="text-sm text-gray-600 line-clamp-3 min-h-[3.75rem]">{service.description}</p>
 
                       {/* Pricing Information */}
                       <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-4 border border-green-100">
                         <div className="flex items-baseline justify-between mb-1">
-                          <span className="text-sm text-gray-400">Base Price</span>
+                          <span className="text-sm text-gray-600">Base Price</span>
                           <span className="text-2xl font-bold text-green-600">
                             KES {service.basePrice.toLocaleString()}
                           </span>
@@ -1743,7 +1743,7 @@ export default function AdminDashboard() {
                       <div className="space-y-2 text-sm">
                         {service.estimatedDuration && (
                           <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                            <div className="flex items-center gap-2 text-gray-400">
+                            <div className="flex items-center gap-2 text-gray-600">
                               <Clock className="w-4 h-4" />
                               <span>Duration</span>
                             </div>
@@ -1751,7 +1751,7 @@ export default function AdminDashboard() {
                           </div>
                         )}
                         <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                          <div className="flex items-center gap-2 text-gray-400">
+                          <div className="flex items-center gap-2 text-gray-600">
                             <Package className="w-4 h-4" />
                             <span>Features</span>
                           </div>
@@ -1823,7 +1823,7 @@ export default function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Reports & Analytics</h1>
-                <p className="text-gray-400 mt-1">Performance metrics and business insights</p>
+                <p className="text-gray-600 mt-1">Performance metrics and business insights</p>
               </div>
               <Button
                 onClick={() => {
@@ -1843,7 +1843,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Revenue</p>
+                      <p className="text-sm text-gray-600">Total Revenue</p>
                       <p className="text-2xl font-bold text-green-600">
                         KES {stats.totalRevenue?.toLocaleString() || 0}
                       </p>
@@ -1857,7 +1857,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Total Bookings</p>
+                      <p className="text-sm text-gray-600">Total Bookings</p>
                       <p className="text-2xl font-bold text-blue-600">{stats.totalBookings || 0}</p>
                     </div>
                     
@@ -1869,7 +1869,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Active Employees</p>
+                      <p className="text-sm text-gray-600">Active Employees</p>
                       <p className="text-2xl font-bold text-purple-600">{employees.length || 0}</p>
                     </div>
                   
@@ -1881,7 +1881,7 @@ export default function AdminDashboard() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-400">Active Services</p>
+                      <p className="text-sm text-gray-600">Active Services</p>
                       <p className="text-2xl font-bold text-orange-600">
                         {services.filter(s => s.isActive).length}
                       </p>
@@ -1948,7 +1948,7 @@ export default function AdminDashboard() {
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-gray-700">{item.status}</span>
-                          <span className="text-sm text-gray-400">{item.count} ({percentage}%)</span>
+                          <span className="text-sm text-gray-600">{item.count} ({percentage}%)</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
                           <div
@@ -1998,7 +1998,7 @@ export default function AdminDashboard() {
                                 <span className="font-medium text-gray-900">{emp.name}</span>
                               </div>
                             </td>
-                            <td className="text-center py-3 px-4 text-gray-400">{emp.assigned}</td>
+                            <td className="text-center py-3 px-4 text-gray-600">{emp.assigned}</td>
                             <td className="text-center py-3 px-4">
                               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                 {emp.completed}
@@ -2012,7 +2012,7 @@ export default function AdminDashboard() {
                                     style={{ width: `${emp.completionRate}%` }}
                                   />
                                 </div>
-                                <span className="text-sm text-gray-400">{emp.completionRate}%</span>
+                                <span className="text-sm text-gray-600">{emp.completionRate}%</span>
                               </div>
                             </td>
                             <td className="text-right py-3 px-4 font-semibold text-green-600">
@@ -2094,17 +2094,17 @@ export default function AdminDashboard() {
                               </div>
                               <div className="space-y-1 text-sm">
                                 <div className="flex justify-between">
-                                  <span className="text-gray-400">Active</span>
+                                  <span className="text-gray-600">Active</span>
                                   <span className="font-medium text-green-600">{activeCount}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-gray-400">Inactive</span>
-                                  <span className="font-medium text-gray-400">
+                                  <span className="text-gray-600">Inactive</span>
+                                  <span className="font-medium text-gray-600">
                                     {categoryServices.length - activeCount}
                                   </span>
                                 </div>
                                 <div className="flex justify-between pt-2 border-t border-blue-200">
-                                  <span className="text-gray-400">Avg. Price</span>
+                                  <span className="text-gray-600">Avg. Price</span>
                                   <span className="font-bold text-blue-600">
                                     KES {(totalRevenue / categoryServices.length).toFixed(0)}
                                   </span>
@@ -2160,21 +2160,21 @@ export default function AdminDashboard() {
                     {/* Service Statistics */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
                       <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-100">
-                        <p className="text-sm text-gray-400 mb-1">Total Services</p>
+                        <p className="text-sm text-gray-600 mb-1">Total Services</p>
                         <p className="text-3xl font-bold text-gray-900">{services.length}</p>
                         <p className="text-xs text-gray-500 mt-1">
                           {services.filter(s => s.isActive).length} active
                         </p>
                       </div>
                       <div className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg border border-blue-100">
-                        <p className="text-sm text-gray-400 mb-1">Avg. Service Price</p>
+                        <p className="text-sm text-gray-600 mb-1">Avg. Service Price</p>
                         <p className="text-3xl font-bold text-gray-900">
                           KES {services.length > 0 ? (services.reduce((sum, s) => sum + s.basePrice, 0) / services.length).toFixed(0) : 0}
                         </p>
                         <p className="text-xs text-gray-500 mt-1">Across all services</p>
                       </div>
                       <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-100">
-                        <p className="text-sm text-gray-400 mb-1">Total Features</p>
+                        <p className="text-sm text-gray-600 mb-1">Total Features</p>
                         <p className="text-3xl font-bold text-gray-900">
                           {services.reduce((sum, s) => sum + (s.features?.length || 0), 0)}
                         </p>
@@ -2201,19 +2201,19 @@ export default function AdminDashboard() {
                     <h3 className="font-semibold text-gray-900">Booking Statistics</h3>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Pending Bookings</span>
+                        <span className="text-sm text-gray-600">Pending Bookings</span>
                         <span className="font-semibold text-yellow-600">{stats.pendingBookings || 0}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">In Progress</span>
+                        <span className="text-sm text-gray-600">In Progress</span>
                         <span className="font-semibold text-blue-600">{stats.inProgressBookings || 0}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Completed</span>
+                        <span className="text-sm text-gray-600">Completed</span>
                         <span className="font-semibold text-green-600">{stats.completedBookings || 0}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Paid</span>
+                        <span className="text-sm text-gray-600">Paid</span>
                         <span className="font-semibold text-purple-600">{stats.paidBookings || 0}</span>
                       </div>
                     </div>
@@ -2223,23 +2223,23 @@ export default function AdminDashboard() {
                     <h3 className="font-semibold text-gray-900">Quick Stats</h3>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Average Revenue per Booking</span>
+                        <span className="text-sm text-gray-600">Average Revenue per Booking</span>
                         <span className="font-semibold text-green-600">
                           KES {stats.totalBookings > 0 ? ((stats.totalRevenue || 0) / stats.totalBookings).toFixed(0) : 0}
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Total Tasks</span>
+                        <span className="text-sm text-gray-600">Total Tasks</span>
                         <span className="font-semibold text-indigo-600">{tasks.length}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Completed Tasks</span>
+                        <span className="text-sm text-gray-600">Completed Tasks</span>
                         <span className="font-semibold text-green-600">
                           {tasks.filter(t => t.status === "Completed").length}
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Task Completion Rate</span>
+                        <span className="text-sm text-gray-600">Task Completion Rate</span>
                         <span className="font-semibold text-green-600">
                           {tasks.length > 0 ? ((tasks.filter(t => t.status === "Completed").length / tasks.length) * 100).toFixed(1) : 0}%
                         </span>
@@ -2257,12 +2257,12 @@ export default function AdminDashboard() {
       {showTaskModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <CardHeader className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-gray-900">
+            <CardHeader className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white">
               <div className="flex items-center justify-between">
                 <CardTitle>Create New Task</CardTitle>
                 <button
                   onClick={() => setShowTaskModal(false)}
-                  className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                  className="text-white hover:bg-white/20 p-1 rounded"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2375,7 +2375,7 @@ export default function AdminDashboard() {
       {showServiceModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-gray-900">
+            <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white">
               <div className="flex items-center justify-between">
                 <CardTitle>{editingService ? "Edit Service" : "Create New Service"}</CardTitle>
                 <button
@@ -2383,7 +2383,7 @@ export default function AdminDashboard() {
                     setShowServiceModal(false);
                     setEditingService(null);
                   }}
-                  className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                  className="text-white hover:bg-white/20 p-1 rounded"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2515,7 +2515,7 @@ export default function AdminDashboard() {
                       <button
                         type="button"
                         onClick={handleRemoveServiceImage}
-                        className="absolute top-2 right-2 bg-red-500 text-gray-900 p-2 rounded-full hover:bg-red-600 transition-colors"
+                        className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -2531,7 +2531,7 @@ export default function AdminDashboard() {
                         <svg className="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-600">
                           {serviceImageFile ? serviceImageFile.name : "Click to upload image"}
                         </p>
                         <p className="text-xs text-gray-500 mt-1">PNG, JPG, GIF up to 5MB</p>
@@ -2591,12 +2591,12 @@ export default function AdminDashboard() {
       {showEmployeeModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="max-w-md w-full">
-            <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-gray-900">
+            <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white">
               <div className="flex items-center justify-between">
                 <CardTitle>Create Employee Account</CardTitle>
                 <button
                   onClick={() => setShowEmployeeModal(false)}
-                  className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                  className="text-white hover:bg-white/20 p-1 rounded"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2713,12 +2713,12 @@ export default function AdminDashboard() {
       {showAssignModal && selectedBooking && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="max-w-md w-full">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-gray-900">
+            <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
               <div className="flex items-center justify-between">
                 <CardTitle>Assign Employee</CardTitle>
                 <button
                   onClick={() => setShowAssignModal(false)}
-                  className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                  className="text-white hover:bg-white/20 p-1 rounded"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -2727,7 +2727,7 @@ export default function AdminDashboard() {
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm text-gray-400 mb-2">Booking Details</p>
+                  <p className="text-sm text-gray-600 mb-2">Booking Details</p>
                   <p className="font-medium">
                     {selectedBooking.customerId?.name || selectedBooking.customerId?.email}
                   </p>
@@ -2778,12 +2778,12 @@ export default function AdminDashboard() {
       {showCostModal && selectedBooking && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="max-w-md w-full">
-            <CardHeader className="bg-gradient-to-r from-purple-500 to-purple-600 text-gray-900">
+            <CardHeader className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
               <div className="flex items-center justify-between">
                 <CardTitle>Update Cost Breakdown</CardTitle>
                 <button
                   onClick={() => setShowCostModal(false)}
-                  className="text-gray-900 hover:bg-white/20 p-1 rounded"
+                  className="text-white hover:bg-white/20 p-1 rounded"
                 >
                   <X className="w-5 h-5" />
                 </button>

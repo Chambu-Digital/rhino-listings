@@ -149,7 +149,7 @@ export default function Services() {
     return (
       <div
         className="pt-20 min-h-screen flex items-center justify-center"
-        style={{ background: "#f5f5f5" }}
+        style={{ background: "#030712" }}
       >
         <div className="text-center">
           <div
@@ -166,16 +166,16 @@ export default function Services() {
 
   return (
     <div
-      className="pt-20 min-h-screen text-gray-900"
+      className="pt-20 min-h-screen text-white"
       style={{
-        background: "#f5f5f5",
+        background: "#030712",
         fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
       }}
     >
       <PageBreadcrumb />
 
       {/* ── HERO ── */}
-      <section className="relative px-6 py-24 text-center overflow-hidden bg-gray-50">
+      <section className="relative px-6 py-24 text-center overflow-hidden bg-gray-950">
         <div
           className="absolute inset-0 flex items-center justify-center text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
           style={{ color: "#F97316" }}
@@ -225,7 +225,7 @@ export default function Services() {
       </section>
 
       {/* ── APPLICATION AREAS STRIP ── */}
-      <div style={{ background: "#ffffff", borderBottom: "1px solid #e5e7eb" }}>
+      <div style={{ background: "#111827", borderBottom: "1px solid #1f2937" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-3 md:grid-cols-6 gap-4">
           {applicationAreas.map((area, i) => (
             <div key={i} className="text-center">
@@ -236,14 +236,14 @@ export default function Services() {
               >
                 {area.label}
               </div>
-              <div className="text-xs text-gray-400 hidden md:block mt-0.5">{area.desc}</div>
+              <div className="text-xs text-gray-600 hidden md:block mt-0.5">{area.desc}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ── SERVICES GRID ── */}
-      <section className="px-6 py-20 bg-white">
+      <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <p
@@ -263,12 +263,12 @@ export default function Services() {
                 key={service._id || index}
                 className="group flex flex-col overflow-hidden transition-all hover:translate-y-[-4px]"
                 style={{
-                  background: "#ffffff",
-                  border: "1px solid #e5e7eb",
+                  background: "#111827",
+                  border: "1px solid #1f2937",
                 }}
               >
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden bg-gray-50">
+                <div className="relative h-52 overflow-hidden bg-gray-800">
                   <img
                     src={service.imageUrl || service.image || "/images/vehicle-before-after.jpg"}
                     alt={service.name || service.title}
@@ -314,10 +314,10 @@ export default function Services() {
                   {/* Price & Duration */}
                   <div
                     className="flex items-center justify-between mb-5 py-4"
-                    style={{ borderTop: "1px solid #e5e7eb", borderBottom: "1px solid #e5e7eb" }}
+                    style={{ borderTop: "1px solid #1f2937", borderBottom: "1px solid #1f2937" }}
                   >
                     <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-0.5">
+                      <p className="text-xs text-gray-600 uppercase tracking-wider mb-0.5">
                         Starting from
                       </p>
                       <p
@@ -329,10 +329,10 @@ export default function Services() {
                     </div>
                     {service.estimatedDuration && (
                       <div className="text-right">
-                        <p className="text-xs text-gray-400 uppercase tracking-wider mb-0.5">
+                        <p className="text-xs text-gray-600 uppercase tracking-wider mb-0.5">
                           Duration
                         </p>
-                        <p className="text-sm font-bold text-gray-700">
+                        <p className="text-sm font-bold text-gray-300">
                           {service.estimatedDuration}
                         </p>
                       </div>
@@ -353,7 +353,7 @@ export default function Services() {
                       className="flex-1 py-3 font-black uppercase text-xs tracking-wider transition-all hover:scale-105"
                       style={{
                         background: "transparent",
-                        border: "2px solid #d1d5db",
+                        border: "2px solid #374151",
                         color: "#9ca3af",
                       }}
                       onMouseEnter={(e) => {
@@ -361,7 +361,7 @@ export default function Services() {
                         e.currentTarget.style.color = "#F97316";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "#d1d5db";
+                        e.currentTarget.style.borderColor = "#374151";
                         e.currentTarget.style.color = "#9ca3af";
                       }}
                     >
@@ -376,7 +376,7 @@ export default function Services() {
       </section>
 
       {/* ── WHY RHINO ── */}
-      <section className="px-6 py-20 bg-gray-50">
+      <section className="px-6 py-20 bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
             <p
@@ -426,7 +426,7 @@ export default function Services() {
               <div
                 key={i}
                 className="flex gap-4 p-6 transition-all hover:translate-y-[-2px]"
-                style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                style={{ background: "#111827", border: "1px solid #1f2937" }}
               >
                 <div className="text-2xl flex-shrink-0">{item.icon}</div>
                 <div>
@@ -447,7 +447,7 @@ export default function Services() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="px-6 py-20 bg-white">
+      <section className="px-6 py-20 bg-gray-900">
         <div
           className="max-w-4xl mx-auto p-12 text-center"
           style={{ border: "2px solid #F97316" }}

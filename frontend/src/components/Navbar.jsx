@@ -84,7 +84,7 @@ const Navbar = () => {
   };
 
   const navLinkClass =
-    "text-xs font-black uppercase tracking-widest text-gray-600 hover:text-orange-500 transition-colors cursor-pointer";
+    "text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 transition-colors cursor-pointer";
 
   const navLinks = [
     { section: "home", label: "Home" },
@@ -107,9 +107,9 @@ const Navbar = () => {
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
         style={{
-          background: scrolled ? "rgba(26,35,50,0.98)" : "rgba(26,35,50,0.92)",
+          background: scrolled ? "rgba(3,7,18,0.98)" : "rgba(3,7,18,0.92)",
           backdropFilter: "blur(12px)",
-          borderBottom: scrolled ? "1px solid #ffffff" : "1px solid transparent",
+          borderBottom: scrolled ? "1px solid #111827" : "1px solid transparent",
           fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
         }}
       >
@@ -179,8 +179,8 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setMenuOpen((prev) => !prev)}
-                  className="flex items-center gap-2.5 px-3 py-2 transition-all hover:bg-white"
-                  style={{ border: "1px solid #e5e7eb" }}
+                  className="flex items-center gap-2.5 px-3 py-2 transition-all hover:bg-gray-800"
+                  style={{ border: "1px solid #1f2937" }}
                 >
                   {/* Avatar */}
                   <div
@@ -189,7 +189,7 @@ const Navbar = () => {
                   >
                     {(user.name || user.email).charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-gray-700 hidden sm:inline truncate max-w-[100px]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-300 hidden sm:inline truncate max-w-[100px]">
                     {user.name || user.email}
                   </span>
                   <svg
@@ -204,10 +204,10 @@ const Navbar = () => {
                 {menuOpen && (
                   <div
                     className="absolute right-0 mt-1 w-64 overflow-hidden z-50"
-                    style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}
+                    style={{ background: "#111827", border: "1px solid #1f2937" }}
                   >
                     {/* User info */}
-                    <div className="p-4" style={{ borderBottom: "1px solid #e5e7eb" }}>
+                    <div className="p-4" style={{ borderBottom: "1px solid #1f2937" }}>
                       <div className="flex items-center gap-3 mb-3">
                         <div
                           className="w-10 h-10 flex items-center justify-center font-black text-black flex-shrink-0"
@@ -216,7 +216,7 @@ const Navbar = () => {
                           {(user.name || user.email).charAt(0).toUpperCase()}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-sm font-black uppercase tracking-wide text-gray-900 truncate">
+                          <p className="text-sm font-black uppercase tracking-wide text-white truncate">
                             {user.name || "User"}
                           </p>
                           <p className="text-xs text-gray-500 truncate" style={{ fontFamily: "Georgia, serif" }}>
@@ -241,7 +241,7 @@ const Navbar = () => {
                     <div>
                       <RouterLink
                         to={getDashboardRoute()}
-                        className="flex items-center gap-3 px-4 py-3 text-xs font-black uppercase tracking-wider text-gray-400 hover:text-orange-400 hover:bg-gray-100 transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 text-xs font-black uppercase tracking-wider text-gray-400 hover:text-orange-400 hover:bg-gray-900 transition-colors"
                         onClick={() => setMenuOpen(false)}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +250,7 @@ const Navbar = () => {
                         My Dashboard
                       </RouterLink>
 
-                      <div style={{ borderTop: "1px solid #e5e7eb" }} />
+                      <div style={{ borderTop: "1px solid #1f2937" }} />
 
                       <button
                         onClick={handleLogout}
@@ -303,15 +303,15 @@ const Navbar = () => {
           <div
             className="md:hidden px-6 py-6 flex flex-col gap-1"
             style={{
-              background: "#f5f5f5",
-              borderTop: "1px solid #ffffff",
+              background: "#030712",
+              borderTop: "1px solid #111827",
             }}
           >
             {!user && navLinks.map(({ section, label }) => (
               <button
                 key={section}
                 onClick={() => handleNavClick(section)}
-                className="text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-white transition-colors"
+                className="text-left px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-gray-900 transition-colors"
               >
                 {label}
               </button>
@@ -320,14 +320,14 @@ const Navbar = () => {
             {!user && (
               <RouterLink
                 to="/contact"
-                className="px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-white transition-colors"
+                className="px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-gray-900 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 Contact Us
               </RouterLink>
             )}
 
-            <div style={{ borderTop: "1px solid #ffffff" }} className="my-2" />
+            <div style={{ borderTop: "1px solid #111827" }} className="my-2" />
 
             {!user ? (
               <div className="flex flex-col gap-3 pt-2">
@@ -350,7 +350,7 @@ const Navbar = () => {
             ) : (
               <div className="flex flex-col gap-1">
                 {/* Mobile user card */}
-                <div className="p-4 mb-2" style={{ background: "#ffffff", border: "1px solid #e5e7eb" }}>
+                <div className="p-4 mb-2" style={{ background: "#111827", border: "1px solid #1f2937" }}>
                   <div className="flex items-center gap-3 mb-3">
                     <div
                       className="w-10 h-10 flex items-center justify-center font-black text-black flex-shrink-0"
@@ -359,7 +359,7 @@ const Navbar = () => {
                       {(user.name || user.email).charAt(0).toUpperCase()}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-black uppercase tracking-wide text-gray-900 truncate">
+                      <p className="text-sm font-black uppercase tracking-wide text-white truncate">
                         {user.name || "User"}
                       </p>
                       <p className="text-xs text-gray-500 truncate">{user.email}</p>
@@ -379,7 +379,7 @@ const Navbar = () => {
 
                 <RouterLink
                   to={getDashboardRoute()}
-                  className="flex items-center gap-3 px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-white transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-orange-400 hover:bg-gray-900 transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
