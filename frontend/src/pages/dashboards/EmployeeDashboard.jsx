@@ -1127,7 +1127,7 @@ export default function EmployeeDashboard() {
                       {photos.map((photo) => (
                         <div key={photo._id} className="relative group">
                           <img
-                            src={`http://localhost:5000${photo.url}`}
+                            src={`${import.meta.env.VITE_API_URL}${photo.url}`}
                             alt={photo.description}
                             className="w-full h-40 object-cover rounded-lg"
                           />
