@@ -74,16 +74,9 @@ export default function Contact() {
         <PageBreadcrumb />
 
         {/* ── HERO ── */}
-        <section className="relative text-center py-20 overflow-hidden">
-          <div
-            className="absolute inset-0 flex items-center justify-center text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
-            style={{ color: "#F97316" }}
-          >
-            CONTACT
-          </div>
-
+        <section className="relative text-center py-12 overflow-hidden">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-3 mb-4">
               <span className="w-8 h-px" style={{ background: "#F97316" }} />
               <span
                 className="text-xs font-bold uppercase tracking-widest"
@@ -94,23 +87,13 @@ export default function Contact() {
               <span className="w-8 h-px" style={{ background: "#F97316" }} />
             </div>
             <h1
-              className="text-6xl md:text-8xl font-black uppercase leading-none mb-4"
+              className="text-5xl md:text-6xl font-black uppercase leading-none mb-4"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Get In
-            </h1>
-            <h1
-              className="text-6xl md:text-8xl font-black uppercase leading-none mb-6"
-              style={{
-                letterSpacing: "-0.02em",
-                WebkitTextStroke: "2px #F97316",
-                color: "transparent",
-              }}
-            >
-              Touch
+              Get In <span style={{ color: "#F97316" }}>Touch</span>
             </h1>
             <p
-              className="text-lg text-gray-400 max-w-xl mx-auto"
+              className="text-base text-gray-400 max-w-xl mx-auto"
               style={{ fontFamily: "Georgia, serif" }}
             >
               Questions about our coatings? Ready for a quote? Our team typically
@@ -120,71 +103,65 @@ export default function Contact() {
         </section>
 
         {/* ── QUICK CONTACT CARDS ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {/* Phone */}
           <a
             href="tel:+254727877651"
-            className="flex flex-col items-center text-center p-8 transition-all hover:translate-y-[-4px] group"
-            style={{ background: "#111827", borderTop: "3px solid #F97316" }}
+            className="flex items-center gap-4 p-6 transition-all hover:translate-y-[-2px] group"
+            style={{ background: "#111827", borderLeft: "3px solid #F97316" }}
           >
             <div
-              className="w-12 h-12 flex items-center justify-center mb-4"
+              className="w-12 h-12 flex items-center justify-center flex-shrink-0"
               style={{ background: "#F97316" }}
             >
               <Phone className="w-5 h-5 text-black" />
             </div>
-            <h3 className="font-black uppercase tracking-wider text-sm mb-1">Call Us</h3>
-            <p className="text-xs text-gray-500 mb-3" style={{ fontFamily: "Georgia, serif" }}>
-              Speak with our experts
-            </p>
-            <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors">
-              +254 727 877 651
-            </span>
+            <div className="text-left">
+              <h3 className="font-black uppercase tracking-wider text-xs mb-1 text-gray-400">Call Us</h3>
+              <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors">
+                +254 727 877 651
+              </span>
+            </div>
           </a>
 
           {/* Email */}
           <a
             href="mailto:info@rhinoliningskenya.com"
-            className="flex flex-col items-center text-center p-8 transition-all hover:translate-y-[-4px] group"
-            style={{ background: "#111827", borderTop: "3px solid #F97316" }}
+            className="flex items-center gap-4 p-6 transition-all hover:translate-y-[-2px] group"
+            style={{ background: "#111827", borderLeft: "3px solid #F97316" }}
           >
             <div
-              className="w-12 h-12 flex items-center justify-center mb-4"
+              className="w-12 h-12 flex items-center justify-center flex-shrink-0"
               style={{ background: "#F97316" }}
             >
               <Mail className="w-5 h-5 text-black" />
             </div>
-            <h3 className="font-black uppercase tracking-wider text-sm mb-1">Email Us</h3>
-            <p className="text-xs text-gray-500 mb-3" style={{ fontFamily: "Georgia, serif" }}>
-              Response within 24 hours
-            </p>
-            <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors break-all">
-              info@rhinoliningskenya.com
-            </span>
+            <div className="text-left">
+              <h3 className="font-black uppercase tracking-wider text-xs mb-1 text-gray-400">Email Us</h3>
+              <span className="font-bold text-white text-sm group-hover:text-orange-400 transition-colors break-all">
+                info@rhinoliningskenya.com
+              </span>
+            </div>
           </a>
 
           {/* WhatsApp */}
           <button
             onClick={handleWhatsAppClick}
-            className="flex flex-col items-center text-center p-8 transition-all hover:translate-y-[-4px] group w-full"
-            style={{ background: "#052e16", borderTop: "3px solid #16a34a" }}
+            className="flex items-center gap-4 p-6 transition-all hover:translate-y-[-2px] group w-full"
+            style={{ background: "#052e16", borderLeft: "3px solid #16a34a" }}
           >
             <div
-              className="w-12 h-12 flex items-center justify-center mb-4"
+              className="w-12 h-12 flex items-center justify-center flex-shrink-0"
               style={{ background: "#16a34a" }}
             >
               <MessageCircle className="w-5 h-5 text-white" />
             </div>
-            <h3 className="font-black uppercase tracking-wider text-sm mb-1 text-white">WhatsApp</h3>
-            <p
-              className="text-xs mb-3"
-              style={{ color: "#166534", fontFamily: "Georgia, serif" }}
-            >
-              Chat with us instantly
-            </p>
-            <span className="font-bold text-green-400 text-sm group-hover:text-green-300 transition-colors">
-              Chat Now →
-            </span>
+            <div className="text-left">
+              <h3 className="font-black uppercase tracking-wider text-xs mb-1 text-green-700">WhatsApp</h3>
+              <span className="font-bold text-green-400 text-sm group-hover:text-green-300 transition-colors">
+                Chat Now →
+              </span>
+            </div>
           </button>
         </div>
 
@@ -193,15 +170,15 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="lg:col-span-2" style={{ background: "#111827", border: "1px solid #1f2937" }}>
             <div
-              className="px-8 py-5 flex items-center gap-3"
+              className="px-6 py-4 flex items-center gap-3"
               style={{ borderBottom: "1px solid #1f2937" }}
             >
-              <div className="w-1 h-6" style={{ background: "#F97316" }} />
+              <div className="w-1 h-5" style={{ background: "#F97316" }} />
               <h2 className="font-black uppercase tracking-wider text-sm">Send Us a Message</h2>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="p-6 space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label style={labelStyle}>Name</label>
                   <input
@@ -254,7 +231,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="6"
+                  rows="5"
                   placeholder="Tell us about your project or enquiry..."
                   style={{ ...inputBase, resize: "none" }}
                   onFocus={(e) => (e.target.style.borderColor = "#F97316")}
@@ -265,7 +242,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 font-black uppercase tracking-widest text-sm transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 font-black uppercase tracking-widest text-sm transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={{ background: "#F97316", color: "#000" }}
               >
                 {loading ? (
@@ -290,17 +267,17 @@ export default function Contact() {
           <div className="flex flex-col gap-4">
             {/* Location */}
             <div
-              className="p-6"
-              style={{ background: "#111827", border: "1px solid #1f2937" }}
+              className="p-5"
+              style={{ background: "#111827", borderLeft: "3px solid #F97316" }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div
                   className="w-8 h-8 flex items-center justify-center flex-shrink-0"
                   style={{ background: "#F97316" }}
                 >
                   <MapPin className="w-4 h-4 text-black" />
                 </div>
-                <h3 className="font-black uppercase tracking-wider text-sm">Find Us</h3>
+                <h3 className="font-black uppercase tracking-wider text-xs">Find Us</h3>
               </div>
               <p
                 className="text-gray-400 text-sm leading-relaxed"
@@ -314,20 +291,20 @@ export default function Contact() {
 
             {/* Business Hours */}
             <div
-              className="p-6"
-              style={{ background: "#111827", border: "1px solid #1f2937" }}
+              className="p-5"
+              style={{ background: "#111827", borderLeft: "3px solid #F97316" }}
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
                 <div
                   className="w-8 h-8 flex items-center justify-center flex-shrink-0"
                   style={{ background: "#F97316" }}
                 >
                   <Clock className="w-4 h-4 text-black" />
                 </div>
-                <h3 className="font-black uppercase tracking-wider text-sm">Business Hours</h3>
+                <h3 className="font-black uppercase tracking-wider text-xs">Business Hours</h3>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {[
                   { day: "Mon – Fri", hours: "8:00 AM – 6:00 PM", active: true },
                   { day: "Saturday", hours: "9:00 AM – 5:00 PM", active: true },
@@ -336,7 +313,7 @@ export default function Contact() {
                   <div
                     key={i}
                     className="flex justify-between items-center text-sm py-2"
-                    style={{ borderBottom: "1px solid #1f2937" }}
+                    style={{ borderBottom: i < 2 ? "1px solid #1f2937" : "none" }}
                   >
                     <span className="text-gray-400 uppercase tracking-wider text-xs font-bold">
                       {row.day}
@@ -352,21 +329,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Response time note */}
-            <div
-              className="p-6"
-              style={{ background: "#0f172a", borderLeft: "3px solid #F97316" }}
-            >
-              <p
-                className="text-xs text-gray-400 leading-relaxed"
-                style={{ fontFamily: "Georgia, serif" }}
-              >
-                We typically respond within <strong className="text-white">24 hours</strong>.
-                For urgent matters, please call or WhatsApp us directly — our team is ready
-                to assist with quotes, bookings and technical enquiries.
-              </p>
-            </div>
-
             {/* Credentials badges */}
             <div className="grid grid-cols-2 gap-2">
               {[
@@ -377,7 +339,7 @@ export default function Contact() {
               ].map((b, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center justify-center py-4 text-center"
+                  className="flex flex-col items-center justify-center py-3 text-center"
                   style={{ background: "#111827", border: "1px solid #1f2937" }}
                 >
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-600">

@@ -137,12 +137,12 @@ export default function Services() {
   };
 
   const applicationAreas = [
-    { label: "Automotive", icon: "🚗", desc: "Bed liners, full vehicle wrap, underbody" },
-    { label: "Mining", icon: "⛏️", desc: "Chutes, hoppers, conveyor belts, vehicles" },
-    { label: "Marine", icon: "⚓", desc: "Boats, yachts, commercial & navy ships" },
-    { label: "Waterproofing", icon: "💧", desc: "Rooftops, parking lots, balconies" },
-    { label: "Industrial", icon: "🏭", desc: "Floors, tanks, machinery, structures" },
-    { label: "Containment", icon: "🛢️", desc: "Primary & secondary, above & below ground" },
+    { label: "Automotive", desc: "Bed liners, full vehicle wrap, underbody" },
+    { label: "Mining",  desc: "Chutes, hoppers, conveyor belts, vehicles" },
+    { label: "Marine",  desc: "Boats, yachts, commercial & navy ships" },
+    { label: "Waterproofing",  desc: "Rooftops, parking lots, balconies" },
+    { label: "Industrial", desc: "Floors, tanks, machinery, structures" },
+    { label: "Containment",desc: "Primary & secondary, above & below ground" },
   ];
 
   if (loading) {
@@ -242,7 +242,6 @@ export default function Services() {
         </div>
       </div>
 
-      {/* ── SERVICES GRID ── */}
       <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
@@ -287,13 +286,7 @@ export default function Services() {
                     {service.category || "Premium"}
                   </div>
 
-                  {/* Icon */}
-                  <div
-                    className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center"
-                    style={{ background: "rgba(0,0,0,0.6)", color: "#F97316" }}
-                  >
-                    {getIconForCategory(service.category)}
-                  </div>
+               
                 </div>
 
                 {/* Content */}
@@ -393,32 +386,26 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {
-                icon: "⚡",
                 title: "Sets in Seconds",
                 desc: "Ready for light traffic almost immediately — far faster than any alternative product on the market.",
               },
               {
-                icon: "🔒",
                 title: "Air- & Watertight Bond",
                 desc: "Forms a permanent seamless bond to steel, fibreglass, concrete, wood and aluminium — preventing corrosion at the source.",
               },
               {
-                icon: "🛡️",
                 title: "Up to 5mm Protection",
                 desc: "A thick, slip-resistant layer that acts as sacrificial protection — extending asset lifespan and lowering total cost of ownership.",
               },
               {
-                icon: "🌡️",
                 title: "Extreme Temperature Range",
                 desc: "Withstands temperatures from -40°C to extreme heat without cracking, warping or peeling.",
               },
               {
-                icon: "🌿",
                 title: "Environmentally Friendly",
                 desc: "No VOCs. Forms an inert lining that releases no vapours, fuels or chemicals during or after installation.",
               },
               {
-                icon: "🔧",
                 title: "Easily Repaired",
                 desc: "Unlike plastic drop-in liners, Rhino coatings can be repaired on-site quickly without replacement.",
               },

@@ -26,7 +26,7 @@ const Home = () => {
     {
       id: "automotive",
       label: "Automotive",
-      icon: "🚗",
+      iconImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&h=400&fit=crop",
       headline: "Protect Your Vehicle Investment",
       image: "/images/vehicle-before-after.jpg",
       description:
@@ -44,7 +44,7 @@ const Home = () => {
     {
       id: "industrial",
       label: "Industrial",
-      icon: "🏭",
+      iconImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=400&fit=crop",
       headline: "Industrial-Grade Surface Protection",
       image: "/images/industrial-coating.jpg",
       description:
@@ -62,7 +62,7 @@ const Home = () => {
     {
       id: "mining",
       label: "Mining",
-      icon: "⛏️",
+      iconImage: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&h=400&fit=crop",
       headline: "Proven in the Harshest Environments",
       image: "/images/mining.jpg",
       description:
@@ -80,7 +80,7 @@ const Home = () => {
     {
       id: "marine",
       label: "Marine",
-      icon: "⚓",
+      iconImage: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=400&h=400&fit=crop",
       headline: "From Dinghies to Commercial Ships",
       image: "/images/custom-sprayon.jpg",
       description:
@@ -98,7 +98,7 @@ const Home = () => {
     {
       id: "waterproofing",
       label: "Waterproofing",
-      icon: "💧",
+      iconImage: "https://images.unsplash.com/photo-1563207153-f403bf289096?w=400&h=400&fit=crop",
       headline: "Seamless Protection Against Water Ingress",
       image: "/images/waterproofing.jpg",
       description:
@@ -116,7 +116,7 @@ const Home = () => {
     {
       id: "containment",
       label: "Containment",
-      icon: "🛢️",
+      iconImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&h=400&fit=crop",
       headline: "Primary & Secondary Containment Solutions",
       image: "/images/containment.jpg",
       description:
@@ -309,14 +309,19 @@ const Home = () => {
               <button
                 key={i}
                 onClick={() => setActiveService(i)}
-                className="px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition-all"
+                className="px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2"
                 style={
                   activeService === i
                     ? { background: "#F97316", color: "#000" }
                     : { background: "#1f2937", color: "#9ca3af", border: "1px solid #374151" }
                 }
               >
-                {s.icon} {s.label}
+                {/* <img 
+                  src={s.iconImage} 
+                  alt={s.label}
+                  className="w-6 h-6 rounded object-cover"
+                /> */}
+                {s.label}
               </button>
             ))}
           </div>
@@ -333,12 +338,16 @@ const Home = () => {
                   e.target.style.display = "none";
                 }}
               />
-              {/* Fallback gradient */}
+              {/* Fallback gradient with icon image */}
               <div
-                className="absolute inset-0 flex items-center justify-center text-8xl"
+                className="absolute inset-0 flex items-center justify-center"
                 style={{ background: "linear-gradient(135deg, #111827, #1f2937)" }}
               >
-                <span className="text-7xl opacity-30">{services[activeService].icon}</span>
+                <img 
+                  src={services[activeService].iconImage} 
+                  alt={services[activeService].label}
+                  className="w-full h-full object-cover opacity-30"
+                />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900 hidden md:block" />
               <div
@@ -475,10 +484,10 @@ const Home = () => {
           {/* Feature grid */}
           <div className="grid grid-cols-2 gap-4">
             {[
-              { icon: "🛡️", title: "ISO 9001:2015", desc: "Certified quality management across all operations" },
-              { icon: "🔬", title: "Continuous R&D", desc: "Constantly improving formulations for new applications" },
-              { icon: "🌍", title: "Global Network", desc: "Master distributors and dealers on every continent" },
-              { icon: "⚡", title: "Fast Turnaround", desc: "Sets in seconds, ready for traffic in minutes" },
+              {  title: "ISO 9001:2015", desc: "Certified quality management across all operations" },
+              {  title: "Continuous R&D", desc: "Constantly improving formulations for new applications" },
+              {  title: "Global Network", desc: "Master distributors and dealers on every continent" },
+              {  title: "Fast Turnaround", desc: "Sets in seconds, ready for traffic in minutes" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -517,7 +526,6 @@ const Home = () => {
                 className="p-8 transition-all hover:translate-y-[-4px] cursor-pointer group"
                 style={{ background: "#111827", border: "1px solid #1f2937" }}
               >
-                <div className="text-4xl mb-4">{opt.icon}</div>
                 <h3
                   className="font-black uppercase text-sm tracking-wider mb-3 group-hover:text-orange-400 transition-colors"
                   style={{ color: "#e5e7eb" }}
@@ -566,7 +574,7 @@ const Home = () => {
               className="p-8 text-center transition-all hover:translate-y-[-4px]"
               style={{ background: "#111827", borderTop: "3px solid #F97316" }}
             >
-              <div className="text-3xl mb-4">✉️</div>
+              <div className="text-3xl mb-4"></div>
               <h3 className="font-black uppercase tracking-wider text-sm mb-1">Email Us</h3>
               <p className="text-gray-500 text-xs mb-6">Response within 24 hours</p>
               <Link
@@ -583,7 +591,7 @@ const Home = () => {
               className="p-8 text-center transition-all hover:translate-y-[-4px]"
               style={{ background: "#111827", borderTop: "3px solid #F97316" }}
             >
-              <div className="text-3xl mb-4">📞</div>
+              <div className="text-3xl mb-4"></div>
               <h3 className="font-black uppercase tracking-wider text-sm mb-1">Call Us</h3>
               <p className="text-gray-500 text-xs mb-6">Speak with our experts</p>
               <a
@@ -600,7 +608,7 @@ const Home = () => {
               className="p-8 text-center transition-all hover:translate-y-[-4px]"
               style={{ background: "#052e16", borderTop: "3px solid #16a34a" }}
             >
-              <div className="text-3xl mb-4">💬</div>
+              <div className="text-3xl mb-4"></div>
               <h3 className="font-black uppercase tracking-wider text-sm mb-1">WhatsApp</h3>
               <p className="text-green-700 text-xs mb-6">Chat with us instantly</p>
               <a

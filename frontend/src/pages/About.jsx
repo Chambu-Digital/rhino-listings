@@ -5,22 +5,18 @@ import PageBreadcrumb from "../components/PageBreadcrumb";
 export default function About() {
   const coreValues = [
     {
-      icon: <Shield className="w-5 h-5" />,
       title: "Quality First",
       description: "Authentic Rhino Linings products with zero compromise on performance or application standards.",
     },
     {
-      icon: <Target className="w-5 h-5" />,
       title: "Precision",
       description: "Meticulous attention to surface preparation and application in every project we undertake.",
     },
     {
-      icon: <Users className="w-5 h-5" />,
       title: "Customer Focus",
       description: "Your investment is our responsibility — from first enquiry through to warranty support.",
     },
     {
-      icon: <Zap className="w-5 h-5" />,
       title: "Innovation",
       description: "Continuous R&D keeps our applicators equipped with the latest formulations and techniques.",
     },
@@ -62,19 +58,16 @@ export default function About() {
 
   const rhinoDifference = [
     {
-      icon: <Globe className="w-6 h-6" />,
       title: "Built for Kenya's Conditions",
       description:
         "Tested globally from arctic Canada to the Atacama Desert — our coatings are proven for Kenya's dust, heat, heavy loads and demanding terrain.",
     },
     {
-      icon: <Shield className="w-6 h-6" />,
       title: "Superior Technology",
       description:
         "Advanced polyurethane and polyurea chemistry delivering unmatched resistance to abrasion, corrosion, chemical attack and impact damage.",
     },
     {
-      icon: <Award className="w-6 h-6" />,
       title: "Local Expertise, Global Standards",
       description:
         "Our Kenyan team is trained to international Rhino Linings standards — understanding both local application needs and ISO 9001:2015 quality requirements.",
@@ -333,9 +326,7 @@ export default function About() {
                 className="flex gap-4 p-6 transition-all hover:translate-y-[-2px]"
                 style={{ background: "#111827", border: "1px solid #1f2937" }}
               >
-                <div className="flex-shrink-0 mt-1" style={{ color: "#F97316" }}>
-                  <CheckCircle className="w-5 h-5" />
-                </div>
+               
                 <div>
                   <h3 className="font-black uppercase text-sm tracking-wider mb-2">{item.title}</h3>
                   <p className="text-xs text-gray-500 leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>

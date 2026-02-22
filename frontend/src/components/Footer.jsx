@@ -111,12 +111,8 @@ const Footer = () => {
                 <li key={i}>
                   <Link
                     to={link.to}
-                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400 flex items-center gap-2 group"
+                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400"
                   >
-                    <span
-                      className="w-3 h-px inline-block transition-all group-hover:w-5"
-                      style={{ background: "#F97316" }}
-                    />
                     {link.label}
                   </Link>
                 </li>
@@ -144,12 +140,8 @@ const Footer = () => {
                 <li key={i}>
                   <Link
                     to="/services"
-                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400 flex items-center gap-2 group"
+                    className="text-sm text-gray-400 font-bold uppercase tracking-wider transition-colors hover:text-orange-400"
                   >
-                    <span
-                      className="w-3 h-px inline-block transition-all group-hover:w-5"
-                      style={{ background: "#F97316" }}
-                    />
                     {s}
                   </Link>
                 </li>
