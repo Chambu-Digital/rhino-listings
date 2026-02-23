@@ -371,22 +371,22 @@ export default function EmployeeDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-50 flex pt-20">
+    <div className="min-h-screen bg-gray-950 flex pt-20" style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}>
       {/* Desktop Sidebar */}
-      <div className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-white border-r shadow-lg transition-all duration-300 fixed h-full z-20 top-20 hidden md:block`}>
-        <div className="p-4 border-b flex items-center justify-between">
+      <div className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-gray-900 border-r border-gray-800 shadow-lg transition-all duration-300 fixed h-full z-20 top-20 hidden md:block`}>
+        <div className="p-4 border-b border-gray-800 flex items-center justify-between">
           {isSidebarOpen && (
             <div className="flex items-center gap-2">
               
               <div>
-                <h2 className="font-bold text-gray-900">Employee</h2>
-                <p className="text-xs text-gray-500">{employeeInfo?.name || 'Dashboard'}</p>
+                <h2 className="font-bold text-white">Employee</h2>
+                <p className="text-xs" style={{ color: "#F97316" }}>{employeeInfo?.name || 'Dashboard'}</p>
               </div>
             </div>
           )}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-800 rounded-lg transition-colors text-gray-400"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -399,9 +399,10 @@ export default function EmployeeDashboard() {
               onClick={() => setActiveView(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 activeView === item.id
-                  ? "bg-purple-600 text-white shadow-lg"
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? "text-black shadow-lg"
+                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
               }`}
+              style={activeView === item.id ? { background: "#F97316" } : {}}
             >
               {item.icon}
               {isSidebarOpen && (
@@ -425,7 +426,7 @@ export default function EmployeeDashboard() {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-20">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 shadow-lg z-20">
         <nav className="flex justify-around items-center py-2">
           {menuItems.map((item) => (
             <button
@@ -433,9 +434,10 @@ export default function EmployeeDashboard() {
               onClick={() => setActiveView(item.id)}
               className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-all ${
                 activeView === item.id
-                  ? "text-purple-600"
-                  : "text-gray-600"
+                  ? "text-orange-500"
+                  : "text-gray-400"
               }`}
+              style={activeView === item.id ? { color: "#F97316" } : {}}
             >
               {item.icon}
               <span className="text-xs font-medium">{item.label}</span>
@@ -451,22 +453,22 @@ export default function EmployeeDashboard() {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">My Dashboard</h1>
-                <p className="text-sm text-gray-600 mt-1">Welcome back, {employeeInfo?.name || 'Employee'}!</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">My Dashboard</h1>
+                <p className="text-sm text-gray-400 mt-1">Welcome back, {employeeInfo?.name || 'Employee'}!</p>
               </div>
               <div className="flex items-center gap-2">
                 <Button 
                   onClick={() => window.open('/', '_blank')} 
                   variant="outline" 
                   size="sm"
-                  className="flex items-center gap-2 !text-gray-900 hover:!text-gray-900 hover:bg-gray-50"
+                  className="flex items-center gap-2 !text-gray-300 hover:!text-white border-gray-700 hover:bg-gray-800"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                   View Site
                 </Button>
-                <Button onClick={fetchData} variant="outline" size="sm">
+                <Button onClick={fetchData} variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                   Refresh
                 </Button>
               </div>
@@ -474,45 +476,45 @@ export default function EmployeeDashboard() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              <Card className="border-l-4 border-purple-500">
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #F97316" }}>
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600">Total Bookings</p>
-                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.totalAssigned || 0}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-bold">Total Bookings</p>
+                      <p className="text-2xl sm:text-3xl font-bold text-white">{stats.totalAssigned || 0}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-blue-500">
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #3b82f6" }}>
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600">In Progress</p>
-                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.inProgress || 0}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-bold">In Progress</p>
+                      <p className="text-2xl sm:text-3xl font-bold text-white">{stats.inProgress || 0}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-green-500">
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #10b981" }}>
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600">Completed</p>
-                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">{stats.completed || 0}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-bold">Completed</p>
+                      <p className="text-2xl sm:text-3xl font-bold text-white">{stats.completed || 0}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-yellow-500">
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #eab308" }}>
                 <CardContent className="pt-4 sm:pt-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600">Pending Tasks</p>
-                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">{taskStats.pendingTasks || 0}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-bold">Pending Tasks</p>
+                      <p className="text-2xl sm:text-3xl font-bold text-white">{taskStats.pendingTasks || 0}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -520,10 +522,10 @@ export default function EmployeeDashboard() {
             </div>
 
             {/* Quick Actions */}
-            <Card>
+            <Card className="bg-gray-900 border-gray-800">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertCircle className="w-5 h-5 text-purple-600" />
+                <CardTitle className="flex items-center gap-2 text-white uppercase tracking-wider text-sm">
+                  <AlertCircle className="w-5 h-5" style={{ color: "#F97316" }} />
                   Quick Actions
                 </CardTitle>
               </CardHeader>
@@ -531,14 +533,16 @@ export default function EmployeeDashboard() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <Button
                     onClick={() => setActiveView("bookings")}
-                    className="bg-purple-600 hover:bg-purple-700 justify-start"
+                    className="justify-start text-black"
+                    style={{ background: "#F97316" }}
                   >
                     <Package className="w-4 h-4 mr-2" />
                     View Bookings
                   </Button>
                   <Button
                     onClick={() => setActiveView("tasks")}
-                    className="bg-blue-600 hover:bg-blue-700 justify-start"
+                    className="justify-start"
+                    style={{ background: "#3b82f6", color: "white" }}
                   >
                     <CheckCircle className="w-4 h-4 mr-2" />
                     View Tasks
@@ -546,7 +550,7 @@ export default function EmployeeDashboard() {
                   <Button
                     onClick={fetchData}
                     variant="outline"
-                    className="justify-start"
+                    className="justify-start border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
                   >
                     <RefreshCw className="w-4 h-4 mr-2" />
                     Refresh Data
@@ -556,24 +560,24 @@ export default function EmployeeDashboard() {
             </Card>
 
             {/* Recent Tasks */}
-            <Card>
+            <Card className="bg-gray-900 border-gray-800">
               <CardHeader>
-                <CardTitle>Recent Bookings</CardTitle>
+                <CardTitle className="text-white uppercase tracking-wider text-sm">Recent Bookings</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {bookings.slice(0, 5).map((booking) => (
                     <div
                       key={booking._id}
-                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors gap-3 cursor-pointer"
+                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-800 rounded-lg hover:bg-gray-750 transition-colors gap-3 cursor-pointer border border-gray-700"
                       onClick={() => setActiveView("bookings")}
                     >
                       <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm sm:text-base text-gray-900 truncate">
+                          <p className="font-medium text-sm sm:text-base text-white truncate">
                             {booking.customerId?.name || booking.customerId?.email || "Unknown"}
                           </p>
-                          <p className="text-xs sm:text-sm text-gray-500">{formatShortDate(booking.date)}</p>
+                          <p className="text-xs sm:text-sm text-gray-400">{formatShortDate(booking.date)}</p>
                         </div>
                       </div>
                       <Badge variant={STATUS_COLORS[booking.status] || "default"} className="self-start sm:self-center">
@@ -582,8 +586,8 @@ export default function EmployeeDashboard() {
                     </div>
                   ))}
                   {bookings.length === 0 && (
-                    <div className="text-center py-8 text-gray-500">
-                      <Package className="w-12 h-12 text-gray-300 mx-auto mb-2" />
+                    <div className="text-center py-8 text-gray-400">
+                      <Package className="w-12 h-12 text-gray-600 mx-auto mb-2" />
                       <p className="text-sm">No bookings assigned yet</p>
                     </div>
                   )}
@@ -592,24 +596,24 @@ export default function EmployeeDashboard() {
             </Card>
 
             {/* Recent Admin Tasks */}
-            <Card>
+            <Card className="bg-gray-900 border-gray-800">
               <CardHeader>
-                <CardTitle>Recent Tasks from Admin</CardTitle>
+                <CardTitle className="text-white uppercase tracking-wider text-sm">Recent Tasks from Admin</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {tasks.slice(0, 5).map((task) => (
                     <div
                       key={task._id}
-                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors gap-3 cursor-pointer"
+                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-gray-800 rounded-lg hover:bg-gray-750 transition-colors gap-3 cursor-pointer border border-gray-700"
                       onClick={() => setActiveView("tasks")}
                     >
                       <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm sm:text-base text-gray-900 truncate">
+                          <p className="font-medium text-sm sm:text-base text-white truncate">
                             {task.title}
                           </p>
-                          <p className="text-xs sm:text-sm text-gray-500">
+                          <p className="text-xs sm:text-sm text-gray-400">
                             {task.dueDate ? `Due: ${formatShortDate(task.dueDate)}` : "No deadline"}
                           </p>
                         </div>
@@ -631,8 +635,8 @@ export default function EmployeeDashboard() {
                     </div>
                   ))}
                   {tasks.length === 0 && (
-                    <div className="text-center py-8 text-gray-500">
-                      <CheckCircle className="w-12 h-12 text-gray-300 mx-auto mb-2" />
+                    <div className="text-center py-8 text-gray-400">
+                      <CheckCircle className="w-12 h-12 text-gray-600 mx-auto mb-2" />
                       <p className="text-sm">No tasks assigned yet</p>
                     </div>
                   )}
@@ -646,15 +650,18 @@ export default function EmployeeDashboard() {
         {activeView === "bookings" && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">My Bookings</h1>
-              <Button onClick={fetchBookings} variant="outline" size="sm">
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">My Bookings</h1>
+                <p className="text-sm text-gray-400 mt-1">Manage assigned bookings</p>
+              </div>
+              <Button onClick={fetchBookings} variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                 Refresh
               </Button>
             </div>
 
             <div className="space-y-4">
               {bookings.map((booking) => (
-                <Card key={booking._id} className="hover:shadow-lg transition-shadow">
+                <Card key={booking._id} className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-4 sm:pt-6">
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
@@ -662,42 +669,42 @@ export default function EmployeeDashboard() {
                          
                           <div className="flex-1 min-w-0">
                             <div className="flex flex-wrap items-center gap-2 mb-2">
-                              <h3 className="font-semibold text-base sm:text-lg text-gray-900 truncate">
+                              <h3 className="font-semibold text-base sm:text-lg text-white truncate">
                                 {booking.customerId?.name || booking.customerId?.email || "Unknown Customer"}
                               </h3>
                               <Badge variant={STATUS_COLORS[booking.status] || "default"}>
                                 {booking.status}
                               </Badge>
                             </div>
-                            <p className="text-xs sm:text-sm text-gray-500 mb-3">
+                            <p className="text-xs sm:text-sm text-gray-400 mb-3">
                               {booking.serviceType === "vehicle" ? "Vehicle Service" : "Custom Service"}
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
                               <div>
-                                <p className="text-gray-600">Scheduled Date</p>
-                                <p className="font-medium">{formatShortDate(booking.date)}</p>
+                                <p className="text-gray-500 uppercase tracking-wider">Scheduled Date</p>
+                                <p className="font-medium text-gray-300">{formatShortDate(booking.date)}</p>
                               </div>
                               <div>
-                                <p className="text-gray-600">Customer Email</p>
-                                <p className="font-medium truncate">{booking.customerId?.email || "N/A"}</p>
+                                <p className="text-gray-500 uppercase tracking-wider">Customer Email</p>
+                                <p className="font-medium text-gray-300 truncate">{booking.customerId?.email || "N/A"}</p>
                               </div>
                               <div>
-                                <p className="text-gray-600">Current Cost</p>
-                                <p className="font-medium text-green-600">
+                                <p className="text-gray-500 uppercase tracking-wider">Current Cost</p>
+                                <p className="font-medium" style={{ color: "#10b981" }}>
                                   KES {(booking.costBreakdown?.total || 0).toLocaleString()}
                                 </p>
                               </div>
                               <div>
-                                <p className="text-gray-600">Assigned</p>
-                                <p className="font-medium">{formatShortDate(booking.createdAt)}</p>
+                                <p className="text-gray-500 uppercase tracking-wider">Assigned</p>
+                                <p className="font-medium text-gray-300">{formatShortDate(booking.createdAt)}</p>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
+                      <div className="flex flex-wrap gap-2 pt-3 border-t border-gray-800">
                         {getStatusActions(booking).map((action, idx) => (
                           <Button
                             key={idx}
@@ -717,6 +724,7 @@ export default function EmployeeDashboard() {
                           }}
                           size="sm"
                           variant="outline"
+                          className="border-gray-700 text-gray-300 hover:bg-gray-800"
                         >
                           <Eye className="w-4 h-4 mr-1" />
                           Details
@@ -728,11 +736,11 @@ export default function EmployeeDashboard() {
               ))}
 
               {bookings.length === 0 && (
-                <Card>
+                <Card className="bg-gray-900 border-gray-800">
                   <CardContent className="py-12 text-center">
-                    <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500 mb-2">No tasks assigned yet</p>
-                    <p className="text-sm text-gray-400">Tasks will appear here when assigned by admin</p>
+                    <Package className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+                    <p className="text-gray-400 mb-2">No tasks assigned yet</p>
+                    <p className="text-sm text-gray-500">Tasks will appear here when assigned by admin</p>
                   </CardContent>
                 </Card>
               )}

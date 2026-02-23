@@ -344,21 +344,22 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-950 pt-20" style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}>
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-gray-900 border-b border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
-              <p className="text-xs sm:text-sm text-gray-500">
+              <h1 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-tight">Dashboard</h1>
+              <p className="text-xs sm:text-sm text-gray-400">
                 Welcome back, {currentUser?.name || currentUser?.email || 'User'}!
               </p>
             </div>
             <Button 
               onClick={() => setActiveTab("quotation")}
               size="sm"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white"
+              className="text-black"
+              style={{ background: "#F97316" }}
             >
               <span className="hidden sm:inline">Get Quote</span>
             </Button>
@@ -367,7 +368,7 @@ const UserDashboard = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
+      <div className="bg-gray-900 border-b border-gray-800 sticky top-16 z-10">
         <div className="container mx-auto px-4 sm:px-6">
           <nav className="flex gap-1 overflow-x-auto scrollbar-hide -mb-px">
             {[
@@ -383,9 +384,10 @@ const UserDashboard = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? "text-yellow-600 border-yellow-600"
-                    : "text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300"
+                    ? "border-orange-500 text-white"
+                    : "text-gray-400 border-transparent hover:text-gray-300 hover:border-gray-700"
                 }`}
+                style={activeTab === tab.id ? { borderColor: "#F97316", color: "#F97316" } : {}}
               >
                 {tab.label}
               </button>
@@ -402,21 +404,18 @@ const UserDashboard = () => {
             {/* Compact Stats Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
-                { label: "Total", value: stats.total, color: "blue", icon: Package },
-                { label: "Active", value: stats.active, color: "yellow", icon: TrendingUp },
-                { label: "Completed", value: stats.completed, color: "green", icon: CheckCircle },
-                { label: "Pending", value: stats.pending, color: "amber", icon: Clock },
+                { label: "Total", value: stats.total, color: "#F97316", icon: Package },
+                { label: "Active", value: stats.active, color: "#eab308", icon: TrendingUp },
+                { label: "Completed", value: stats.completed, color: "#10b981", icon: CheckCircle },
+                { label: "Pending", value: stats.pending, color: "#f59e0b", icon: Clock },
               ].map((stat) => (
-                <Card key={stat.label} className="border-0 shadow-sm">
+                <Card key={stat.label} className="bg-gray-900 border-gray-800 shadow-sm" style={{ borderLeft: `3px solid ${stat.color}` }}>
                   <CardContent className="p-3 sm:p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-xs text-gray-500 mb-1">{stat.label}</p>
-                        <p className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</p>
+                        <p className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-bold">{stat.label}</p>
+                        <p className="text-xl sm:text-2xl font-bold text-white">{stat.value}</p>
                       </div>
-                      {/* <div className={`p-2 bg-${stat.color}-50 rounded-lg`}>
-                        <stat.icon className={`w-4 h-4 sm:w-5 sm:h-5 text-${stat.color}-600`} />
-                      </div> */}
                     </div>
                   </CardContent>
                 </Card>
@@ -424,48 +423,52 @@ const UserDashboard = () => {
             </div>
 
             {/* Quick Actions */}
-            <Card className="border-0 shadow-sm">
+            <Card className="bg-gray-900 border-gray-800 shadow-sm">
               <CardContent className="p-3 sm:p-4">
-                <h3 className="text-xs sm:text-sm font-semibold text-gray-700 mb-2 sm:mb-3">Quick Actions</h3>
+                <h3 className="text-xs sm:text-sm font-semibold text-white mb-2 sm:mb-3 uppercase tracking-wider">Quick Actions</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
                   <button
                     onClick={() => setActiveTab("quotation")}
-                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-200 hover:border-yellow-300 hover:bg-yellow-50 transition-colors"
+                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-700 hover:border-orange-500 transition-colors"
+                    style={{ background: "#1f2937" }}
                   >
-                    <p className="text-xs sm:text-sm font-medium text-gray-900">New Quote</p>
-                    <p className="text-xs text-gray-500">Get pricing</p>
+                    <p className="text-xs sm:text-sm font-medium text-white">New Quote</p>
+                    <p className="text-xs text-gray-400">Get pricing</p>
                   </button>
                   <button
                     onClick={() => setActiveTab("book")}
-                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-700 hover:border-blue-500 transition-colors"
+                    style={{ background: "#1f2937" }}
                   >
-                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mb-1" />
-                    <p className="text-xs sm:text-sm font-medium text-gray-900">Book Service</p>
-                    <p className="text-xs text-gray-500">Schedule now</p>
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 mb-1" />
+                    <p className="text-xs sm:text-sm font-medium text-white">Book Service</p>
+                    <p className="text-xs text-gray-400">Schedule now</p>
                   </button>
                   <button
                     onClick={() => setActiveTab("messages")}
-                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors"
+                    className="p-2.5 sm:p-3 text-left rounded-lg border border-gray-700 hover:border-green-500 transition-colors"
+                    style={{ background: "#1f2937" }}
                   >
-                    <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mb-1" />
-                    <p className="text-xs sm:text-sm font-medium text-gray-900">Support</p>
-                    <p className="text-xs text-gray-500">Get help</p>
+                    <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mb-1" />
+                    <p className="text-xs sm:text-sm font-medium text-white">Support</p>
+                    <p className="text-xs text-gray-400">Get help</p>
                   </button>
                 </div>
               </CardContent>
             </Card>
 
             {/* Recent Activity - Compact */}
-            <Card className="border-0 shadow-sm">
+            <Card className="bg-gray-900 border-gray-800 shadow-sm">
               <CardHeader className="pb-2 sm:pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base sm:text-lg">Recent Activity</CardTitle>
+                  <CardTitle className="text-base sm:text-lg text-white uppercase tracking-wider">Recent Activity</CardTitle>
                   {bookings.length > 0 && (
                     <Button 
                       variant="ghost" 
                       size="sm"
                       onClick={() => setActiveTab("bookings")}
-                      className="text-yellow-600 hover:text-yellow-700 text-xs sm:text-sm"
+                      className="text-gray-400 hover:text-white text-xs sm:text-sm"
+                      style={{ color: "#F97316" }}
                     >
                       View all
                       <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
@@ -476,12 +479,13 @@ const UserDashboard = () => {
               <CardContent>
                 {bookings.length === 0 ? (
                   <div className="text-center py-8">
-                    <Package className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
-                    <p className="text-xs sm:text-sm text-gray-500 mb-3">No bookings yet</p>
+                    <Package className="w-10 h-10 sm:w-12 sm:h-12 text-gray-600 mx-auto mb-3" />
+                    <p className="text-xs sm:text-sm text-gray-400 mb-3">No bookings yet</p>
                     <Button
                       onClick={() => setActiveTab("quotation")}
                       size="sm"
-                      className="bg-yellow-500 hover:bg-yellow-600 text-white"
+                      className="text-black"
+                      style={{ background: "#F97316" }}
                     >
                       Get Started
                     </Button>
@@ -491,7 +495,7 @@ const UserDashboard = () => {
                     {bookings.slice(0, 5).map((booking) => (
                       <div
                         key={booking._id}
-                        className="flex items-center justify-between p-2.5 sm:p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                        className="flex items-center justify-between p-2.5 sm:p-3 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer border border-gray-800"
                         onClick={() => {
                           setActiveTab("bookings");
                         }}
@@ -501,10 +505,10 @@ const UserDashboard = () => {
                             {getStatusIcon(booking.status)}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">
+                            <p className="text-xs sm:text-sm font-medium text-white truncate">
                               {booking.serviceType === "vehicle" ? "Vehicle Service" : "Custom Service"}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-gray-400">
                               {dayjs(booking.date).format("MMM DD, YYYY")}
                             </p>
                           </div>

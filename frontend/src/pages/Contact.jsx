@@ -159,7 +159,7 @@ export default function Contact() {
             <div className="text-left">
               <h3 className="font-black uppercase tracking-wider text-xs mb-1 text-green-700">WhatsApp</h3>
               <span className="font-bold text-green-400 text-sm group-hover:text-green-300 transition-colors">
-                Chat Now →
+                Chat Now 
               </span>
             </div>
           </button>

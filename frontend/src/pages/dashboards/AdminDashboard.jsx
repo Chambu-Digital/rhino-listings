@@ -552,22 +552,22 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex pt-20">
+    <div className="min-h-screen bg-gray-950 flex pt-20" style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}>
       {/* Sidebar */}
-      <div className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-white border-r shadow-lg transition-all duration-300 fixed h-full z-20 top-20`}>
-        <div className="p-4 border-b flex items-center justify-between">
+      <div className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-gray-900 border-r border-gray-800 shadow-lg transition-all duration-300 fixed h-full z-20 top-20`}>
+        <div className="p-4 border-b border-gray-800 flex items-center justify-between">
           {isSidebarOpen && (
             <div className="flex items-center gap-2">
               <br></br>
               <div>
-                <h2 className="font-bold text-gray-900">Admin Panel</h2>
-                <p className="text-xs text-gray-500">Management</p>
+                <h2 className="font-bold text-white">Admin Panel</h2>
+                <p className="text-xs" style={{ color: "#F97316" }}>Management</p>
               </div>
             </div>
           )}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-800 rounded-lg transition-colors text-gray-400"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -580,9 +580,10 @@ export default function AdminDashboard() {
               onClick={() => setActiveView(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all relative ${
                 activeView === item.id
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? "text-black shadow-lg"
+                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
               }`}
+              style={activeView === item.id ? { background: "#F97316" } : {}}
             >
               {item.icon}
               {isSidebarOpen && <span className="font-medium">{item.label}</span>}
@@ -603,20 +604,23 @@ export default function AdminDashboard() {
         {activeView === "overview" && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard Overview</h1>
+              <div>
+                <h1 className="text-3xl font-bold text-white uppercase tracking-tight">Dashboard Overview</h1>
+                <p className="text-sm text-gray-400 mt-1">Manage your operations</p>
+              </div>
               <div className="flex items-center gap-2">
                 <Button 
                   onClick={() => window.open('/', '_blank')} 
                   variant="outline" 
                   size="sm"
-                  className="flex items-center gap-2 !text-gray-900 hover:!text-gray-900 hover:bg-gray-50"
+                  className="flex items-center gap-2 !text-gray-300 hover:!text-white border-gray-700 hover:bg-gray-800"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                   View Site
                 </Button>
-                <Button onClick={fetchData} variant="outline" size="sm">
+                <Button onClick={fetchData} variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                   Refresh
                 </Button>
               </div>
@@ -624,12 +628,12 @@ export default function AdminDashboard() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow" style={{ borderLeft: "3px solid #F97316" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Total Bookings</p>
-                      <p className="text-3xl font-bold text-gray-900">{stats.totalBookings || 0}</p>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Total Bookings</p>
+                      <p className="text-3xl font-black text-white">{stats.totalBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">All time bookings</p>
                     </div>
                    
@@ -637,12 +641,12 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-yellow-500 hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow" style={{ borderLeft: "3px solid #F97316" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Pending</p>
-                      <p className="text-3xl font-bold text-gray-900">{stats.pendingBookings || 0}</p>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Pending</p>
+                      <p className="text-3xl font-black text-white">{stats.pendingBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">Awaiting action</p>
                     </div>
                    
@@ -650,12 +654,12 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-green-500 hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow" style={{ borderLeft: "3px solid #10b981" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Completed</p>
-                      <p className="text-3xl font-bold text-gray-900">{stats.completedBookings || 0}</p>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Completed</p>
+                      <p className="text-3xl font-black text-white">{stats.completedBookings || 0}</p>
                       <p className="text-xs text-gray-500 mt-1">Successfully done</p>
                     </div>
                   
@@ -663,12 +667,12 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow" style={{ borderLeft: "3px solid #F97316" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Revenue</p>
-                      <p className="text-2xl font-bold text-gray-900">
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Revenue</p>
+                      <p className="text-2xl font-black" style={{ color: "#F97316" }}>
                         KES {(stats.totalRevenue || 0).toLocaleString()}
                       </p>
                       <p className="text-xs text-gray-500 mt-1">Total earnings</p>
@@ -681,26 +685,26 @@ export default function AdminDashboard() {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-white uppercase tracking-wider text-sm">
                     Team Overview
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Total Employees</span>
-                      <span className="font-bold text-lg">{employees.length || 0}</span>
+                      <span className="text-gray-400 text-sm">Total Employees</span>
+                      <span className="font-bold text-lg text-white">{employees.length || 0}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Total Customers</span>
-                      <span className="font-bold text-lg">{customers.length || 0}</span>
+                      <span className="text-gray-400 text-sm">Total Customers</span>
+                      <span className="font-bold text-lg text-white">{customers.length || 0}</span>
                     </div>
-                    <div className="pt-2 border-t">
+                    <div className="pt-2 border-t border-gray-800">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-500">Active Rate</span>
-                        <span className="text-sm font-medium text-green-600">
+                        <span className="text-sm font-medium" style={{ color: "#10b981" }}>
                           {employees.length > 0 ? '100%' : '0%'}
                         </span>
                       </div>
@@ -709,28 +713,28 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-white uppercase tracking-wider text-sm">
                     Services Catalog
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Total Services</span>
-                      <span className="font-bold text-lg">{services.length}</span>
+                      <span className="text-gray-400 text-sm">Total Services</span>
+                      <span className="font-bold text-lg text-white">{services.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Active Services</span>
-                      <span className="font-bold text-lg text-green-600">
+                      <span className="text-gray-400 text-sm">Active Services</span>
+                      <span className="font-bold text-lg" style={{ color: "#10b981" }}>
                         {services.filter(s => s.isActive).length}
                       </span>
                     </div>
-                    <div className="pt-2 border-t">
+                    <div className="pt-2 border-t border-gray-800">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-500">Categories</span>
-                        <span className="text-sm font-medium text-blue-600">
+                        <span className="text-sm font-medium" style={{ color: "#F97316" }}>
                           {new Set(services.map(s => s.category)).size}
                         </span>
                       </div>
@@ -739,26 +743,26 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-white uppercase tracking-wider text-sm">
                     Active Operations
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">In Progress</span>
-                      <span className="font-bold text-lg text-blue-600">{stats.inProgressBookings || 0}</span>
+                      <span className="text-gray-400 text-sm">In Progress</span>
+                      <span className="font-bold text-lg" style={{ color: "#3b82f6" }}>{stats.inProgressBookings || 0}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Paid</span>
-                      <span className="font-bold text-lg text-green-600">{stats.paidBookings || 0}</span>
+                      <span className="text-gray-400 text-sm">Paid</span>
+                      <span className="font-bold text-lg" style={{ color: "#10b981" }}>{stats.paidBookings || 0}</span>
                     </div>
-                    <div className="pt-2 border-t">
+                    <div className="pt-2 border-t border-gray-800">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-500">Pending Tasks</span>
-                        <span className="text-sm font-medium text-yellow-600">
+                        <span className="text-sm font-medium text-yellow-500">
                           {tasks.filter(t => t.status === "Pending").length}
                         </span>
                       </div>
@@ -770,16 +774,17 @@ export default function AdminDashboard() {
 
             {/* Quick Actions & Services Overview */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-white uppercase tracking-wider text-sm">
                     Quick Actions
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Button
                     onClick={() => setActiveView("bookings")}
-                    className="w-full bg-blue-600 hover:bg-blue-700 justify-start"
+                    className="w-full justify-start text-black hover:opacity-90"
+                    style={{ background: "#F97316" }}
                   >
                     View All Bookings
                   </Button>
@@ -787,7 +792,8 @@ export default function AdminDashboard() {
                     onClick={() => {
                       setShowEmployeeModal(true);
                     }}
-                    className="w-full bg-green-600 hover:bg-green-700 justify-start"
+                    className="w-full justify-start"
+                    style={{ background: "#10b981", color: "white" }}
                   >
                     Add Employee
                   </Button>
@@ -795,14 +801,15 @@ export default function AdminDashboard() {
                     onClick={() => {
                       setShowServiceModal(true);
                     }}
-                    className="w-full bg-purple-600 hover:bg-purple-700 justify-start"
+                    className="w-full justify-start"
+                    style={{ background: "#8b5cf6", color: "white" }}
                   >
                     Create Service
                   </Button>
                   <Button
                     onClick={() => setActiveView("reports")}
                     variant="outline"
-                    className="w-full justify-start"
+                    className="w-full justify-start border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
                   >
                     <TrendingUp className="w-4 h-4 mr-2" />
                     View Reports
@@ -810,7 +817,7 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     <span className="flex items-center gap-2">
@@ -872,24 +879,24 @@ export default function AdminDashboard() {
             </div>
 
             {/* Recent Bookings */}
-            <Card>
+            <Card className="bg-gray-900 border-gray-800">
               <CardHeader>
-                <CardTitle>Recent Bookings</CardTitle>
+                <CardTitle className="text-white uppercase tracking-wider text-sm">Recent Bookings</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {bookings.slice(0, 5).map((booking) => (
                     <div
                       key={booking._id}
-                      className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="flex items-center justify-between p-4 bg-gray-800 rounded-lg hover:bg-gray-750 transition-colors border border-gray-700"
                     >
                       <div className="flex items-center gap-4">
                        
                         <div>
-                          <p className="font-medium text-gray-900">
+                          <p className="font-medium text-white">
                             {booking.customerId?.name || booking.customerId?.email || "Unknown"}
                           </p>
-                          <p className="text-sm text-gray-500">{formatDate(booking.date)}</p>
+                          <p className="text-sm text-gray-400">{formatDate(booking.date)}</p>
                         </div>
                       </div>
                       <Badge variant={STATUS_COLORS[booking.status] || "default"}>
@@ -907,25 +914,28 @@ export default function AdminDashboard() {
         {activeView === "bookings" && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-900">All Bookings</h1>
-              <Button onClick={fetchBookings} variant="outline" size="sm">
+              <div>
+                <h1 className="text-3xl font-bold text-white uppercase tracking-tight">All Bookings</h1>
+                <p className="text-sm text-gray-400 mt-1">Manage customer bookings</p>
+              </div>
+              <Button onClick={fetchBookings} variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                 Refresh
               </Button>
             </div>
 
             <div className="space-y-4">
               {bookings.map((booking) => (
-                <Card key={booking._id} className="hover:shadow-lg transition-shadow">
+                <Card key={booking._id} className="bg-gray-900 border-gray-800 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                           
                           <div>
-                            <h3 className="font-semibold text-gray-900">
+                            <h3 className="font-semibold text-white">
                               {booking.customerId?.name || booking.customerId?.email || "Unknown Customer"}
                             </h3>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-gray-400">
                               {booking.serviceType === "vehicle" ? "Vehicle Service" : "Custom Service"}
                             </p>
                           </div>
@@ -936,24 +946,24 @@ export default function AdminDashboard() {
 
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <p className="text-gray-600">Date</p>
-                            <p className="font-medium">{formatDate(booking.date)}</p>
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">Date</p>
+                            <p className="font-medium text-gray-300">{formatDate(booking.date)}</p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Assigned To</p>
-                            <p className="font-medium">
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">Assigned To</p>
+                            <p className="font-medium text-gray-300">
                               {booking.assignedTo?.name || booking.assignedTo?.email || "Unassigned"}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Total Cost</p>
-                            <p className="font-medium text-green-600">
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">Total Cost</p>
+                            <p className="font-medium" style={{ color: "#10b981" }}>
                               KES {(booking.costBreakdown?.total || 0).toLocaleString()}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Created</p>
-                            <p className="font-medium">{formatDate(booking.createdAt)}</p>
+                            <p className="text-gray-500 text-xs uppercase tracking-wider">Created</p>
+                            <p className="font-medium text-gray-300">{formatDate(booking.createdAt)}</p>
                           </div>
                         </div>
                       </div>
@@ -966,7 +976,7 @@ export default function AdminDashboard() {
                               setShowAssignModal(true);
                             }}
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700"
+                            style={{ background: "#3b82f6", color: "white" }}
                           >
                             Assign
                           </Button>
@@ -984,7 +994,7 @@ export default function AdminDashboard() {
                           }}
                           size="sm"
                           variant="outline"
-                          className="border-purple-300 text-purple-600 hover:bg-purple-50"
+                          className="border-gray-700 text-gray-300 hover:bg-gray-800"
                         >
                           Cost
                         </Button>
@@ -993,7 +1003,7 @@ export default function AdminDashboard() {
                           <Button
                             onClick={() => handleMarkPaid(booking._id)}
                             size="sm"
-                            className="bg-green-600 hover:bg-green-700"
+                            style={{ background: "#10b981", color: "white" }}
                           >
                             Mark Paid
                           </Button>
@@ -1003,7 +1013,7 @@ export default function AdminDashboard() {
                           <Button
                             onClick={() => handleMarkCompleted(booking._id)}
                             size="sm"
-                            className="bg-green-600 hover:bg-green-700"
+                            style={{ background: "#10b981", color: "white" }}
                           >
                             <CheckCircle className="w-4 h-4 mr-1" />
                             Complete
@@ -1016,6 +1026,7 @@ export default function AdminDashboard() {
                           }}
                           size="sm"
                           variant="outline"
+                          className="border-gray-700 text-gray-300 hover:bg-gray-800"
                         >
                           <Eye className="w-4 h-4" />
                         </Button>
@@ -1026,10 +1037,10 @@ export default function AdminDashboard() {
               ))}
 
               {bookings.length === 0 && (
-                <Card>
+                <Card className="bg-gray-900 border-gray-800">
                   <CardContent className="py-12 text-center">
-                    <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No bookings found</p>
+                    <Package className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+                    <p className="text-gray-400">No bookings found</p>
                   </CardContent>
                 </Card>
               )}
@@ -1042,31 +1053,34 @@ export default function AdminDashboard() {
           <div className="space-y-6">
             <br></br>
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-900">Customer Management</h1>
-              <Button onClick={fetchCustomers} variant="outline" size="sm">
+              <div>
+                <h1 className="text-3xl font-bold text-white uppercase tracking-tight">Customer Management</h1>
+                <p className="text-sm text-gray-400 mt-1">View and manage customers</p>
+              </div>
+              <Button onClick={fetchCustomers} variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
                 Refresh
               </Button>
             </div>
 
             {/* Customer Stats */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Card>
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #F97316" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Total Customers</p>
-                      <p className="text-2xl font-bold text-gray-900">{customers.length}</p>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Total Customers</p>
+                      <p className="text-2xl font-bold text-white">{customers.length}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #10b981" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Active</p>
-                      <p className="text-2xl font-bold text-green-600">
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Active</p>
+                      <p className="text-2xl font-bold" style={{ color: "#10b981" }}>
                         {customers.filter(c => c.status === "active").length}
                       </p>
                     </div>
@@ -1074,12 +1088,12 @@ export default function AdminDashboard() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-gray-900 border-gray-800" style={{ borderLeft: "3px solid #8b5cf6" }}>
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600">Total Bookings</p>
-                      <p className="text-2xl font-bold text-purple-600">
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-bold">Total Bookings</p>
+                      <p className="text-2xl font-bold text-purple-400">
                         {customers.reduce((sum, c) => sum + (c.totalBookings || 0), 0)}
                       </p>
                     </div>
