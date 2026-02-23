@@ -6,9 +6,16 @@ export default function ProtectedRoute({ allowedRoles, children }) {
   const token = getToken();
   const user = getCurrentUser();
 
-  // If not logged in, redirect to login
+  // If not logged in, redirect to appropriate login page
   if (!token || !user) {
-    return <Navigate to="/login" replace />;
+    // Determine which login page based on allowed roles
+    if (allowedRoles?.includes("admin")) {
+      return <Navigate to="/admin/login" replace />;
+    } else if (allowedRoles?.includes("employee")) {
+      return <Navigate to="/employee/login" replace />;
+    } else {
+      return <Navigate to="/login" replace />;
+    }
   }
 
   // If role is not allowed, redirect to appropriate dashboard
