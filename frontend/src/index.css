@@ -194,12 +194,12 @@ body{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFD700;
+  background: #F97316;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFA500;
+  background: #EA580C;
 }
 
 /* Text Alignment */

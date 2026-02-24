@@ -47,20 +47,46 @@ const Navbar = () => {
 
   const scrollProps = {
     smooth: true,
-    duration: 600,
+    duration: 800,
     offset: -80,
+    spy: true,
+    activeClass: "text-orange-400",
     onClick: () => setMenuOpen(false),
   };
 
   const handleNavClick = (section) => {
     setMenuOpen(false);
+    
+    // If we're not on the home page, navigate to home first
     if (location.pathname !== "/") {
       navigate("/");
+      // Wait for navigation to complete, then scroll
       setTimeout(() => {
-        document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-      }, 600);
+        const element = document.getElementById(section);
+        if (element) {
+          const offset = 80; // Account for fixed navbar
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
     } else {
-      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+      // Already on home page, just scroll
+      const element = document.getElementById(section);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
     }
   };
 

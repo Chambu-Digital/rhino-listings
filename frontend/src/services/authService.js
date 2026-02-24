@@ -42,11 +42,26 @@ export const logout = () => {
 // 🔹 GET CURRENT USER
 export const getCurrentUser = () => {
   const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
+  if (!user || user === "undefined" || user === "null") {
+    return null;
+  }
+  try {
+    return JSON.parse(user);
+  } catch (error) {
+    console.error("Error parsing user data:", error);
+    localStorage.removeItem("user");
+    return null;
+  }
 };
 
 // 🔹 GET TOKEN
-export const getToken = () => localStorage.getItem("token");
+export const getToken = () => {
+  const token = localStorage.getItem("token");
+  if (!token || token === "undefined" || token === "null") {
+    return null;
+  }
+  return token;
+};
 
 // 🧠 NEW: Initialize Auth State on App Mount
 export const initializeAuth = () => {

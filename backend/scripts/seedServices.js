@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Service from '../models/service.js';
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 const services = [
   {

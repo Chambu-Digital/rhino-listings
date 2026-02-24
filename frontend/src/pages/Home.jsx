@@ -179,7 +179,7 @@ const Home = () => {
       style={{ fontFamily: "'Barlow Condensed', 'Oswald', sans-serif" }}
     >
       {/* ── HERO ── */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+      <section id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
         <video
           ref={videoRef}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
@@ -209,10 +209,10 @@ const Home = () => {
               style={{ background: "#F97316" }}
             />
             <span
-              className="text-xs font-bold tracking-widest uppercase"
+              className="text-3xl font-bold tracking-widest uppercase"
               style={{ color: "#F97316" }}
             >
-              Trusted Since 1983 · ISO 9001:2015 Certified
+              RHINO LININGS 
             </span>
             <span
               className="w-8 h-0.5 inline-block"
@@ -237,8 +237,8 @@ const Home = () => {
             Bed Liners
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light" style={{ fontFamily: "Georgia, serif", letterSpacing: "0.01em" }}>
-            World-class spray-on polyurethane and polyurea coatings for automotive, industrial,
-            mining, marine, waterproofing and containment — engineered to outlast the conditions
+            World class spray-on polyurethane and polyurea coatings for automotive, industrial,
+            mining, marine, waterproofing and containment engineered to outlast the conditions
             your assets were built for.
           </p>
 
@@ -269,33 +269,33 @@ const Home = () => {
         </button>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">
+        {/* <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">
           <span className="text-xs uppercase tracking-widest">Scroll</span>
           <div
             className="w-px h-8"
             style={{ background: "linear-gradient(to bottom, #F97316, transparent)" }}
           />
-        </div>
+        </div> */}
       </section>
 
       {/* ── STATS STRIP ── */}
       <div style={{ background: "#F97316" }} className="py-4">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
             <div key={i} className="text-center">
               <div className="text-3xl font-black text-black">{s.value}</div>
               <div className="text-xs font-bold uppercase tracking-widest text-black/70">{s.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* ── SERVICES TABS ── */}
-      <section className="py-24 bg-gray-900">
+      <section id="services" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
-              What We Do
+              Our Services
             </p>
             <h2 className="text-5xl md:text-6xl font-black uppercase leading-none">
               Endless<br />
@@ -379,7 +379,7 @@ const Home = () => {
                 className="inline-flex items-center gap-2 px-8 py-3 font-bold uppercase tracking-wider text-sm transition-all hover:scale-105"
                 style={{ background: "#F97316", color: "#000" }}
               >
-                Learn More <FaArrowRight />
+                Learn More 
               </Link>
             </div>
           </div>
@@ -442,7 +442,7 @@ const Home = () => {
       </section>
 
       {/* ── ABOUT ── */}
-      <section className="py-24 bg-gray-900 relative overflow-hidden">
+      <section id="about" className="py-24 bg-gray-900 relative overflow-hidden">
         {/* Decorative background text */}
         <div
           className="absolute right-0 top-1/2 -translate-y-1/2 text-9xl font-black uppercase opacity-5 select-none pointer-events-none"
@@ -477,7 +477,7 @@ const Home = () => {
               className="inline-flex items-center gap-2 px-8 py-3 font-bold uppercase tracking-wider text-sm transition-all hover:scale-105"
               style={{ background: "#F97316", color: "#000" }}
             >
-              Our Story <FaArrowRight />
+              Our Story
             </Link>
           </div>
 

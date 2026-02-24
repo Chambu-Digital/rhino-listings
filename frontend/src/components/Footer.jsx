@@ -14,7 +14,7 @@ const Footer = () => {
       }}
     >
       {/* ── TOP STRIP ── */}
-      <div style={{ background: "#F97316" }} className="py-3">
+      {/* <div style={{ background: "#F97316" }} className="py-3">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs font-black uppercase tracking-widest text-black">
             Trusted Since 1983 · ISO 9001:2015 Certified · OEM Approved
@@ -25,10 +25,10 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-xs font-black uppercase tracking-widest text-black hover:opacity-80 transition-opacity"
           >
-            💬 Chat on WhatsApp →
+            💬 Chat on WhatsApp 
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* ── MAIN FOOTER ── */}
       <div className="max-w-7xl mx-auto px-6 py-14">
@@ -50,7 +50,7 @@ const Footer = () => {
                   Rhino Linings
                 </div>
                 <div className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                  Kenya
+                  Nairobi
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ const Footer = () => {
               className="text-gray-400 text-sm leading-relaxed"
               style={{ fontFamily: "Georgia, serif" }}
             >
-              Kenya's premier protective coating specialists — delivering world-class
+              Kenya's premier protective coating specialists delivering world class
               polyurethane and polyurea solutions for automotive, industrial, mining,
               marine, waterproofing and containment applications.
             </p>
@@ -104,9 +104,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: "Home", to: "/" },
-                { label: "Services", to: "/services" },
+                { label: "Our Services", to: "/services" },
                 { label: "About Us", to: "/about" },
-                { label: "Contact", to: "/contact" },
+                { label: "Contact Us", to: "/contact" },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
@@ -196,7 +196,7 @@ const Footer = () => {
                       Email
                     </p>
                     <span className="text-sm text-gray-300 group-hover:text-orange-400 transition-colors font-bold break-all">
-                      info@rhinoliningskenya.com
+                      info@rhinoliningsnairobi.co.ke
                     </span>
                   </div>
                 </a>
@@ -231,7 +231,7 @@ const Footer = () => {
       <div style={{ borderTop: "1px solid #111827" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-600 font-bold uppercase tracking-wider">
-            © {currentYear} Rhino Linings Kenya. All rights reserved.
+            © {currentYear} Rhino Linings Nairobi. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-xs text-gray-600 font-bold uppercase tracking-wider">
             <Link

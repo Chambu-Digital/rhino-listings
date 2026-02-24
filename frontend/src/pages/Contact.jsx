@@ -66,7 +66,7 @@ export default function Contact() {
     <div
       className="min-h-screen pt-20 pb-16"
       style={{
-        background: "#030712",
+        background: "#151c2fff",
         fontFamily: "'Barlow Condensed', 'Oswald', sans-serif",
       }}
     >
@@ -87,7 +87,7 @@ export default function Contact() {
               <span className="w-8 h-px" style={{ background: "#F97316" }} />
             </div>
             <h1
-              className="text-5xl md:text-6xl font-black uppercase leading-none mb-4"
+              className="text-5xl md:text-7xl font-black uppercase leading-none mb-4"
               style={{ letterSpacing: "-0.02em" }}
             >
               Get In <span style={{ color: "#F97316" }}>Touch</span>
@@ -97,7 +97,7 @@ export default function Contact() {
               style={{ fontFamily: "Georgia, serif" }}
             >
               Questions about our coatings? Ready for a quote? Our team typically
-              responds within 24 hours — or reach us instantly on WhatsApp.
+              responds within 24 hours or reach us instantly on WhatsApp.
             </p>
           </div>
         </section>
@@ -108,7 +108,7 @@ export default function Contact() {
           <a
             href="tel:+254727877651"
             className="flex items-center gap-4 p-6 transition-all hover:translate-y-[-2px] group"
-            style={{ background: "#111827", borderLeft: "3px solid #F97316" }}
+            style={{ background: "#15316fff", borderLeft: "3px solid #F97316" }}
           >
             <div
               className="w-12 h-12 flex items-center justify-center flex-shrink-0"
@@ -166,7 +166,7 @@ export default function Contact() {
         </div>
 
         {/* ── FORM + SIDEBAR ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
           {/* Contact Form */}
           <div className="lg:col-span-2" style={{ background: "#111827", border: "1px solid #1f2937" }}>
             <div
@@ -330,7 +330,7 @@ export default function Contact() {
             </div>
 
             {/* Credentials badges */}
-            <div className="grid grid-cols-2 gap-2">
+            {/* <div className="grid grid-cols-2 gap-2">
               {[
                 { top: "Trusted", bottom: "Since 1983" },
                 { top: "ISO 9001", bottom: "Certified" },
@@ -353,6 +353,87 @@ export default function Contact() {
                   </div>
                 </div>
               ))}
+            </div> */}
+          </div>
+        </div>
+
+        {/* ── GOOGLE MAP ── */}
+        <div className="mt-4">
+          <div
+            className="overflow-hidden"
+            style={{ background: "#435b8fff", border: "1px solid #1f2937" }}
+          >
+            <div
+              className="px-6 py-4 flex items-center gap-3"
+              style={{ borderBottom: "1px solid #1f2937" }}
+            >
+              <div className="w-1 h-5" style={{ background: "#F97316" }} />
+              <h2 className="font-black uppercase tracking-wider text-sm">Find Us on the Map</h2>
+              <div className="ml-auto">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=-1.3207,36.7089"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold uppercase tracking-wider text-orange-500 hover:text-orange-400 transition-colors flex items-center gap-2"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Get Directions
+                </a>
+              </div>
+            </div>
+            
+            <div className="relative w-full h-[400px] md:h-[500px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8736847892847!2d36.7089!3d-1.3207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTknMTQuNSJTIDM2wrA0MiczMi4wIkU!5e0!3m2!1sen!2ske!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Rhino Linings Kenya Location"
+                className="grayscale hover:grayscale-0 transition-all duration-500"
+              />
+              
+              {/* Overlay with address on hover */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-start gap-4">
+                  <div
+                    className="w-10 h-10 flex items-center justify-center flex-shrink-0"
+                    style={{ background: "#F97316" }}
+                  >
+                    <MapPin className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="font-black uppercase tracking-wider text-sm text-white mb-2">
+                      Rhino Linings Kenya
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed" style={{ fontFamily: "Georgia, serif" }}>
+                      Next to Insignia Motors,<br />
+                      Off Karen Road, Karen,<br />
+                      Lang'ata, Nairobi, Kenya
+                    </p>
+                    <div className="mt-3 flex gap-3">
+                      <a
+                        href="https://www.google.com/maps/dir/?api=1&destination=-1.3207,36.7089"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold uppercase tracking-wider px-4 py-2 transition-all hover:brightness-110"
+                        style={{ background: "#F97316", color: "#000" }}
+                      >
+                        Navigate
+                      </a>
+                      <a
+                        href="tel:+254727877651"
+                        className="text-xs font-bold uppercase tracking-wider px-4 py-2 border transition-all hover:bg-gray-800"
+                        style={{ borderColor: "#F97316", color: "#F97316" }}
+                      >
+                        Call Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

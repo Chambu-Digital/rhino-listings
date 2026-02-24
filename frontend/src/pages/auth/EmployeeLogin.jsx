@@ -17,7 +17,7 @@ export default function EmployeeLogin() {
     setLoading(true);
 
     try {
-      const res = await API.post("/auth/login", formData);
+      const res = await API.post("/auth/login", { ...formData, role: 'employee' });
       const { token, user } = res.data;
 
       if (user.role !== "employee") {
@@ -55,43 +55,44 @@ export default function EmployeeLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-900 flex items-center justify-center p-4 pt-24">
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4 pt-24">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Employee Portal</h1>
-          <p className="text-emerald-200">Rhino Linings Team Access</p>
+          <h1 className="text-3xl font-bold text-white mb-2 uppercase tracking-wider" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>Employee Portal</h1>
+          <p className="text-gray-400">Rhino Linings Team Access</p>
         </div>
 
         {/* Login Card */}
-        <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur">
+        <Card className="border border-gray-800 shadow-2xl bg-gray-900">
           <CardContent className="p-8">
             <div className="mb-6">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
-                <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Employee Access Only</span>
+                <br></br>
+                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                <span className="text-xs font-semibold text-orange-500 uppercase tracking-wide">Employee Access Only</span>
               </div>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Team Login</h2>
-              <p className="text-gray-600">Access your tasks and assignments</p>
+              <h2 className="text-2xl font-bold text-white mb-2">Team Login</h2>
+              <p className="text-gray-400">Access your tasks and assignments</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email Field */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-4 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                     placeholder="employee@rhinolinings.com"
                     required
                   />
@@ -100,23 +101,23 @@ export default function EmployeeLogin() {
 
               {/* Password Field */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type={showPassword ? "text" : "password"}
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-11 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-12 py-3 bg-gray-800 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                     placeholder="Enter your password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -126,10 +127,10 @@ export default function EmployeeLogin() {
               {/* Remember & Forgot */}
               <div className="flex items-center justify-between">
                 <label className="flex items-center">
-                  <input type="checkbox" className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500" />
-                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                  <input type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500" />
+                  <span className="ml-2 text-sm text-gray-400">Remember me</span>
                 </label>
-                <Link to="/forgot-password" className="text-sm text-emerald-600 hover:text-emerald-700 font-medium">
+                <Link to="/forgot-password" className="text-sm text-orange-500 hover:text-orange-400 font-medium">
                   Forgot password?
                 </Link>
               </div>
@@ -138,7 +139,7 @@ export default function EmployeeLogin() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -157,35 +158,35 @@ export default function EmployeeLogin() {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-gray-800"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Need different access?</span>
+                <span className="px-2 bg-gray-900 text-gray-500">Need different access?</span>
               </div>
             </div>
 
             {/* Alternative Logins */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <p className="text-xs text-gray-500 text-center mb-2">Not an employee?</p>
               <Link
                 to="/admin/login"
-                className="flex items-center justify-center gap-2 w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 w-full py-2.5 border border-gray-800 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium"
               >
                 <span>Admin Login</span>
               </Link>
               <Link
                 to="/account/login"
-                className="flex items-center justify-center gap-2 w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 w-full py-2.5 border border-gray-800 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium"
               >
                 <span>Customer Login</span>
               </Link>
-            </div>
+            </div> */}
 
             {/* Help Text */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Need help?{" "}
-                <Link to="/contact" className="text-emerald-600 hover:text-emerald-700 font-medium">
+                <Link to="/contact" className="text-orange-500 hover:text-orange-400 font-medium">
                   Contact Admin
                 </Link>
               </p>
@@ -195,15 +196,15 @@ export default function EmployeeLogin() {
 
         {/* Footer */}
         <div className="mt-6 text-center">
-          <div className="bg-emerald-900/30 backdrop-blur border border-emerald-400/30 rounded-lg p-4 mb-4">
-            <p className="text-sm text-emerald-100 mb-2">
-              <span className="font-semibold">Employee Portal:</span> Access your work assignments
+          <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-lg p-4 mb-4">
+            <p className="text-sm text-gray-300 mb-2">
+              <span className="font-semibold text-orange-500">Employee Portal:</span> Access your work assignments
             </p>
-            <p className="text-xs text-emerald-200">
+            <p className="text-xs text-gray-400">
               View tasks, update job progress, and manage customer requests
             </p>
           </div>
-          <p className="text-sm text-emerald-200">© 2024 Rhino Linings. All rights reserved.</p>
+          <p className="text-sm text-gray-500">© 2024 Rhino Linings. All rights reserved.</p>
         </div>
       </div>
     </div>

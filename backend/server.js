@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
 
+// Load environment variables
+dotenv.config({ path: '.env.local' });
+
 // Import route modules
 import adminRoutes from "./routes/adminRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
@@ -77,7 +80,7 @@ app.use((err, req, res, next) => {
 });
 
 // ✅ Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, () =>
   console.log(`🚀 Server running on http://localhost:${PORT}`)
 );
