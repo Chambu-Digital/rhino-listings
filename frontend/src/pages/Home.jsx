@@ -1,9 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaVolumeMute, FaVolumeUp, FaPhone, FaArrowRight, FaCheckCircle } from "react-icons/fa";
 
 const Home = () => {
-  const [muted, setMuted] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [activeService, setActiveService] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -15,12 +13,33 @@ const Home = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMute = () => {
-    setMuted(!muted);
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
+  // Set video to play middle section only (avoiding watermarks)
+  useEffect(() => {
+    if (videoRef.current && videoLoaded) {
+      const video = videoRef.current;
+      
+      // Get video duration and calculate middle section
+      const duration = video.duration;
+      const startTime = duration * 0.15; // Start at 15% of video
+      const endTime = duration * 0.85;   // End at 85% of video
+      
+      // Set initial start time
+      video.currentTime = startTime;
+      
+      // Loop only the middle section
+      const handleTimeUpdate = () => {
+        if (video.currentTime >= endTime) {
+          video.currentTime = startTime;
+        }
+      };
+      
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      
+      return () => {
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+      };
     }
-  };
+  }, [videoLoaded]);
 
   const services = [
     {
@@ -185,9 +204,8 @@ const Home = () => {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
-          src="/videos/rhino-lining.mp4"
+          src="/videos/hero-bg-video.mp4"
           autoPlay
-          loop
           muted
           playsInline
           onCanPlay={() => setVideoLoaded(true)}
@@ -259,14 +277,6 @@ const Home = () => {
             </Link>
           </div>
         </div>
-
-        {/* Mute button */}
-        <button
-          onClick={toggleMute}
-          className="absolute bottom-8 right-8 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-colors"
-        >
-          {muted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
-        </button>
 
         {/* Scroll indicator */}
         {/* <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">
