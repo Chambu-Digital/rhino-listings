@@ -13,7 +13,7 @@ const serviceSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['Vehicle Coating', 'Industrial', 'Commercial', 'Custom', 'Marine', 'Mining', 'Waterproofing', 'Containment']
+    enum: ['Vehicle Coating', 'Industrial', 'Commercial', 'Custom', 'Marine', 'Mining', 'Waterproofing', 'Containment', 'Agricultural']
   },
   features: [{
     type: String
@@ -26,7 +26,7 @@ const serviceSchema = new mongoose.Schema({
   priceUnit: {
     type: String,
     required: true,
-    enum: ['per_vehicle', 'per_sqm', 'fixed', 'per_hour'],
+    enum: ['per_vehicle', 'per_sqm', 'fixed', 'per_hour', 'custom'],
     default: 'fixed'
   },
   estimatedDuration: {

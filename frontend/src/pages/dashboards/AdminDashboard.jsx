@@ -132,54 +132,60 @@ export default function AdminDashboard() {
   const fetchBookings = async () => {
     try {
       const res = await API.get("/services/all");
-      setBookings(res.data);
+      setBookings(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching bookings:", err);
+      setBookings([]);
     }
   };
 
   const fetchEmployees = async () => {
     try {
       const res = await API.get("/employee");
-      setEmployees(res.data);
+      setEmployees(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching employees:", err);
+      setEmployees([]);
     }
   };
 
   const fetchTasks = async () => {
     try {
       const res = await API.get("/tasks");
-      setTasks(res.data);
+      setTasks(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching tasks:", err);
+      setTasks([]);
     }
   };
 
   const fetchServices = async () => {
     try {
       const res = await API.get("/service-management");
-      setServices(res.data);
+      setServices(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching services:", err);
+      setServices([]);
     }
   };
 
   const fetchCustomers = async () => {
     try {
       const res = await API.get("/customers");
-      setCustomers(res.data);
+      setCustomers(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching customers:", err);
+      setCustomers([]);
     }
   };
 
   const fetchQuotations = async () => {
     try {
       const res = await API.get("/quotations");
-      setQuotations(res.data);
+      setQuotations(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching quotations:", err);
+      setQuotations([]);
     }
   };
 
@@ -485,7 +491,15 @@ export default function AdminDashboard() {
       estimatedDuration: service.estimatedDuration || "",
       imageUrl: service.imageUrl || ""
     });
-    setServiceImagePreview(service.imageUrl || null);
+    // Set preview with full URL if it's a relative path
+    if (service.imageUrl) {
+      const fullUrl = service.imageUrl.startsWith('/') 
+        ? `http://localhost:5002${service.imageUrl}` 
+        : service.imageUrl;
+      setServiceImagePreview(fullUrl);
+    } else {
+      setServiceImagePreview(null);
+    }
     setServiceImageFile(null);
     setShowServiceModal(true);
   };
@@ -2565,9 +2579,27 @@ export default function AdminDashboard() {
                     <input
                       type="url"
                       value={serviceForm.imageUrl}
-                      onChange={(e) => setServiceForm({ ...serviceForm, imageUrl: e.target.value })}
+                      onChange={(e) => {
+                        const url = e.target.value;
+                        setServiceForm({ ...serviceForm, imageUrl: url });
+                        // Update preview when URL is entered
+                        if (url && !serviceImageFile) {
+                          setServiceImagePreview(url);
+                        } else if (!url) {
+                          setServiceImagePreview(null);
+                        }
+                      }}
+                      onBlur={(e) => {
+                        // Update preview on blur as well
+                        const url = e.target.value;
+                        if (url && !serviceImageFile) {
+                          // Check if it's a relative URL (from our uploads)
+                          const fullUrl = url.startsWith('/') ? `http://localhost:5002${url}` : url;
+                          setServiceImagePreview(fullUrl);
+                        }
+                      }}
                       className="w-full p-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="https://example.com/image.jpg"
+                      placeholder="https://example.com/image.jpg or /uploads/services/image.jpg"
                       disabled={!!serviceImageFile}
                     />
                   </div>

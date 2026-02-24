@@ -218,14 +218,14 @@ export default function Services() {
             className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            From truck bed liners to mining containment — our polyurethane and polyurea
+            From truck bed liners to mining containment our polyurethane and polyurea
             coatings bond to virtually any substrate, in virtually any environment.
           </p>
         </div>
       </section>
 
       {/* ── APPLICATION AREAS STRIP ── */}
-      <div style={{ background: "#111827", borderBottom: "1px solid #1f2937" }}>
+      <div style={{ background: "#223152ff", borderBottom: "1px solid #1f2937" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-3 md:grid-cols-6 gap-4">
           {applicationAreas.map((area, i) => (
             <div key={i} className="text-center">
@@ -262,18 +262,22 @@ export default function Services() {
                 key={service._id || index}
                 className="group flex flex-col overflow-hidden transition-all hover:translate-y-[-4px]"
                 style={{
-                  background: "#111827",
+                  background: "#233252ff",
                   border: "1px solid #1f2937",
                 }}
               >
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden bg-gray-800">
                   <img
-                    src={service.imageUrl || service.image || "/images/vehicle-before-after.jpg"}
+                    src={
+                      service.imageUrl?.startsWith('/') 
+                        ? `http://localhost:5002${service.imageUrl}` 
+                        : service.imageUrl || "/images/vehicle-before-after.jpg"
+                    }
                     alt={service.name || service.title}
                     className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = "/images/vehicle-before-after.jpg";
+                      e.target.src = "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80";
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
@@ -413,7 +417,7 @@ export default function Services() {
               <div
                 key={i}
                 className="flex gap-4 p-6 transition-all hover:translate-y-[-2px]"
-                style={{ background: "#111827", border: "1px solid #1f2937" }}
+                style={{ background: "#1d2431ff", border: "1px solid #1f2937" }}
               >
                 <div className="text-2xl flex-shrink-0">{item.icon}</div>
                 <div>
@@ -434,7 +438,7 @@ export default function Services() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="px-6 py-20 bg-gray-900">
+      <section className="px-6 py-20 bg-gray-800">
         <div
           className="max-w-4xl mx-auto p-12 text-center"
           style={{ border: "2px solid #F97316" }}

@@ -355,14 +355,28 @@ const UserDashboard = () => {
                 Welcome back, {currentUser?.name || currentUser?.email || 'User'}!
               </p>
             </div>
-            <Button 
-              onClick={() => setActiveTab("quotation")}
-              size="sm"
-              className="text-black"
-              style={{ background: "#F97316" }}
-            >
-              <span className="hidden sm:inline">Get Quote</span>
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button 
+                onClick={() => window.open('/', '_blank')} 
+                variant="outline" 
+                size="sm"
+                className="flex items-center gap-2 !text-gray-300 hover:!text-white border-gray-700 hover:bg-gray-800"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                <span className="hidden sm:inline">View Site</span>
+              </Button>
+              <Button 
+                onClick={() => setActiveTab("quotation")}
+                size="sm"
+                className="text-black"
+                style={{ background: "#F97316" }}
+              >
+                <span className="hidden sm:inline">Get Quote</span>
+                <span className="sm:hidden">Quote</span>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

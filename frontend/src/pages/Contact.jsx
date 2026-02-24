@@ -168,10 +168,10 @@ export default function Contact() {
         {/* ── FORM + SIDEBAR ── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
           {/* Contact Form */}
-          <div className="lg:col-span-2" style={{ background: "#111827", border: "1px solid #1f2937" }}>
+          <div className="lg:col-span-2" style={{ background: "#232d42ff", border: "1px solid #1f2937" }}>
             <div
               className="px-6 py-4 flex items-center gap-3"
-              style={{ borderBottom: "1px solid #1f2937" }}
+              style={{ borderBottom: "1px solid #b3c5deff" }}
             >
               <div className="w-1 h-5" style={{ background: "#F97316" }} />
               <h2 className="font-black uppercase tracking-wider text-sm">Send Us a Message</h2>
