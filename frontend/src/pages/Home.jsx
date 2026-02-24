@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import heroVideo from "../assets/images/hero-bg-video.mp4";
 
 const Home = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -7,6 +8,9 @@ const Home = () => {
   const [activeService, setActiveService] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef(null);
+
+  // Video URL - imported from assets
+  const videoUrl = heroVideo;
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -257,7 +261,7 @@ const Home = () => {
             setVideoLoaded(false);
           }}
         >
-          <source src="/videos/hero-bg-video.mp4" type="video/mp4" />
+          <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Overlay */}
