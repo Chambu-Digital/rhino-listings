@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const [activeService, setActiveService] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef(null);
@@ -18,26 +19,38 @@ const Home = () => {
     if (videoRef.current && videoLoaded) {
       const video = videoRef.current;
       
-      // Get video duration and calculate middle section
-      const duration = video.duration;
-      const startTime = duration * 0.15; // Start at 15% of video
-      const endTime = duration * 0.85;   // End at 85% of video
-      
-      // Set initial start time
-      video.currentTime = startTime;
-      
-      // Loop only the middle section
-      const handleTimeUpdate = () => {
-        if (video.currentTime >= endTime) {
-          video.currentTime = startTime;
-        }
+      // Wait for metadata to load
+      const handleLoadedMetadata = () => {
+        const duration = video.duration;
+        const startTime = duration * 0.15; // Start at 15% of video
+        const endTime = duration * 0.85;   // End at 85% of video
+        
+        // Set initial start time
+        video.currentTime = startTime;
+        
+        // Loop only the middle section
+        const handleTimeUpdate = () => {
+          if (video.currentTime >= endTime) {
+            video.currentTime = startTime;
+          }
+        };
+        
+        video.addEventListener('timeupdate', handleTimeUpdate);
+        
+        return () => {
+          video.removeEventListener('timeupdate', handleTimeUpdate);
+        };
       };
-      
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      
-      return () => {
-        video.removeEventListener('timeupdate', handleTimeUpdate);
-      };
+
+      if (video.readyState >= 1) {
+        // Metadata already loaded
+        handleLoadedMetadata();
+      } else {
+        video.addEventListener('loadedmetadata', handleLoadedMetadata);
+        return () => {
+          video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        };
+      }
     }
   }, [videoLoaded]);
 
@@ -199,17 +212,54 @@ const Home = () => {
     >
       {/* ── HERO ── */}
       <section id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+        {/* Fallback background if video doesn't load */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80')",
+            opacity: videoError || !videoLoaded ? 1 : 0,
+            transition: 'opacity 1s'
+          }}
+        />
+        
+        {/* Loading indicator */}
+        {!videoLoaded && !videoError && (
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="text-center">
+              <div
+                className="w-12 h-12 border-2 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+                style={{ borderColor: "#F97316", borderTopColor: "transparent" }}
+              />
+              <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">
+                Loading video...
+              </p>
+            </div>
+          </div>
+        )}
+        
         <video
           ref={videoRef}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
+            videoLoaded && !videoError ? "opacity-100" : "opacity-0"
           }`}
-          src="/videos/hero-bg-video.mp4"
           autoPlay
           muted
           playsInline
-          onCanPlay={() => setVideoLoaded(true)}
-        />
+          preload="auto"
+          onLoadedData={() => {
+            console.log('Video loaded successfully');
+            setVideoLoaded(true);
+            setVideoError(false);
+          }}
+          onError={(e) => {
+            console.error('Video failed to load:', e);
+            setVideoError(true);
+            setVideoLoaded(false);
+          }}
+        >
+          <source src="/videos/hero-bg-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-gray-950" />
 
