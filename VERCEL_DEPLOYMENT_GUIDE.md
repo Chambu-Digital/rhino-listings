@@ -14,16 +14,18 @@ You need to add the following environment variables to your Vercel project:
 #### Required Variables:
 
 ```
-MONGODB_URI=mongodb+srv://jayjeremy2000_db_user:k3qIRrkg12wuQMdZ@rhinolinings.f72huux.mongodb.net/rhinolinings?retryWrites=true&w=majority
+MONGODB_URI=your_mongodb_connection_string_here
 
-JWT_SECRET=iutyrue5ysd7uig7te555765456e6rfvry6566r56dtvgdrcrsrertr6vuhut75665456ytfcff
+JWT_SECRET=your_jwt_secret_here
 
 NODE_ENV=production
 
-IMG_API_KEY=khyp9o8wiu5asjdfoikljhgfdhxhcjkhjfhdjkljhcgvbk
+IMG_API_KEY=your_image_api_key_here
 
 PORT=5002
 ```
+
+**Important**: Replace the placeholder values with your actual credentials. Never commit these values to version control.
 
 ### For Frontend Deployment
 
