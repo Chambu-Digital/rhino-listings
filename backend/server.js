@@ -9,6 +9,7 @@ dotenv.config({ path: '.env.local' });
 // Import route modules
 import adminRoutes from "./routes/adminRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import bannerRoutes from "./routes/bannerRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
 import documentsRoutes from "./routes/documentsRoutes.js";
@@ -39,9 +40,9 @@ app.use(
   })
 );
 
-// ✅ Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// ✅ Middleware - Increase limit for base64 images
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Serve uploaded files
 app.use("/uploads", express.static("uploads"));
@@ -52,6 +53,7 @@ connectDB();
 // ✅ Mount Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/banner", bannerRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/documents", documentsRoutes);

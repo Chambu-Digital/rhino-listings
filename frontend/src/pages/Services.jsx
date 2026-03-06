@@ -208,8 +208,7 @@ export default function Services() {
             className="text-6xl md:text-8xl font-black uppercase leading-none mb-8"
             style={{
               letterSpacing: "-0.02em",
-              WebkitTextStroke: "2px #F97316",
-              color: "transparent",
+              color: "#F97316",
             }}
           >
             Services
@@ -225,7 +224,7 @@ export default function Services() {
       </section>
 
       {/* ── APPLICATION AREAS STRIP ── */}
-      <div style={{ background: "#223152ff", borderBottom: "1px solid #1f2937" }}>
+      {/* <div style={{ background: "#223152ff", borderBottom: "1px solid #1f2937" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-3 md:grid-cols-6 gap-4">
           {applicationAreas.map((area, i) => (
             <div key={i} className="text-center">
@@ -240,7 +239,7 @@ export default function Services() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto">

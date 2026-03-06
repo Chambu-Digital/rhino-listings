@@ -204,7 +204,6 @@ export default function AdminLogin() {
               Manage users, services, employees, and view comprehensive reports
             </p>
           </div>
-          <p className="text-sm text-gray-500">© 2024 Rhino Linings. All rights reserved.</p>
         </div>
       </div>
     </div>

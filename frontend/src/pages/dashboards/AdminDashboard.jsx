@@ -11,6 +11,7 @@ import {
   DollarSign,
   Eye,
   EyeOff,
+  Image,
   Menu,
   Package,
   Plus,
@@ -42,6 +43,7 @@ export default function AdminDashboard() {
   const [employees, setEmployees] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [services, setServices] = useState([]);
+  const [banner, setBanner] = useState(null);
   const [customers, setCustomers] = useState([]);
   const [quotations, setQuotations] = useState([]);
   const [stats, setStats] = useState({});
@@ -105,6 +107,17 @@ export default function AdminDashboard() {
   const [serviceImagePreview, setServiceImagePreview] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
 
+  // Banner management state
+  const [bannerForm, setBannerForm] = useState({
+    title: 'Hero Banner',
+    videoUrl: '',
+    videoType: 'url',
+    fallbackImage: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80'
+  });
+  const [bannerVideoFile, setBannerVideoFile] = useState(null);
+  const [bannerImageFile, setBannerImageFile] = useState(null);
+  const [uploadingBanner, setUploadingBanner] = useState(false);
+
   useEffect(() => {
     fetchData();
     const interval = setInterval(fetchData, 30000);
@@ -123,6 +136,7 @@ export default function AdminDashboard() {
       fetchEmployees(),
       fetchTasks(),
       fetchServices(),
+      fetchBanner(),
       fetchCustomers(),
       fetchQuotations(),
       fetchStats()
@@ -166,6 +180,21 @@ export default function AdminDashboard() {
     } catch (err) {
       console.error("Error fetching services:", err);
       setServices([]);
+    }
+  };
+
+  const fetchBanner = async () => {
+    try {
+      const res = await API.get("/banner/active");
+      setBanner(res.data);
+      setBannerForm({
+        title: res.data.title || 'Hero Banner',
+        videoUrl: res.data.videoUrl || '',
+        videoType: res.data.videoType || 'url',
+        fallbackImage: res.data.fallbackImage || 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80'
+      });
+    } catch (err) {
+      console.error("Error fetching banner:", err);
     }
   };
 
@@ -562,6 +591,7 @@ export default function AdminDashboard() {
     { id: "tasks", label: "Tasks", icon: <ClipboardList className="w-5 h-5" /> },
     { id: "employees", label: "Employees", icon: <Users className="w-5 h-5" /> },
     { id: "services", label: "Services", icon: <Package className="w-5 h-5" /> },
+    { id: "banner", label: "Banner", icon: <Image className="w-5 h-5" /> },
     { id: "reports", label: "Reports", icon: <TrendingUp className="w-5 h-5" /> },
   ];
 
@@ -1842,6 +1872,235 @@ export default function AdminDashboard() {
                 ))
               )}
             </div>
+          </div>
+        )}
+
+        {/* Banner Management View */}
+        {activeView === "banner" && (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold" style={{ color: "#F97316" }}>Banner Management</h1>
+              <p className="text-gray-400 mt-1">Manage hero section video banner</p>
+            </div>
+
+            <Card style={{ background: "#111827", border: "1px solid #1f2937" }}>
+              <CardHeader>
+                <CardTitle style={{ color: "#F97316" }}>Upload Video File</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Upload Video (MP4, WebM, max 50MB)
+                  </label>
+                  <input
+                    type="file"
+                    accept="video/mp4,video/webm"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        if (file.size > 50 * 1024 * 1024) {
+                          toast.error("Video file must be less than 50MB");
+                          return;
+                        }
+                        setBannerVideoFile(file);
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setBannerForm({...bannerForm, videoUrl: reader.result, videoType: 'base64'});
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-black hover:file:bg-orange-600"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Upload a video file directly. It will be stored in the database.</p>
+                </div>
+
+                {bannerVideoFile && (
+                  <div className="p-3 bg-gray-900 rounded-lg flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-300">Selected: <span className="text-orange-400">{bannerVideoFile.name}</span></p>
+                      <p className="text-xs text-gray-500">Size: {(bannerVideoFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                    </div>
+                    <Button
+                      onClick={() => {
+                        setBannerVideoFile(null);
+                        setBannerForm({...bannerForm, videoUrl: '', videoType: 'url'});
+                      }}
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-400 hover:text-red-300 hover:bg-red-950"
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                )}
+
+                <div className="border-t border-gray-700 pt-4"><p className="text-sm font-medium text-gray-400 mb-2">OR</p></div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Video URL (Hosted)</label>
+                  <input
+                    type="url"
+                    value={bannerForm.videoType === 'url' ? bannerForm.videoUrl : ''}
+                    onChange={(e) => {
+                      setBannerForm({...bannerForm, videoUrl: e.target.value, videoType: 'url'});
+                      setBannerVideoFile(null);
+                    }}
+                    placeholder="https://your-cdn.com/video.mp4"
+                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md focus:ring-2 focus:ring-orange-500"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Or paste a URL from Cloudinary, Bunny.net, or any CDN</p>
+                </div>
+
+                {bannerForm.videoUrl && (
+                  <div className="mt-4">
+                    <p className="text-sm font-medium text-gray-300 mb-2">Preview:</p>
+                    <video src={bannerForm.videoUrl} className="w-full max-w-md h-48 object-cover rounded-lg" controls muted />
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card style={{ background: "#111827", border: "1px solid #1f2937" }}>
+              <CardHeader>
+                <CardTitle style={{ color: "#F97316" }}>Fallback Image</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Upload Fallback Image (JPG, PNG, max 5MB)</label>
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        if (file.size > 5 * 1024 * 1024) {
+                          toast.error("Image file must be less than 5MB");
+                          return;
+                        }
+                        setBannerImageFile(file);
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setBannerForm({...bannerForm, fallbackImage: reader.result});
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-black hover:file:bg-orange-600"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">This image shows while the video is loading or if video fails</p>
+                </div>
+
+                {bannerImageFile && (
+                  <div className="p-3 bg-gray-900 rounded-lg flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-300">Selected: <span className="text-orange-400">{bannerImageFile.name}</span></p>
+                      <p className="text-xs text-gray-500">Size: {(bannerImageFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                    </div>
+                    <Button
+                      onClick={() => {
+                        setBannerImageFile(null);
+                        setBannerForm({...bannerForm, fallbackImage: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80'});
+                      }}
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-400 hover:text-red-300 hover:bg-red-950"
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                )}
+
+                <div className="border-t border-gray-700 pt-4"><p className="text-sm font-medium text-gray-400 mb-2">OR</p></div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Fallback Image URL</label>
+                  <input
+                    type="url"
+                    value={bannerForm.fallbackImage.startsWith('data:') ? '' : bannerForm.fallbackImage}
+                    onChange={(e) => {
+                      setBannerForm({...bannerForm, fallbackImage: e.target.value});
+                      setBannerImageFile(null);
+                    }}
+                    placeholder="https://images.unsplash.com/..."
+                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md focus:ring-2 focus:ring-orange-500"
+                  />
+                </div>
+
+                {bannerForm.fallbackImage && (
+                  <div className="mt-4">
+                    <p className="text-sm font-medium text-gray-300 mb-2">Preview:</p>
+                    <img src={bannerForm.fallbackImage} alt="Fallback preview" className="w-full max-w-md h-48 object-cover rounded-lg" />
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <Button
+              onClick={async () => {
+                try {
+                  setUploadingBanner(true);
+                  await API.post("/banner", bannerForm);
+                  toast.success("Banner updated successfully!");
+                  fetchBanner();
+                  setBannerVideoFile(null);
+                  setBannerImageFile(null);
+                } catch (error) {
+                  toast.error(error.response?.data?.message || "Error updating banner");
+                  console.error(error);
+                } finally {
+                  setUploadingBanner(false);
+                }
+              }}
+              disabled={uploadingBanner}
+              className="w-full text-black hover:opacity-90"
+              style={{ background: "#F97316" }}
+            >
+              {uploadingBanner ? "Uploading..." : "Update Banner"}
+            </Button>
+
+            {banner && banner.videoUrl && (
+              <Button
+                onClick={() => {
+                  if (window.confirm("Are you sure you want to clear the current banner? This will remove the video and reset to default.")) {
+                    setBannerForm({
+                      title: 'Hero Banner',
+                      videoUrl: '',
+                      videoType: 'url',
+                      fallbackImage: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920&q=80'
+                    });
+                    setBannerVideoFile(null);
+                    setBannerImageFile(null);
+                    toast.success("Banner cleared. Click 'Update Banner' to save changes.");
+                  }
+                }}
+                variant="outline"
+                className="w-full border-red-500 text-red-400 hover:bg-red-950 hover:text-red-300"
+              >
+                Clear Current Banner
+              </Button>
+            )}
+
+            <Card style={{ background: "#111827", border: "1px solid #1f2937" }}>
+              <CardHeader>
+                <CardTitle style={{ color: "#F97316" }}>Instructions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-gray-400">
+                <p className="font-medium text-gray-300">Option 1: Upload Files</p>
+                <ul className="list-disc list-inside space-y-1 text-xs ml-2">
+                  <li>Upload video directly (max 50MB, MP4 or WebM format)</li>
+                  <li>Upload fallback image (max 5MB, JPG or PNG)</li>
+                  <li>Files are stored in the database as base64</li>
+                </ul>
+                <p className="font-medium text-gray-300 mt-4">Option 2: Use Hosted URLs</p>
+                <ul className="list-disc list-inside space-y-1 text-xs ml-2">
+                  <li>Upload to Cloudinary, Bunny.net, or AWS S3</li>
+                  <li>Paste the direct URL in the form</li>
+                  <li>Better for large files (50MB+)</li>
+                </ul>
+                <p className="text-orange-500 font-medium mt-4">⚠️ Note: Large files stored in database may slow down your site. For videos over 50MB, use a CDN instead.</p>
+              </CardContent>
+            </Card>
           </div>
         )}
 

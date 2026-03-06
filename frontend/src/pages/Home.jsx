@@ -1,29 +1,75 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+
+// Import local images for service icons
+import automotiveIcon from "../assets/images/truckliners.jpeg";
+import industrialIcon from "../assets/images/image3.jpeg";
+import miningIcon from "../assets/images/images.jpeg";
+import marineIcon from "../assets/images/end-product.jpeg";
+import waterproofingIcon from "../assets/images/image3.jpeg";
+import containmentIcon from "../assets/images/images.jpeg";
 
 const Home = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const [activeService, setActiveService] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [banner, setBanner] = useState(null);
   const videoRef = useRef(null);
 
-  // Video URL - use environment variable for hosted video, fallback to local import in development
-  const videoUrl = import.meta.env.VITE_HERO_VIDEO_URL || (() => {
+  // Fetch banner data
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        // Add cache-busting timestamp to force fresh data
+        const timestamp = new Date().getTime();
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5002'}/api/banner/active?t=${timestamp}`, {
+          cache: 'no-store', // Disable caching
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
+        });
+        const data = await response.json();
+        setBanner(data);
+        console.log('Banner fetched:', data); // Debug log
+      } catch (error) {
+        console.error('Error fetching banner:', error);
+      }
+    };
+    fetchBanner();
+  }, []);
+
+  // Video URL - use banner data or fallback (recompute when banner changes)
+  const videoUrl = useMemo(() => {
+    if (banner?.videoUrl) {
+      console.log('Using banner video:', banner.videoUrl.substring(0, 50) + '...'); // Debug log
+      return banner.videoUrl;
+    }
+    if (import.meta.env.VITE_HERO_VIDEO_URL) {
+      return import.meta.env.VITE_HERO_VIDEO_URL;
+    }
     try {
       return new URL('../assets/images/hero-bg-video.mp4', import.meta.url).href;
     } catch {
-      
       return '/videos/hero-bg-video.mp4';
-
     }
-  })();
+  }, [banner]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Reset video when URL changes
+  useEffect(() => {
+    if (videoRef.current) {
+      setVideoLoaded(false);
+      setVideoError(false);
+      videoRef.current.load(); // Force reload
+    }
+  }, [videoUrl]);
 
   // Set video to play middle section only (avoiding watermarks)
   useEffect(() => {
@@ -69,7 +115,7 @@ const Home = () => {
     {
       id: "automotive",
       label: "Automotive",
-      iconImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&h=400&fit=crop",
+      iconImage: automotiveIcon,
       headline: "Protect Your Vehicle Investment",
       image: "/images/vehicle-before-after.jpg",
       description:
@@ -78,7 +124,6 @@ const Home = () => {
         "100% polyurethane protection",
         "Slip-resistant textured finish",
         "Air- & watertight bond prevents rust",
-        "3-Year transferable warranty",
         "Increases resale value",
         "Available in virtually any colour",
       ],
@@ -87,7 +132,7 @@ const Home = () => {
     {
       id: "industrial",
       label: "Industrial",
-      iconImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=400&fit=crop",
+      iconImage: industrialIcon,
       headline: "Industrial-Grade Surface Protection",
       image: "/images/industrial-coating.jpg",
       description:
@@ -102,46 +147,46 @@ const Home = () => {
       ],
       accent: "#F97316",
     },
-    {
-      id: "mining",
-      label: "Mining",
-      iconImage: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&h=400&fit=crop",
-      headline: "Proven in the Harshest Environments",
-      image: "/images/mining.jpg",
-      description:
-        "From arctic Canada to the Atacama Desert, Rhino Linings has proven itself in mining's most demanding conditions — reducing unplanned downtime and extending asset lifespan.",
-      features: [
-        "Chutes, hoppers & pulleys",
-        "Conveyor belts & hoods",
-        "Chemical containment",
-        "Tailings storage facilities",
-        "Reduces carry back",
-        "Proven abrasive & impact protection",
-      ],
-      accent: "#F97316",
-    },
-    {
-      id: "marine",
-      label: "Marine",
-      iconImage: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=400&h=400&fit=crop",
-      headline: "From Dinghies to Commercial Ships",
-      image: "/images/custom-sprayon.jpg",
-      description:
-        "Marine vessels endure sun, wind, water, and constant impact. Our seamless, hygienic linings replace rotten carpets and resist fuel, blood, and salt — protecting everything from ski boats to navy ships.",
-      features: [
-        "Ski boats & fishing boats",
-        "Sailing & motor yachts",
-        "Commercial & navy ships",
-        "Houseboats & boat trailers",
-        "Resists corrosive elements",
-        "Easy to clean seamless finish",
-      ],
-      accent: "#F97316",
-    },
+    // {
+    //   id: "mining",
+    //   label: "Mining",
+    //   iconImage: miningIcon,
+    //   headline: "Proven in the Harshest Environments",
+    //   image: "/images/mining.jpg",
+    //   description:
+    //     "From arctic Canada to the Atacama Desert, Rhino Linings has proven itself in mining's most demanding conditions — reducing unplanned downtime and extending asset lifespan.",
+    //   features: [
+    //     "Chutes, hoppers & pulleys",
+    //     "Conveyor belts & hoods",
+    //     "Chemical containment",
+    //     "Tailings storage facilities",
+    //     "Reduces carry back",
+    //     "Proven abrasive & impact protection",
+    //   ],
+    //   accent: "#F97316",
+    // },
+    // {
+    //   id: "marine",
+    //   label: "Marine",
+    //   iconImage: marineIcon,
+    //   headline: "From Dinghies to Commercial Ships",
+    //   image: "/images/custom-sprayon.jpg",
+    //   description:
+    //     "Marine vessels endure sun, wind, water, and constant impact. Our seamless, hygienic linings replace rotten carpets and resist fuel, blood, and salt — protecting everything from ski boats to navy ships.",
+    //   features: [
+    //     "Ski boats & fishing boats",
+    //     "Sailing & motor yachts",
+    //     "Commercial & navy ships",
+    //     "Houseboats & boat trailers",
+    //     "Resists corrosive elements",
+    //     "Easy to clean seamless finish",
+    //   ],
+    //   accent: "#F97316",
+    // },
     {
       id: "waterproofing",
       label: "Waterproofing",
-      iconImage: "https://images.unsplash.com/photo-1563207153-f403bf289096?w=400&h=400&fit=crop",
+      iconImage: waterproofingIcon,
       headline: "Seamless Protection Against Water Ingress",
       image: "/images/waterproofing.jpg",
       description:
@@ -159,7 +204,7 @@ const Home = () => {
     {
       id: "containment",
       label: "Containment",
-      iconImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&h=400&fit=crop",
+      iconImage: containmentIcon,
       headline: "Primary & Secondary Containment Solutions",
       image: "/images/containment.jpg",
       description:
@@ -185,7 +230,6 @@ const Home = () => {
 
   const comparisonRows = [
     { feature: "Slip resistant surface", rhino: true, plastic: false, diy: "partial" },
-    { feature: "Nationwide transferable warranty", rhino: true, plastic: "partial", diy: false },
     { feature: "Air- & watertight bond", rhino: true, plastic: false, diy: "partial" },
     { feature: "Won't warp, crack or peel", rhino: true, plastic: false, diy: "partial" },
     { feature: "Adds resale value", rhino: true, plastic: false, diy: false },
@@ -196,22 +240,18 @@ const Home = () => {
   const businessOptions = [
     {
       title: "Stand-Alone Opportunity",
-      icon: "🚀",
       desc: "Starting fresh, post-retirement, or seeking a career change? Rhino Linings provides comprehensive training, equipment and an almost unlimited range of coating applications.",
     },
     {
       title: "Add-On to Existing Business",
-      icon: "➕",
       desc: "Already in automotive, construction, mining or oil & gas? Add Rhino Linings as an additional profit stream and cross-sell to your existing customer base.",
     },
     {
       title: "Master Distributor",
-      icon: "🌍",
       desc: "Want to develop a country or regional market? Rhino Linings is always open to expanding internationally with local partners who know their market.",
     },
     {
       title: "OEM Partner",
-      icon: "🏗️",
       desc: "Manufacturing vehicles, trailers or boats? We've supplied international top-level OEMs at factory level for nearly 15 years with low, high pressure and robotic systems.",
     },
   ];
@@ -249,6 +289,7 @@ const Home = () => {
         )}
         
         <video
+          key={videoUrl}
           ref={videoRef}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             videoLoaded && !videoError ? "opacity-100" : "opacity-0"
@@ -307,11 +348,7 @@ const Home = () => {
           </h1>
           <h1
             className="text-6xl md:text-8xl font-black uppercase leading-none mb-6 tracking-tight"
-            style={{
-              letterSpacing: "-0.02em",
-              WebkitTextStroke: "2px #F97316",
-              color: "transparent",
-            }}
+            style={{ letterSpacing: "-0.02em", color: "#F97316" }}
           >
             Bed Liners
           </h1>
@@ -361,97 +398,121 @@ const Home = () => {
         </div> */}
       </div>
 
-      {/* ── SERVICES TABS ── */}
-      <section id="services" className="py-24 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
+      {/* ── SERVICES CAROUSEL ── */}
+      <section id="services" className="py-16 bg-gray-900 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="mb-8 text-center">
             <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#F97316" }}>
               Our Services
             </p>
-            <h2 className="text-5xl md:text-6xl font-black uppercase leading-none">
+            <h2 className="text-4xl md:text-5xl font-black uppercase leading-none">
               Endless<br />
               <span style={{ color: "#F97316" }}>Possibilities</span>
             </h2>
           </div>
 
-          {/* Tab buttons */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {services.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveService(i)}
-                className="px-5 py-2.5 text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2"
-                style={
-                  activeService === i
-                    ? { background: "#F97316", color: "#000" }
-                    : { background: "#1f2937", color: "#9ca3af", border: "1px solid #374151" }
-                }
-              >
-                {/* <img 
-                  src={s.iconImage} 
-                  alt={s.label}
-                  className="w-6 h-6 rounded object-cover"
-                /> */}
-                {s.label}
-              </button>
-            ))}
-          </div>
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Main Carousel */}
+            <div className="overflow-hidden rounded-lg" style={{ border: "2px solid #1f2937" }}>
+              <div className="relative h-[400px]">
+                {services.map((service, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                      index === activeService
+                        ? "opacity-100 translate-x-0"
+                        : index < activeService
+                        ? "opacity-0 -translate-x-full"
+                        : "opacity-0 translate-x-full"
+                    }`}
+                  >
+                    {/* Full Image Background */}
+                    <div className="relative h-full group cursor-pointer" onClick={() => window.location.href = '/services'}>
+                      <img
+                        src={service.iconImage}
+                        alt={service.label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      
+                      {/* Subtle Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      
+                      {/* Minimal Content Overlay */}
+                      <div className="absolute inset-0 flex flex-col justify-between p-6">
+                        {/* Top: Service Badge */}
+                        <div className="flex justify-between items-start">
+                          <div
+                            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-black backdrop-blur-sm"
+                            style={{ background: "#F97316" }}
+                          >
+                            {service.label}
+                          </div>
+                          
+                          {/* Service Number */}
+                          <div className="text-6xl md:text-7xl font-black opacity-10" style={{ color: "#F97316" }}>
+                            0{index + 1}
+                          </div>
+                        </div>
 
-          {/* Active service panel */}
-          <div className="grid md:grid-cols-2 gap-0 overflow-hidden" style={{ border: "1px solid #374151" }}>
-            {/* Image side */}
-            <div className="relative h-72 md:h-auto min-h-64 bg-gray-800 overflow-hidden">
-              <img
-                src={services[activeService].image}
-                alt={services[activeService].label}
-                className="w-full h-full object-cover opacity-80 transition-opacity duration-300"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                }}
-              />
-              {/* Fallback gradient with icon image */}
-              <div
-                className="absolute inset-0 flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #111827, #1f2937)" }}
-              >
-                <img 
-                  src={services[activeService].iconImage} 
-                  alt={services[activeService].label}
-                  className="w-full h-full object-cover opacity-30"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900 hidden md:block" />
-              <div
-                className="absolute top-0 left-0 px-4 py-2 text-xs font-bold uppercase tracking-widest text-black"
-                style={{ background: "#F97316" }}
-              >
-                {services[activeService].label}
+                        {/* Bottom: Title & CTA */}
+                        <div className="transform transition-all duration-300 group-hover:translate-y-[-10px]">
+                          <h3 className="text-2xl md:text-3xl font-black uppercase mb-3 leading-tight">
+                            {service.headline}
+                          </h3>
+
+                          <Link
+                            to="/services"
+                            className="inline-flex items-center gap-2 px-6 py-2.5 font-bold uppercase tracking-wider text-xs transition-all hover:scale-105"
+                            style={{ background: "#F97316", color: "#000" }}
+                          >
+                            Learn More →
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Content side */}
-            <div className="p-8 md:p-10 bg-gray-900">
-              <h3 className="text-3xl font-black uppercase mb-4 leading-tight">
-                {services[activeService].headline}
-              </h3>
-              <p className="text-gray-400 mb-8 leading-relaxed" style={{ fontFamily: "Georgia, serif", fontSize: "0.95rem" }}>
-                {services[activeService].description}
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {services[activeService].features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-                    <span style={{ color: "#F97316", marginTop: "2px", flexShrink: 0 }}>▸</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 px-8 py-3 font-bold uppercase tracking-wider text-sm transition-all hover:scale-105"
-                style={{ background: "#F97316", color: "#000" }}
-              >
-                Learn More 
-              </Link>
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setActiveService((prev) => (prev === 0 ? services.length - 1 : prev - 1))}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full transition-all hover:scale-110 z-20 text-xl font-bold backdrop-blur-sm"
+              style={{ background: "rgba(249, 115, 22, 0.9)", color: "#000" }}
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => setActiveService((prev) => (prev === services.length - 1 ? 0 : prev + 1))}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full transition-all hover:scale-110 z-20 text-xl font-bold backdrop-blur-sm"
+              style={{ background: "rgba(249, 115, 22, 0.9)", color: "#000" }}
+            >
+              ›
+            </button>
+
+            {/* Dots Navigation */}
+            <div className="flex justify-center gap-2 mt-6">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveService(index)}
+                  className="transition-all"
+                  style={{
+                    width: activeService === index ? "32px" : "10px",
+                    height: "10px",
+                    borderRadius: "5px",
+                    background: activeService === index ? "#F97316" : "#374151",
+                  }}
+                />
+              ))}
             </div>
           </div>
         </div>

@@ -127,8 +127,7 @@ export default function About() {
             className="text-6xl md:text-8xl font-black uppercase leading-none mb-8"
             style={{
               letterSpacing: "-0.02em",
-              WebkitTextStroke: "2px #F97316",
-              color: "transparent",
+              color: "#F97316",
             }}
           >
             Rhino Linings
@@ -143,17 +142,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── STATS STRIP ── */}
-      <div style={{ background: "#F97316" }} className="py-5">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((s, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl font-black text-black">{s.number}</div>
-              <div className="text-xs font-bold uppercase tracking-widest text-black/70">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+  
 
       {/* ── OUR STORY ── */}
       <section className="px-6 py-24 bg-gray-900">
@@ -174,7 +163,7 @@ export default function About() {
                 <strong className="text-white">Rhino Linings Kenya</strong> is your trusted
                 partner for premium protective coatings across East Africa. Operating from
                 Nairobi, we bring the expertise of a brand that pioneered spray-on bed
-                liners in 1983 — and has led the industry for over 40 years since.
+                liners in 1983  and has led the industry for over 40 years since.
               </p>
               <p>
                 As an authorised Rhino Linings dealer, we represent a globally trusted name
@@ -191,7 +180,7 @@ export default function About() {
               </p>
               <p>
                 From matatus and pickups to cement trucks, mining equipment and industrial
-                facilities — we protect the vehicles and machinery that keep Kenya moving.
+                facilities  we protect the vehicles and machinery that keep Kenya moving.
               </p>
             </div>
           </div>
