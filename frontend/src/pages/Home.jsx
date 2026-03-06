@@ -13,7 +13,9 @@ const Home = () => {
     try {
       return new URL('../assets/images/hero-bg-video.mp4', import.meta.url).href;
     } catch {
+      
       return '/videos/hero-bg-video.mp4';
+
     }
   })();
 
