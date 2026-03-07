@@ -117,7 +117,7 @@ const Home = () => {
       label: "Automotive",
       iconImage: automotiveIcon,
       headline: "Protect Your Vehicle Investment",
-      image: "/images/vehicle-before-after.jpg",
+      image: "/images/vehicle-before-after.jpeg",
       description:
         "Our spray-on bed liners are custom-sprayed to fit each vehicle's unique contours. Applied in 2–4 hours, your vehicle is ready the same day — backed by a 3-year transferable warranty.",
       features: [
@@ -125,7 +125,6 @@ const Home = () => {
         "Slip-resistant textured finish",
         "Air- & watertight bond prevents rust",
         "Increases resale value",
-        "Available in virtually any colour",
       ],
       accent: "#F97316",
     },
@@ -188,12 +187,11 @@ const Home = () => {
       label: "Waterproofing",
       iconImage: waterproofingIcon,
       headline: "Seamless Protection Against Water Ingress",
-      image: "/images/waterproofing.jpg",
+      image: "/images/end-product.jpeg",
       description:
         "Our elastomer coatings spray into every nook and cranny, forming a seamless air-and-watertight bond — ideal for rooftops, parking lots, balconies and retaining walls where sheet membranes fall short.",
       features: [
         "Exposed rooftops & parking lots",
-        "Bathrooms, kitchens & laundries",
         "Balconies & retaining walls",
         "Highly flexible & low maintenance",
         "Can be tiled over",
