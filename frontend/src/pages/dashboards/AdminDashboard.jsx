@@ -12,7 +12,9 @@ import {
   Eye,
   EyeOff,
   Image,
+  Mail,
   Menu,
+  MessageCircle,
   Package,
   Plus,
   RefreshCw,
@@ -24,6 +26,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import ContactClientModal from "../../components/ContactClientModal";
 import API from "../../services/api";
 
 const formatDate = (d) => (d ? dayjs(d).format("DD MMM YYYY HH:mm") : "-");
@@ -78,6 +81,9 @@ export default function AdminDashboard() {
     labor: 0,
     additional: 0
   });
+
+  // Contact client modal
+  const [contactClient, setContactClient] = useState(null); // { name, email, phone }
 
   // Task creation modal
   const [showTaskModal, setShowTaskModal] = useState(false);
@@ -1233,6 +1239,24 @@ export default function AdminDashboard() {
                             <Eye className="w-4 h-4 mr-1" />
                             View
                           </Button>
+                          <Button
+                            onClick={() => setContactClient({ name: customer.name, email: customer.email, phone: customer.phone })}
+                            size="sm"
+                            style={{ background: "#F97316", color: "#000" }}
+                          >
+                            <Mail className="w-4 h-4 mr-1" />
+                            Email
+                          </Button>
+                          {customer.phone && (
+                            <Button
+                              onClick={() => setContactClient({ name: customer.name, email: customer.email, phone: customer.phone })}
+                              size="sm"
+                              style={{ background: "#16a34a", color: "#fff" }}
+                            >
+                              <MessageCircle className="w-4 h-4 mr-1" />
+                              WhatsApp
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </CardContent>
@@ -1465,13 +1489,15 @@ export default function AdminDashboard() {
                             Create Booking
                           </Button>
                           <Button
-                            onClick={() => {
-                              // Send message to customer
-                              toast.info("Message feature coming soon");
-                            }}
+                            onClick={() => setContactClient({
+                              name: quote.customerName,
+                              email: quote.customerId?.email || "",
+                              phone: quote.customerId?.phone || "",
+                            })}
                             size="sm"
                             variant="outline"
                           >
+                            <Mail className="w-4 h-4 mr-1" />
                             Contact Customer
                           </Button>
                         </div>
@@ -3165,6 +3191,14 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
         </div>
+      )}
+
+      {/* Contact Client Modal */}
+      {contactClient && (
+        <ContactClientModal
+          client={contactClient}
+          onClose={() => setContactClient(null)}
+        />
       )}
     </div>
   );
