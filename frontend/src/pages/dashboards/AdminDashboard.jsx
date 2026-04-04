@@ -1916,7 +1916,7 @@ export default function AdminDashboard() {
               <CardContent className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Upload Video (MP4, WebM, max 50MB)
+                    Upload Video (MP4, WebM, max 11MB)
                   </label>
                   <input
                     type="file"
@@ -1924,8 +1924,8 @@ export default function AdminDashboard() {
                     onChange={async (e) => {
                       const file = e.target.files[0];
                       if (file) {
-                        if (file.size > 50 * 1024 * 1024) {
-                          toast.error("Video file must be less than 50MB");
+                        if (file.size > 11 * 1024 * 1024) {
+                          toast.error("Video must be under 11MB. Run: node backend/scripts/compressVideo.js to compress it first.");
                           return;
                         }
                         setBannerVideoFile(file);
@@ -1938,7 +1938,7 @@ export default function AdminDashboard() {
                     }}
                     className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-black hover:file:bg-orange-600"
                   />
-                  <p className="text-xs text-gray-500 mt-1">Upload a video file directly. It will be stored in the database.</p>
+                  <p className="text-xs text-gray-500 mt-1">Max 11MB. Use <code className="text-orange-400">node backend/scripts/compressVideo.js</code> to compress larger files.</p>
                 </div>
 
                 {bannerVideoFile && (

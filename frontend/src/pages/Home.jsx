@@ -50,7 +50,7 @@ const Home = () => {
       return import.meta.env.VITE_HERO_VIDEO_URL;
     }
     try {
-      return new URL('../assets/images/hero-bg-video.mp4', import.meta.url).href;
+      return new URL('../assets/images/hero-bg-video-compressed.mp4', import.meta.url).href;
     } catch {
       return '/videos/hero-bg-video.mp4';
     }

@@ -35,7 +35,13 @@ const app = express();
 // ✅ Enable CORS
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:3000",
+      "https://www.rhinoliningsnairobi.co.ke",
+      "https://rhinoliningsnairobi.co.ke",
+    ],
     credentials: true,
   })
 );
