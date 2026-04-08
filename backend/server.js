@@ -4,7 +4,7 @@ import express from "express";
 import connectDB from "./config/db.js";
 
 // Load environment variables
-dotenv.config({ path: '.env.local' });
+dotenv.config();
 
 // Import route modules
 import adminRoutes from "./routes/adminRoutes.js";
@@ -27,8 +27,6 @@ import timeRoutes from "./routes/timeRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import vehicleRoutes from "./routes/vehicleRoutes.js";
-
-dotenv.config();
 
 const app = express();
 

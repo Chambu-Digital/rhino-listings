@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 import dns from 'dns';
 
-// Fix for Windows DNS resolution with MongoDB SRV
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+// Fix for Windows DNS resolution with MongoDB SRV (local dev only)
+if (process.platform === 'win32') {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 const connectDB = async () => {
   try {
