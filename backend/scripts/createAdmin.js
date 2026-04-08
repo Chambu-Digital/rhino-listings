@@ -1,5 +1,6 @@
-// Script to create the first admin account
-// Run this with: node scripts/createAdmin.js
+// Script to create an admin account
+// Usage: node scripts/createAdmin.js <email> <password> <name>
+// Example: node scripts/createAdmin.js admin@rhinolinings.com MyPassword123 "Admin User"
 
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
@@ -7,51 +8,42 @@ import dotenv from 'dotenv';
 import dns from 'dns';
 import User from '../models/user.js';
 
-// Fix for Windows DNS resolution with MongoDB SRV
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+// Fix for Windows DNS resolution
+if (process.platform === 'win32') {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 dotenv.config();
 
+const [,, email, password, name = 'Admin User'] = process.argv;
+
+if (!email || !password) {
+  console.error('❌ Usage: node scripts/createAdmin.js <email> <password> [name]');
+  console.error('   Example: node scripts/createAdmin.js admin@rhinolinings.com MyPassword123 "Admin User"');
+  process.exit(1);
+}
+
 const createAdmin = async () => {
   try {
-    // Connect to MongoDB
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('✅ Connected to MongoDB');
 
-    // Admin details - CHANGE THESE!
-    const adminData = {
-      name: 'Admin User',
-      email: 'admin@rhinolinings.com', // Change this
-      password: 'admin123456', // Change this to a strong password
-      role: 'admin'
-    };
-
-    // Check if admin already exists
-    const existingAdmin = await User.findOne({ email: adminData.email });
+    const existingAdmin = await User.findOne({ email });
     if (existingAdmin) {
-      console.log('❌ Admin with this email already exists!');
+      console.log(`❌ User with email "${email}" already exists!`);
       process.exit(1);
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(adminData.password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create admin user
-    const admin = await User.create({
-      name: adminData.name,
-      email: adminData.email,
-      password: hashedPassword,
-      role: 'admin'
-    });
+    await User.create({ name, email, password: hashedPassword, role: 'admin' });
 
     console.log('\n✅ Admin account created successfully!');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('📧 Email:', adminData.email);
-    console.log('🔑 Password:', adminData.password);
+    console.log('📧 Email:', email);
+    console.log('🔑 Password:', password);
     console.log('👤 Role: Admin');
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('\n⚠️  IMPORTANT: Change the password after first login!');
-    console.log('🌐 Login at: http://localhost:5173/login\n');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
     process.exit(0);
   } catch (error) {
