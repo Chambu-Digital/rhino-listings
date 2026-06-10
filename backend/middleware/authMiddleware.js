@@ -19,15 +19,23 @@ export const verifyToken = (req, res, next) => {
 export const protect = verifyToken;
 
 export const adminOnly = (req, res, next) => {
-  if (req.user && req.user.role === 'admin') {
+  if (req.user && (req.user.role === 'admin' || req.user.role === 'superadmin')) {
     next();
   } else {
     res.status(403).json({ message: 'Access denied. Admin only.' });
   }
 };
 
+export const superadminOnly = (req, res, next) => {
+  if (req.user && req.user.role === 'superadmin') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. Superadmin only.' });
+  }
+};
+
 export const employeeOnly = (req, res, next) => {
-  if (req.user && (req.user.role === 'employee' || req.user.role === 'admin')) {
+  if (req.user && (req.user.role === 'employee' || req.user.role === 'admin' || req.user.role === 'superadmin')) {
     next();
   } else {
     res.status(403).json({ message: 'Access denied. Employee only.' });

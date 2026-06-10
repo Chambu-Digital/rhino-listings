@@ -104,7 +104,7 @@ function AppContent() {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute allowedRoles={["admin"]}>
+            <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }
@@ -112,7 +112,7 @@ function AppContent() {
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute allowedRoles={["admin"]}>
+            <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }
@@ -146,10 +146,10 @@ function AppContent() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute allowedRoles={["admin", "employee", "user"]}>
+            <ProtectedRoute allowedRoles={["admin", "superadmin", "employee", "user"]}>
               {(() => {
                 const user = getCurrentUser();
-                if (user?.role === "admin") return <AdminDashboard />;
+                if (user?.role === "admin" || user?.role === "superadmin") return <AdminDashboard />;
                 if (user?.role === "employee") return <EmployeeDashboard />;
                 return <UserDashboard />;
               })()}

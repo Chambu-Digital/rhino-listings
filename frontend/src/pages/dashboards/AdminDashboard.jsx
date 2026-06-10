@@ -42,6 +42,7 @@ const STATUS_COLORS = {
 export default function AdminDashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeView, setActiveView] = useState("overview");
+  const [currentUser, setCurrentUser] = useState(null);
   const [bookings, setBookings] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [tasks, setTasks] = useState([]);
@@ -50,6 +51,17 @@ export default function AdminDashboard() {
   const [customers, setCustomers] = useState([]);
   const [quotations, setQuotations] = useState([]);
   const [stats, setStats] = useState({});
+  const [users, setUsers] = useState([]);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
+  const [userForm, setUserForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "customer",
+    phone: ""
+  });
+  const [showUserPassword, setShowUserPassword] = useState(false);
   const [reports, setReports] = useState({
     revenue: [],
     bookingTrends: [],
@@ -127,6 +139,13 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchData();
     const interval = setInterval(fetchData, 30000);
+    
+    // Get current user from localStorage
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      setCurrentUser(JSON.parse(userStr));
+    }
+    
     return () => clearInterval(interval);
   }, []);
 
@@ -145,7 +164,8 @@ export default function AdminDashboard() {
       fetchBanner(),
       fetchCustomers(),
       fetchQuotations(),
-      fetchStats()
+      fetchStats(),
+      fetchUsers()
     ]);
   };
 
@@ -230,6 +250,16 @@ export default function AdminDashboard() {
       setStats(res.data);
     } catch (err) {
       console.error("Error fetching stats:", err);
+    }
+  };
+
+  const fetchUsers = async () => {
+    try {
+      const res = await API.get("/users");
+      setUsers(Array.isArray(res.data.users) ? res.data.users : []);
+    } catch (err) {
+      console.error("Error fetching users:", err);
+      setUsers([]);
     }
   };
 
@@ -579,6 +609,72 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleEditUser = (user) => {
+    setEditingUser(user);
+    setUserForm({
+      name: user.name,
+      email: user.email,
+      password: "",
+      role: user.role,
+      phone: user.phone || ""
+    });
+    setShowUserModal(true);
+  };
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      console.log('Creating user with data:', userForm);
+      if (editingUser) {
+        // Update existing user
+        const updateData = {
+          name: userForm.name,
+          email: userForm.email,
+          role: userForm.role,
+          phone: userForm.phone
+        };
+        if (userForm.password) {
+          updateData.password = userForm.password;
+        }
+        await API.patch(`/users/${editingUser._id}`, updateData);
+        toast.success("User updated successfully!");
+      } else {
+        // Create new user
+        const response = await API.post("/users", userForm);
+        console.log('Create user response:', response.data);
+        toast.success("User created successfully!");
+      }
+      setShowUserModal(false);
+      setEditingUser(null);
+      setUserForm({
+        name: "",
+        email: "",
+        password: "",
+        role: "customer",
+        phone: ""
+      });
+      fetchUsers();
+    } catch (err) {
+      console.error('Error creating user:', err);
+      const errorMessage = err.response?.data?.message || err.message || "Failed to save user";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteUser = async (userId) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
+    try {
+      await API.delete(`/users/${userId}`);
+      toast.success("User deleted successfully!");
+      fetchUsers();
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete user");
+    }
+  };
+
   const handleToggleServiceStatus = async (serviceId) => {
     try {
       await API.patch(`/service-management/${serviceId}/toggle`);
@@ -596,6 +692,7 @@ export default function AdminDashboard() {
     { id: "customers", label: "Customers", icon: <User className="w-5 h-5" /> },
     { id: "tasks", label: "Tasks", icon: <ClipboardList className="w-5 h-5" /> },
     { id: "employees", label: "Employees", icon: <Users className="w-5 h-5" /> },
+    ...(currentUser?.role === 'superadmin' ? [{ id: "users", label: "Users", icon: <UserPlus className="w-5 h-5" /> }] : []),
     { id: "services", label: "Services", icon: <Package className="w-5 h-5" /> },
     { id: "banner", label: "Banner", icon: <Image className="w-5 h-5" /> },
     { id: "reports", label: "Reports", icon: <TrendingUp className="w-5 h-5" /> },
@@ -2564,6 +2661,99 @@ export default function AdminDashboard() {
             </Card>
           </div>
         )}
+
+        {/* Users View */}
+        {activeView === "users" && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
+                <p className="text-gray-600 mt-1">Manage system users and permissions</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button onClick={() => setShowUserModal(true)} className="bg-orange-500 hover:bg-orange-600 text-white">
+                  <UserPlus className="w-4 h-4 mr-2" />
+                  Add User
+                </Button>
+                <Button onClick={fetchUsers} variant="outline" size="sm">
+                  Refresh
+                </Button>
+              </div>
+            </div>
+
+            <Card>
+              <CardContent className="pt-6">
+                {users.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    No users found
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-gray-200">
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700">Name</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700">Email</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-700">Created</th>
+                          <th className="text-right py-3 px-4 font-semibold text-gray-700">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {users.map((user) => (
+                          <tr key={user._id} className="border-b border-gray-100 hover:bg-gray-50">
+                            <td className="py-3 px-4 font-medium text-gray-900">{user.name}</td>
+                            <td className="py-3 px-4 text-gray-600">{user.email}</td>
+                            <td className="py-3 px-4">
+                              <Badge
+                                variant={
+                                  user.role === 'superadmin'
+                                    ? 'destructive'
+                                    : user.role === 'admin'
+                                    ? 'info'
+                                    : 'default'
+                                }
+                              >
+                                {user.role}
+                              </Badge>
+                            </td>
+                            <td className="py-3 px-4">
+                              <Badge variant={user.isActive ? 'success' : 'destructive'}>
+                                {user.isActive ? 'Active' : 'Inactive'}
+                              </Badge>
+                            </td>
+                            <td className="py-3 px-4 text-gray-600">{formatDate(user.createdAt)}</td>
+                            <td className="text-right py-3 px-4">
+                              <div className="flex items-center justify-end gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleEditUser(user)}
+                                >
+                                  Edit
+                                </Button>
+                                {user.role !== 'superadmin' && (
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => handleDeleteUser(user._id)}
+                                  >
+                                    Delete
+                                  </Button>
+                                )}
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
 
       {/* Create Task Modal */}
@@ -3199,6 +3389,146 @@ export default function AdminDashboard() {
           client={contactClient}
           onClose={() => setContactClient(null)}
         />
+      )}
+
+      {/* User Creation/Edit Modal */}
+      {showUserModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <Card className="max-w-md w-full">
+            <CardHeader className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+              <div className="flex items-center justify-between">
+                <CardTitle>{editingUser ? "Edit User" : "Create New User"}</CardTitle>
+                <button
+                  onClick={() => {
+                    setShowUserModal(false);
+                    setEditingUser(null);
+                    setUserForm({
+                      name: "",
+                      email: "",
+                      password: "",
+                      role: "customer",
+                      phone: ""
+                    });
+                  }}
+                  className="text-white hover:bg-white/20 p-1 rounded"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <form onSubmit={handleCreateUser} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={userForm.name}
+                    onChange={(e) => setUserForm({ ...userForm, name: e.target.value })}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    value={userForm.email}
+                    onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+
+                {!editingUser && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Password *
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showUserPassword ? "text" : "password"}
+                        value={userForm.password}
+                        onChange={(e) => setUserForm({ ...userForm, password: e.target.value })}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent pr-10"
+                        required
+                        minLength={6}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowUserPassword(!showUserPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                      >
+                        {showUserPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Role *
+                  </label>
+                  <select
+                    value={userForm.role}
+                    onChange={(e) => setUserForm({ ...userForm, role: e.target.value })}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    required
+                  >
+                    <option value="customer">Customer</option>
+                    <option value="employee">Employee</option>
+                    <option value="admin">Admin</option>
+                    {currentUser?.role === 'superadmin' && <option value="superadmin">Super Admin</option>}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    value={userForm.phone}
+                    onChange={(e) => setUserForm({ ...userForm, phone: e.target.value })}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="flex-1 bg-orange-500 hover:bg-orange-600"
+                  >
+                    {loading ? "Saving..." : editingUser ? "Update User" : "Create User"}
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      setShowUserModal(false);
+                      setEditingUser(null);
+                      setUserForm({
+                        name: "",
+                        email: "",
+                        password: "",
+                        role: "customer",
+                        phone: ""
+                      });
+                    }}
+                    variant="outline"
+                    className="flex-1"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   );

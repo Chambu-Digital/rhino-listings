@@ -20,7 +20,7 @@ export default function AdminLogin() {
       const res = await API.post("/auth/login", { ...formData, role: 'admin' });
       const { token, user } = res.data;
 
-      if (user.role !== "admin") {
+      if (user.role !== "admin" && user.role !== "superadmin") {
         if (user.role === "employee") {
           toast.error("Wrong portal! Redirecting to Employee Login...", { duration: 3000 });
           setTimeout(() => navigate("/employee/login"), 1500);

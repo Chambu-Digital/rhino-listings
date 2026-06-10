@@ -60,8 +60,13 @@ export const loginUser = async (req, res) => {
     }
 
     // Check if role matches (if role is specified)
-    if (role && user.role !== role) {
-      return res.status(403).json({ message: `This account is not registered as ${role}` });
+    // Superadmin can login as admin (has all admin privileges)
+    if (role) {
+      if (role === 'admin' && user.role !== 'admin' && user.role !== 'superadmin') {
+        return res.status(403).json({ message: `This account is not registered as ${role}` });
+      } else if (role !== 'admin' && user.role !== role) {
+        return res.status(403).json({ message: `This account is not registered as ${role}` });
+      }
     }
 
     // Verify password
